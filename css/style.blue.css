@@ -1888,14 +1888,14 @@ STYLE SWITCHER FOR DEMO
 
 .btn-dark {
   color: #fff;
-  background-color: #111111;
-  border-color: #111111;
+  background-color: #2b90d9;
+  border-color: #2b90d9;
 }
 
 .btn-dark:hover {
   color: #fff;
-  background-color: black;
-  border-color: black;
+  background-color:#2b90d9;
+  border-color: #2b90d9;
 }
 
 .btn-dark:focus, .btn-dark.focus {
