@@ -1266,29 +1266,6 @@ a.text-hover-dark:focus, a.text-hover-dark:hover {
   transform: none;
 }
 
-.tooltip {
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black;
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-}
 
 /*
 *
@@ -2325,10 +2302,8 @@ h6,
 .h4,
 .h5,
 .h6 {
-  margin-bottom: 0.5rem;
   font-family: inherit;
   font-weight: 900;
-  line-height: 1.2;
   color: inherit;
 }
 
@@ -2401,6 +2376,11 @@ small,
   font-weight: 400;
 }
 
+smaller,
+.smaller {
+  font-size: 60%;
+  font-weight: 400;
+}
 mark,
 .mark {
   padding: 0.2em;
