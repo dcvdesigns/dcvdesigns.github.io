@@ -50,16 +50,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                  <!-- Link--><a class="nav-link active" href="index.html">Home</a>
+                  <!-- Link--><a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
                   <!-- Link--><a class="nav-link" href="3dprinting.html">3D Printing</a>
                 </li>
                 <li class="nav-item">
-                  <!-- Link--><a class="nav-link" href="diecutting.html">Die Cutting</a>
+                  <!-- Link--><a class="nav-link active" href="diecutting.html">Die Cutting</a>
                 </li>
                 <li class="nav-item">
-                  <!-- Link--><a class="nav-link" href="screenprinting.html">Screen Printing</a>
+                    <!-- Link--><a class="nav-link" href="screenprinting.html">Screen Printing</a>
                 </li>
               </ul>
               <ul class="navbar-nav ml-auto">               
@@ -71,88 +71,136 @@
       </header>
       <!-- HERO SECTION-->
       <div class="container">
-        <section class="hero pb-3 bg-cover bg-center d-flex align-items-center" style="background: url(img/hero-banner-alt.png)">
-          <div class="container py-5">
-            <div class="row px-4 px-lg-5">
-              <div class="col-lg-6">
-                <p class="text-white small text-uppercase text-primary2 mb-0">Holiday 2021</p>
-                <h1 class="h2 text-uppercase text-primary2 mb-3">It's beginning to look a lot like Christmas</h1><a class="btn text-white text-uppercase small btn-dark" href="blog.html">Read the Post</a>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- CATEGORIES SECTION-->
-        <section class="pt-5">
-          <header>
-            <p class="h5 text-uppercase text-primary mb-1">Browse our categories</p>
-            <p class="smaller text-muted smaller text-uppercase mb-4"><i>Note: Clicking the links below will take you to our secure store hosted by Square</i></p>
-          </header>
-          <div class="row">
-            <div class="col-md-4 mb-4 mb-md-0">
-              <a class="category-item mb-4" href="https://dcv-designs.square.site/shop/table-lamps/2">
-                <img class="img-fluid" src="img/cat-img-tablelamps.png" alt="">
-                <strong class="category-item-title">Table Lamps</strong>
-              </a>
-              <a class="category-item" href="https://dcv-designs.square.site/shop/wall-art/4">
-                <img class="img-fluid" src="img/cat-img-wallart.png" alt="">
-                <strong class="category-item-title">Wall Art</strong>
-              </a>
-            </div>
-            <div class="col-md-4 mb-4 mb-md-0">
-              <a class="category-item" href="https://dcv-designs.square.site/shop/holiday/3">
-                <img class="img-fluid" src="img/cat-img-holiday.png" alt="">
-                <strong class="category-item-title">Holiday</strong>
-              </a>
-            </div>
-            <div class="col-md-4 mb-4 mb-md-0">
-              <a class="category-item mb-4" href="https://dcv-designs.square.site/shop/night-lights/6?">
-                <img class="img-fluid" src="img/cat-img-nightlights.png" alt="">
-                <strong class="category-item-title">Night Lights</strong>
-              </a>
-              <a class="category-item" href="https://dcv-designs.square.site/shop/diecutting/5">
-                <img class="img-fluid" src="img/cat-img-diecutting.png" alt="">
-                <strong class="category-item-title">Diecutting</strong>
-              </a>
-            </div>
-          </div>
-        </section>
-        <!-- TRENDING PRODUCTS-->
+        <!-- BODY & FEATURES-->
         <section class="py-5">
           <header>
-            <p class="small text-muted small text-uppercase mb-1">Custom Designed and Ready to Shine</p>
-            <h2 class="h5 text-uppercase text-primary mb-1">Top trending products</h2>
-            <p class="smaller text-muted smaller text-uppercase mb-4"><i>Note: Clicking the links below will take you to our secure store hosted by Square</i></p>            
+            <p class="small text-muted smaller text-uppercase mb-1">Vinyl, Stickers, Heat Transfer Vinyl and More</p>
+            <h2 class="h2 text-primary text-uppercase mb-1">Die Cutting with DCV Designs</h2>
+            <p class="small text-muted small text-uppercase mb-4">We have the capabilities to die cut a variety of different materials.  We've created vinyl decals, full color custom stickers, custom magnets and more.  Beyond the items included in our <a href="https://dcv-designs.square.site/shop/diecutting/5">shop</a>, we are also able to create a variety of custom products.  Feel free to <a href="mailto:david@dcvdesigns.com?subject=Custom Diecut Inquiry">contact us</a> to discuss your custom project! See some of our custom projects below:</p>
           </header>
           <div class="row">
-            <!-- PRODUCT-->
+            <!-- FEATURE-->
             <div class="col-md-4 mb-4 mb-md-0">
-              <div class="product text-center">
+              <div class="feature text-center">
                 <div class="position-relative mb-3">
-                  <div class="badge text-white badge-"></div><a class="d-block" href="https://dcv-designs.square.site/product/3d-printed-christmas-tree-lamp/11"><img class="img-fluid w-100" src="img/prod-img-3d-christmas-tree.png" alt="..."></a>
+                  <div class="badge text-white badge-"></div>
+                  <img id="myImg1" class="img-fluid w-100" src="img/diecut-img-feature-1.png" alt="Corporate Branding & Stickers">
+
+                  <!-- The Modal -->
+                      <div id="myModal" class="modal">
+                          <span class="close">&times;</span>
+                          <img class="modal-content" id="img01">
+                          <div id="caption"></div>
+                      </div>
+
+                      <script>
+                      // Get the modal
+                      var modal = document.getElementById('myModal');
+
+                      // Get the image and insert it inside the modal - use its "alt" text as a caption
+                      var img = document.getElementById('myImg1');
+                      var modalImg = document.getElementById("img01");
+                      var captionText = document.getElementById("caption");
+                      img.onclick = function(){
+                          modal.style.display = "block";
+                          modalImg.src = this.src;
+                          captionText.innerHTML = this.alt;
+                      }
+
+                      // Get the <span> element that closes the modal
+                          var span = document.getElementsByClassName("close")[0];
+
+                      // When the user clicks on <span> (x), close the modal
+                          span.onclick = function() { 
+                              modal.style.display = "none";
+                          }
+                      </script>
                 </div>
-                <h6> <a class="reset-anchor" href="https://dcv-designs.square.site/product/3d-printed-christmas-tree-lamp/11">3D Printed Christmas Tree Lamp</a></h6>
-                <p class="small text-muted">$25</p>
+                <h6 class="text-primary">Corporate Branding & Stickers</h6>
+                <p class="small text-muted">We created these stickers for GeereD Up Films. The stickers are water resistant and laminated to protect from UV for years of enjoyment!</p>
               </div>
             </div>
-            <!-- PRODUCT-->
+            <!-- FEATURE-->
             <div class="col-md-4 mb-4 mb-md-0">
-              <div class="product text-center">
-                <div class="position-relative mb-3">
-                  <div class="badge text-white badge-"></div><a class="d-block" href="https://dcv-designs.square.site/product/3d-printed-christmas-tree-lamp-battery-operated/10"><img class="img-fluid w-100" src="img/prod-img-3d-christmas-tree-batt.png" alt="..."></a>
+                <div class="feature text-center">
+                  <div class="position-relative mb-3">
+                    <div class="badge text-white badge-"></div>
+                        <img id="myImg2" class="img-fluid w-100" src="img/diecut-img-feature-2.png" alt="Family Stickers">
+
+                            <!-- The Modal -->
+                                <div id="myModal" class="modal">
+                                    <span class="close">&times;</span>
+                                    <img class="modal-content" id="img01">
+                                    <div id="caption"></div>
+                                </div>
+
+                                <script>
+                                // Get the modal
+                                var modal = document.getElementById('myModal');
+
+                                // Get the image and insert it inside the modal - use its "alt" text as a caption
+                                var img = document.getElementById('myImg2');
+                                var modalImg = document.getElementById("img01");
+                                var captionText = document.getElementById("caption");
+                                img.onclick = function(){
+                                    modal.style.display = "block";
+                                    modalImg.src = this.src;
+                                    captionText.innerHTML = this.alt;
+                                }
+
+                                // Get the <span> element that closes the modal
+                                    var span = document.getElementsByClassName("close")[0];
+
+                                // When the user clicks on <span> (x), close the modal
+                                    span.onclick = function() { 
+                                        modal.style.display = "none";
+                                    }
+                                </script>
+                  </div>
+                  <h6 class="text-primary">Family Stickers</h6>
+                  <p class="small text-muted">A quick project for a family Fourth of July get together. Full color stickers on clear and white vinyl, laminated to provide UV protection & water resistance.</p>
                 </div>
-                <h6> <a class="reset-anchor" href="https://dcv-designs.square.site/product/3d-printed-christmas-tree-lamp-battery-operated/10">3D Printed Christmas Tree Lamp - Battery Operated</a></h6>
-                <p class="small text-muted">$20</p>
-              </div>
             </div>
-            <!-- PRODUCT-->
+            <!-- FEATURE-->
             <div class="col-md-4 mb-4 mb-md-0">
-              <div class="product text-center">
-                <div class="position-relative mb-3">
-                  <div class="badge text-white badge-"></div><a class="d-block" href="https://dcv-designs.square.site/product/3d-printed-snowflake-ornaments/12"><img class="img-fluid w-100" src="img/prod-img-3d-ornament.png" alt="..."></a>
+                <div class="feature text-center">
+                  <div class="position-relative mb-3">
+                    <div class="badge text-white badge-"></div>
+                    <img id="myImg3" class="img-fluid w-100" src="img/diecut-img-feature-3.png" alt="Patient Welcome Folders">
+
+                    <!-- The Modal -->
+                        <div id="myModal" class="modal">
+                            <span class="close">&times;</span>
+                            <img class="modal-content" id="img01">
+                            <div id="caption"></div>
+                        </div>
+
+                        <script>
+                        // Get the modal
+                        var modal = document.getElementById('myModal');
+
+                        // Get the image and insert it inside the modal - use its "alt" text as a caption
+                        var img = document.getElementById('myImg3');
+                        var modalImg = document.getElementById("img01");
+                        var captionText = document.getElementById("caption");
+                        img.onclick = function(){
+                            modal.style.display = "block";
+                            modalImg.src = this.src;
+                            captionText.innerHTML = this.alt;
+                        }
+
+                        // Get the <span> element that closes the modal
+                            var span = document.getElementsByClassName("close")[0];
+
+                        // When the user clicks on <span> (x), close the modal
+                            span.onclick = function() { 
+                                modal.style.display = "none";
+                            }
+                        </script>                    
+                  </div>
+                  <h6 class="text-primary">Patient Welcome Folders</h6>
+                  <p class="small text-muted">A company branded folder for new patients at De Geer Health & Wellness. Custom diecut stickers + laminated folders.</p>
                 </div>
-                <h6> <a class="reset-anchor" href="https://dcv-designs.square.site/product/3d-printed-snowflake-ornaments/12">3D Printed Snowflake Ornaments</a></h6>
-                <p class="small text-muted">Starting at $5</p>
-              </div>
             </div>
           </div>
         </section>
