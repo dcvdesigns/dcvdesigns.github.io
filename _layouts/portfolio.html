@@ -1,32 +1,38 @@
 ---
 layout: default
 ---
-<article class="page">
-  <h1>{{ page.title }}</h1>
+<article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+  <h1 itemprop="name">{{ page.title }}</h1>
 
   {% if page.photos and page.photos[0] %}
-    <img src="{{ page.photos[0] | relative_url }}" alt="{{ page.title }}">
+    <div class="project-image">
+      <img src="{{ page.photos[0] | relative_url }}" alt="{{ page.title }}" itemprop="image">
+    </div>
   {% endif %}
 
   {% if page.summary %}
-    <p>{{ page.summary }}</p>
+    <p class="lead" itemprop="abstract">{{ page.summary }}</p>
   {% endif %}
 
   {% if page.tags %}
-    <div class="tags">
+    <div class="tags" aria-label="Tags">
       {% for t in page.tags %}
         <span class="tag">{{ t }}</span>
       {% endfor %}
     </div>
   {% endif %}
 
-  {{ content }}
+  <div class="content" itemprop="text">
+    {{ content }}
+  </div>
 
   {% if page.photos and page.photos.size > 1 %}
-    <h3>Gallery</h3>
+    <h2>Gallery</h2>
     <div class="card-grid">
       {% for p in page.photos offset:1 %}
-        <div class="card"><img src="{{ p | relative_url }}" alt=""></div>
+        <div class="card">
+          <img src="{{ p | relative_url }}" alt="">
+        </div>
       {% endfor %}
     </div>
   {% endif %}
