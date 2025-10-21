@@ -6,7 +6,7 @@ permalink: /portfolio/
 
 # Portfolio
 
-Browse recent 3D print projects — lightboxes, ornaments, signage, custom commissions and more.
+Explore recent 3D-printed builds — illuminated decor, signage, and one-of-a-kind custom commissions.
 
 <div class="card-grid">
   {% assign items = site.portfolio | sort: 'date' | reverse %}
