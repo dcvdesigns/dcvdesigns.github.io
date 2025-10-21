@@ -48,7 +48,7 @@ nav a:hover{
   display:grid; gap:1.25rem; padding:2.5rem 0 1rem;
 }
 .hero h1{ margin:0; font-size: clamp(1.8rem, 2.8vw, 2.6rem) }
-.hero p{ color:var(--color-muted); max-width:60ch; margin:.25rem 0 1rem }
+.hero p{ color:var(--color-muted); margin:.25rem 0 1rem }
 .cta-row{ display:flex; gap:.75rem; flex-wrap:wrap }
 .btn{
   display:inline-block; padding:.7rem 1rem; border-radius:10px; border:1px solid var(--color-accent);
