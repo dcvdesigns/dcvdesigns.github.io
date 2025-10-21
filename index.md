@@ -2,9 +2,17 @@
 title: Home
 layout: page
 ---
-# Custom 3D Prints
 
-Welcome to **DCV Designs**. Browse recent work below.
+<div class="hero">
+  <span class="badge">DCV Designs</span>
+  <h1>Custom 3D Prints for gifts, displays, and small-batch production</h1>
+  <p>I design and print lightboxes, coasters, signage, and more—multi-color AMS workflows, clean finishes, and practical designs.
+  Send your idea and I’ll turn it into a prototype.</p>
+  <div class="cta-row">
+    <a class="btn primary" href="/contact/">Start a project</a>
+    <a class="btn ghost" href="/portfolio/">See recent work</a>
+  </div>
+</div>
 
 ## Featured
 <div class="card-grid">
