@@ -3,7 +3,6 @@ layout: page
 ---
 
 <div class="hero">
-  <span class="badge">DCV Designs</span>
   <h1>Modern 3D-printed decor and custom design — built with precision and intention</h1>
   <p>I create lightboxes, signage, coasters, and custom display pieces using clean multicolor workflows, polished finishes, and an eye for both aesthetic and function. Have an idea? I can bring it to life - click "Start a project" to reach out!</p>
   <div class="cta-row">
