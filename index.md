@@ -2,6 +2,7 @@
 layout: page
 class: home
 ---
+<h1>DCV Designs - Modern 3D-printed decor and custom design</h1>
 <div class="hero">
   <h1>DCV Designs - Modern 3D-printed decor and custom design</h1>
   <p>I design and print lightboxes, signage, coasters, and custom display pieces using clean multicolor workflows, polished finishes, and an eye for both aesthetic and function. Have an idea? I can bring it to life - click "Start a project" to reach out!</p>
