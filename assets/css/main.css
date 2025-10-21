@@ -427,3 +427,18 @@ body.home .hero {
 .social.with-labels span {
   font-size: .95rem;
 }
+
+/* Hide labels on smaller screens — icons only */
+@media (max-width: 600px) {
+  .site-footer .social.with-labels span {
+    display: none;
+  }
+
+  .site-footer .social.with-labels a {
+    padding: .5rem;          /* tighten pill */
+    border-radius: 50%;      /* becomes circular icon-style button */
+    width: 42px;
+    height: 42px;
+    justify-content: center; /* icon perfectly centered */
+  }
+}
