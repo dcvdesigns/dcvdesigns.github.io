@@ -373,3 +373,30 @@ body.home .hero {
 }
 .announce-date{ margin:.25rem 0 .25rem; color: var(--color-muted); font-size:.95rem; }
 .announce-text p{ margin:.4rem 0; }
+
+/* Footer social with labels */
+.social.with-labels {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.social.with-labels a {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .4rem .6rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--color-fg);
+}
+.social.with-labels a:hover {
+  border-color: var(--color-accent);
+  color: var(--color-primary);
+}
+.social.with-labels svg {
+  flex: 0 0 auto;
+}
+.social.with-labels span {
+  font-size: .95rem;
+}
