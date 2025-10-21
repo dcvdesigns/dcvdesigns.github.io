@@ -120,14 +120,41 @@ nav a:hover{
 .contact-form button{ margin-top:.6rem }
 
 /* Footer */
-.site-footer{
-  display:flex; align-items:center; justify-content:space-between; gap:1rem;
-  padding:1.2rem 2rem; border-top:1px solid var(--color-border)
+.site-footer {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-top: 1px solid var(--color-border);
+  text-align: center;
 }
-.social{ display:flex; gap:.6rem }
-.social a{ display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%;
-  border:1px solid var(--color-border); text-decoration:none }
-.social a:hover{ border-color:var(--color-accent) }
+
+.site-footer .social.with-labels {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.site-footer .social.with-labels a {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .4rem .8rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--color-fg);
+}
+
+.site-footer .social.with-labels a:hover {
+  border-color: var(--color-accent);
+  color: var(--color-primary);
+}
+
+.site-footer .social.with-labels svg {
+  flex: 0 0 auto;
+}
 
 /* Portfolio + Gallery item title link color override */
 .card h3 a {
