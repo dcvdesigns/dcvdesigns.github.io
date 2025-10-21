@@ -1,0 +1,28 @@
+{% assign a = site.data.announcement %}
+{% assign today = site.time | date: "%Y-%m-%d" %}
+
+{%- comment -%}
+Show if:
+- a exists AND a.enabled == true
+- (no starts OR starts <= today)
+- (no expires OR today <= expires)
+{%- endcomment -%}
+{% if a and a.enabled
+   and (a.starts == nil or a.starts <= today)
+   and (a.expires == nil or today <= a.expires) %}
+
+<section class="announce" aria-label="Update">
+  <div class="announce-badge">Update</div>
+  <div class="announce-body">
+    {% if a.title %}<h2 class="announce-title">{{ a.title }}</h2>{% endif %}
+    <div class="announce-text">
+      {% if a.date %}<p class="announce-date">{{ a.date }}</p>{% endif %}
+      {{ a.text | markdownify }}
+    </div>
+    {% if a.cta_url %}
+      <p><a class="btn primary" href="{{ a.cta_url }}">{{ a.cta_label | default: "Learn more" }}</a></p>
+    {% endif %}
+  </div>
+</section>
+
+{% endif %}

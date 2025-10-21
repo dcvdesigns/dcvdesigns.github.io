@@ -10,7 +10,7 @@ class: home
     <a class="btn ghost" href="/portfolio/">See recent work</a>
   </div>
 </div>
-
+{% include announcement.html %}
 ## Featured Works
 <div class="card-grid">
   {% assign featured = site.portfolio | sort: 'date' | reverse | slice: 0, 6 %}

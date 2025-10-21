@@ -344,3 +344,32 @@ nav a:hover{
 body.home .hero {
   padding-top: 1.25rem; /* was default ~2.5rem */
 }
+
+.announce{
+  margin: 1.25rem 0 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  position: relative;
+}
+.announce::before{
+  content:"";
+  display:block;
+  height:4px;
+  width:100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+}
+.announce-badge{
+  position:absolute; top:10px; right:12px;
+  font-size:.75rem; padding:.2rem .5rem; border-radius:999px;
+  border:1px solid rgba(0,84,140,.18);
+  background:rgba(0,84,140,.06); color:var(--color-primary);
+}
+.announce-body{ padding: 1rem 1.25rem 1.1rem; }
+.announce-title{
+  margin:.2rem 0 .25rem; font-size:1.15rem; color:var(--color-primary); font-weight:800;
+}
+.announce-date{ margin:.25rem 0 .25rem; color: var(--color-muted); font-size:.95rem; }
+.announce-text p{ margin:.4rem 0; }
