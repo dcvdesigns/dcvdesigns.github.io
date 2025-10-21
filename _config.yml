@@ -17,9 +17,9 @@ collections:
     permalink: /gallery/:slug/
 
 defaults:
-  - scope: {path: "portfolio", type: portfolio}
-    values: {layout: page}
-  - scope: {path: "gallery", type: gallery}
+  - scope: {path: "_portfolio", type: portfolio}
+    values: {layout: portfolio}
+  - scope: {path: "_gallery", type: gallery}
     values: {layout: page}
   - scope: {path: "", type: pages}
     values: {layout: page}

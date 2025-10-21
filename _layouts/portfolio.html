@@ -1,0 +1,29 @@
+---
+layout: default
+---
+<article class="page">
+  <h1>{{ page.title }}</h1>
+  {% if page.photos and page.photos[0] %}
+    <img src="{{ page.photos[0] }}" alt="{{ page.title }}">
+  {% endif %}
+  <p>{{ page.summary }}</p>
+
+  {% if page.tags %}
+    <p>
+      {% for t in page.tags %}
+        <span class="badge">{{ t }}</span>
+      {% endfor %}
+    </p>
+  {% endif %}
+
+  {{ content }}
+
+  {% if page.photos and page.photos.size > 1 %}
+    <h3>Gallery</h3>
+    <div class="card-grid">
+      {% for p in page.photos offset:1 %}
+        <div class="card"><img src="{{ p }}" alt=""></div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</article>
