@@ -3,17 +3,21 @@ layout: default
 ---
 <article class="page">
   <h1>{{ page.title }}</h1>
+
   {% if page.photos and page.photos[0] %}
-    <img src="{{ page.photos[0] }}" alt="{{ page.title }}">
+    <img src="{{ page.photos[0] | relative_url }}" alt="{{ page.title }}">
   {% endif %}
-  <p>{{ page.summary }}</p>
+
+  {% if page.summary %}
+    <p>{{ page.summary }}</p>
+  {% endif %}
 
   {% if page.tags %}
-    <p>
+    <div class="tags">
       {% for t in page.tags %}
-        <span class="badge">{{ t }}</span>
+        <span class="tag">{{ t }}</span>
       {% endfor %}
-    </p>
+    </div>
   {% endif %}
 
   {{ content }}
@@ -22,8 +26,36 @@ layout: default
     <h3>Gallery</h3>
     <div class="card-grid">
       {% for p in page.photos offset:1 %}
-        <div class="card"><img src="{{ p }}" alt=""></div>
+        <div class="card"><img src="{{ p | relative_url }}" alt=""></div>
       {% endfor %}
     </div>
+  {% endif %}
+
+  <!-- Prev/Next within the portfolio collection -->
+  {% assign items = site.portfolio | sort: 'date' %}
+  {% assign curr_index = nil %}
+  {% for it in items %}
+    {% if it.url == page.url %}
+      {% assign curr_index = forloop.index0 %}
+    {% endif %}
+  {% endfor %}
+
+  {% if curr_index != nil %}
+    {% assign prev_index = curr_index | minus: 1 %}
+    {% assign next_index = curr_index | plus: 1 %}
+    {% assign prev_item = items[prev_index] %}
+    {% assign next_item = items[next_index] %}
+    <nav class="pager" aria-label="Portfolio pagination" style="margin-top:1.5rem; display:flex; justify-content:space-between; gap:1rem;">
+      <div>
+        {% if prev_item %}
+          <a class="btn" href="{{ prev_item.url | relative_url }}">← Previous</a>
+        {% endif %}
+      </div>
+      <div>
+        {% if next_item %}
+          <a class="btn" href="{{ next_item.url | relative_url }}">Next →</a>
+        {% endif %}
+      </div>
+    </nav>
   {% endif %}
 </article>

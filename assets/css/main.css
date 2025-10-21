@@ -129,13 +129,29 @@ nav a:hover{
   border:1px solid var(--color-border); text-decoration:none }
 .social a:hover{ border-color:var(--color-accent) }
 
-/* Portfolio item title link color override */
+/* Portfolio + Gallery item title link color override */
 .card h3 a {
   color: #0092F2;
+  text-decoration: none;
 }
 
 .card h3 a:hover {
-  color: var(--color-primary); /* optional: darker blue on hover */
-  text-decoration: underline; /* optional, gives a nice interaction */
+  color: var(--color-primary); /* darker brand blue on hover */
+  text-decoration: underline;
   text-underline-offset: 4px;
+}
+
+/* Tag pills on portfolio item pages */
+.tags{
+  display:flex; gap:.5rem; flex-wrap:wrap;
+  margin:.75rem 0 1rem;
+}
+.tag{
+  font-size:.8rem; line-height:1;
+  padding:.3rem .6rem;
+  border:1px solid var(--color-border);
+  border-radius:999px;
+  background:rgba(0,84,140,.06);   /* subtle brand tint */
+  color:var(--color-primary);
+  white-space:nowrap;
 }
