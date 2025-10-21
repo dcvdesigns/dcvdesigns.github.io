@@ -3,7 +3,6 @@ title: Portfolio
 layout: page
 permalink: /portfolio/
 ---
-
 Explore recent 3D-printed builds — illuminated decor, signage, and one-of-a-kind custom commissions.
 
 <div class="card-grid">
