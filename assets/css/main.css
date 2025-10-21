@@ -313,3 +313,29 @@ nav a:hover{
   height:48px; /* medium */
   width:auto;
 }
+
+/* Gallery refinements */
+.gallery-grid .card { padding: 0; } /* ensure pure image tiles */
+
+/* Lightbox */
+.lightbox{
+  position: fixed; inset: 0; z-index: 60;
+  background: rgba(0,0,0,.88);
+  display: none; align-items: center; justify-content: center;
+  padding: 2rem;
+}
+.lightbox.open{ display: flex; }
+.lightbox img{
+  max-width: 90vw; max-height: 90vh;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0,0,0,.35);
+}
+.lightbox-close{
+  position: absolute; top: 14px; right: 16px;
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: rgba(255,255,255,.9); color: #111;
+  cursor: pointer; font-size: 24px; line-height: 1;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.lightbox-close:hover{ border-color: var(--color-accent); }
