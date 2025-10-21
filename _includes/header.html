@@ -1,5 +1,7 @@
 <header class="site-header">
-  <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+  <a class="brand" href="{{ '/' | relative_url }}" aria-label="DCV Designs — Home">
+    <img src="{{ '/assets/logo/DCVDesigns-Logo.png' | relative_url }}" alt="DCV Designs logo">
+  </a>
   <nav>
     <ul>
       {% for item in site.data.navigation %}

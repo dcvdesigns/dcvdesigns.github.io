@@ -31,6 +31,11 @@ nav a{
   text-decoration:none; color:var(--color-fg); padding:.4rem .6rem; border-radius:8px;
   transition: color .15s ease;
 }
+.brand img{
+  display:block;
+  height:48px;   /* medium */
+  width:auto;
+}
 nav a:hover{
   color:var(--color-primary);
   text-decoration: underline;
