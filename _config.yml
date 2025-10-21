@@ -1,0 +1,30 @@
+title: DCV Designs - Custom 3D Prints
+description: Custom 3D Prints
+url: https://www.dcvdesigns.com
+baseurl: ""
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+collections:
+  portfolio:
+    output: true
+    permalink: /portfolio/:slug/
+  gallery:
+    output: true
+    permalink: /gallery/:slug/
+
+defaults:
+  - scope: {path: "portfolio", type: portfolio}
+    values: {layout: page}
+  - scope: {path: "gallery", type: gallery}
+    values: {layout: page}
+  - scope: {path: "", type: pages}
+    values: {layout: page}
+
+seo: { name: "DCV Designs", type: "Organization" }
+markdown: kramdown
+kramdown: { input: GFM }
+colors: { primary: "#00548C", accent: "#0092F2" }
