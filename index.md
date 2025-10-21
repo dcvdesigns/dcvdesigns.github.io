@@ -1,5 +1,6 @@
 ---
 layout: page
+class: home
 ---
 <div class="hero">
   <h1>Modern 3D-printed decor and custom design — built with precision and intention</h1>

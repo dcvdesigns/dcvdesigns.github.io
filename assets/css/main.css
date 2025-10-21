@@ -339,3 +339,8 @@ nav a:hover{
   display: inline-flex; align-items: center; justify-content: center;
 }
 .lightbox-close:hover{ border-color: var(--color-accent); }
+
+/* Tighten top spacing on HOME hero specifically */
+body.home .hero {
+  padding-top: 1.25rem; /* was default ~2.5rem */
+}

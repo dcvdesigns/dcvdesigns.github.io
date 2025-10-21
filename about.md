@@ -14,4 +14,3 @@ If you’re looking for a custom 3D design or need a print brought to life — l
     <a class="btn primary" href="/contact/">Start a project</a>
     <a class="btn ghost" href="/portfolio/">See recent work</a>
   </div>
-</div>
