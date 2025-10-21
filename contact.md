@@ -1,6 +1,7 @@
 ---
 title: Contact
 layout: page
+permalink: /contact/
 ---
 Email me at <mailto:dcvdesigns@gmail.com> or use the form below.
 
