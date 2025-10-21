@@ -11,7 +11,7 @@ layout: page
   </div>
 </div>
 
-## Featured
+## Featured Works
 <div class="card-grid">
   {% assign featured = site.portfolio | sort: 'date' | reverse | slice: 0, 6 %}
   {% for item in featured %}

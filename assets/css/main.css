@@ -166,3 +166,150 @@ nav a:hover{
   height: auto;
   border-radius: 12px; /* keeps it elegant */
 }
+
+/* --- Active link gradient underline in header --- */
+.site-header nav a.active{
+  position: relative;
+  color: var(--color-primary);
+  text-decoration: none;             /* override hover underline */
+}
+.site-header nav a.active::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:-6px;
+  height:3px; border-radius:3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  opacity:.95;
+}
+
+/* --- Hamburger / mobile nav --- */
+.nav-toggle{
+  display:none;
+  background:transparent;
+  border:0;
+  padding:.4rem;
+  margin-left:auto;          /* push to the right */
+  cursor:pointer;
+  color: var(--color-fg);
+}
+.nav-toggle:focus{ outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+.site-nav{ display:block; }
+.site-nav ul{ display:flex; gap:1rem; margin:0; padding:0; list-style:none; }
+
+@media (max-width: 900px){
+  .nav-toggle{ display:block; }
+  .site-nav{
+    display:none;                     /* hidden by default on mobile */
+    position:absolute;
+    top:100%; left:0; right:0;
+    background: rgba(255,255,255,.98);
+    border-bottom:1px solid var(--color-border);
+    box-shadow: 0 10px 28px rgba(2,6,23,.06);
+  }
+  .site-nav.open{ display:block; }
+
+  .site-nav ul{
+    flex-direction: column;
+    gap:0;
+    padding:.5rem 1rem 1rem;
+  }
+  .site-nav li a{
+    display:block;
+    padding:.75rem .25rem;
+    border-radius:8px;
+  }
+}
+
+/* Logo sizing (keep medium ~48px) */
+.brand img{
+  display:block;
+  height:48px;
+  width:auto;
+}
+
+/* Active link gradient underline in header (keeps your current-page highlight) */
+.site-header nav a.active{
+  position: relative;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.site-header nav a.active::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:-6px;
+  height:3px; border-radius:3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  opacity:.95;
+}
+
+/* Hamburger → X animation */
+.nav-toggle{
+  display:none;
+  background:transparent;
+  border:0;
+  padding:.4rem;
+  margin-left:auto;
+  cursor:pointer;
+  color: var(--color-fg);
+  width: 36px;
+  height: 36px;
+  position: relative;
+}
+.nav-toggle:focus{ outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+.nav-toggle .bar{
+  position:absolute;
+  left:50%;
+  width:26px;
+  height:2.5px;
+  background: currentColor;
+  border-radius:2px;
+  transform: translateX(-50%);
+  transition: transform .2s ease, opacity .2s ease;
+}
+.nav-toggle .bar:nth-child(1){ top: 10px; }
+.nav-toggle .bar:nth-child(2){ top: 16px; }
+.nav-toggle .bar:nth-child(3){ top: 22px; }
+
+.nav-toggle.open .bar:nth-child(1){
+  transform: translateX(-50%) translateY(6px) rotate(45deg);
+}
+.nav-toggle.open .bar:nth-child(2){
+  opacity: 0;
+}
+.nav-toggle.open .bar:nth-child(3){
+  transform: translateX(-50%) translateY(-6px) rotate(-45deg);
+}
+
+/* Mobile nav dropdown (unchanged behavior, works with animated toggle) */
+@media (max-width: 900px){
+  .nav-toggle{ display:block; }
+  .site-nav{
+    display:none;
+    position:absolute;
+    top:100%; left:0; right:0;
+    background: rgba(255,255,255,.98);
+    border-bottom:1px solid var(--color-border);
+    box-shadow: 0 10px 28px rgba(2,6,23,.06);
+  }
+  .site-nav.open{ display:block; }
+
+  .site-nav ul{
+    flex-direction: column;
+    gap:0;
+    padding:.5rem 1rem 1rem;
+  }
+  .site-nav li a{
+    display:block;
+    padding:.75rem .25rem;
+    border-radius:8px;
+  }
+}
+
+/* Keep logo sizing */
+.brand img{
+  display:block;
+  height:48px; /* medium */
+  width:auto;
+}

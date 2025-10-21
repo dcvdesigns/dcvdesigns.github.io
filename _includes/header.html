@@ -2,11 +2,40 @@
   <a class="brand" href="{{ '/' | relative_url }}" aria-label="DCV Designs — Home">
     <img src="{{ '/assets/logo/DCVDesigns-Logo.png' | relative_url }}" alt="DCV Designs logo">
   </a>
-  <nav>
+
+  <!-- Mobile hamburger (animated to X) -->
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+
+  <nav id="primary-nav" class="site-nav">
     <ul>
       {% for item in site.data.navigation %}
-        <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+        {% assign is_active = false %}
+        {% if page.url == item.url or page.permalink == item.url %}
+          {% assign is_active = true %}
+        {% elsif page.url == '/' and item.url == '/' %}
+          {% assign is_active = true %}
+        {% endif %}
+        <li>
+          <a href="{{ item.url | relative_url }}" class="{% if is_active %}active{% endif %}">{{ item.title }}</a>
+        </li>
       {% endfor %}
     </ul>
   </nav>
+
+  <script>
+    (function() {
+      const btn = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('primary-nav');
+      if (!btn || !nav) return;
+      btn.addEventListener('click', function() {
+        const open = nav.classList.toggle('open');
+        btn.classList.toggle('open', open); // <-- animate to X
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    })();
+  </script>
 </header>
