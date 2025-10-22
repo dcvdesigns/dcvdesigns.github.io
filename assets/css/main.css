@@ -212,6 +212,7 @@ nav a:hover{
 }
 .tag:hover{
   box-shadow: 0 0 6px rgba(0,146,242,0.4);
+  transform: scale(1.03);
 }
 .project-image{ text-align:center; margin:2rem 0; }
 .project-image img{ max-width:100%; height:auto; border-radius:12px; }
@@ -356,6 +357,7 @@ nav a:hover{
 }
 .badge-cat:hover{
   box-shadow: 0 0 6px rgba(0,146,242,0.4);
+  transform: scale(1.03);
 }
 
 /* Filter bar */
