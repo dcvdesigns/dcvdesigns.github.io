@@ -2,10 +2,12 @@
 layout: default
 ---
 <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+  <!-- Hero title -->
   <h1 itemprop="name">{{ page.title }}</h1>
 
+  <!-- HERO IMAGE (clickable -> lightbox) -->
   {% if page.photos and page.photos[0] %}
-    <div class="project-image">
+    <figure class="project-image" style="margin-top:.5rem;">
       <a
         class="gallery-item"
         href="{{ page.photos[0] | relative_url }}"
@@ -16,13 +18,10 @@ layout: default
       >
         <img src="{{ page.photos[0] | relative_url }}" alt="{{ page.title }}" itemprop="image">
       </a>
-    </div>
+    </figure>
   {% endif %}
 
-  {% if page.summary %}
-    <p class="lead" itemprop="abstract">{{ page.summary }}</p>
-  {% endif %}
-
+  <!-- TAG PILLS under title/hero -->
   {% if page.tags %}
     <div class="tags" aria-label="Tags">
       {% for t in page.tags %}
@@ -31,19 +30,37 @@ layout: default
     </div>
   {% endif %}
 
+  <!-- SUMMARY (lead) -->
+  {% if page.summary %}
+    <p class="lead" itemprop="abstract" style="margin-top:.25rem;">{{ page.summary }}</p>
+  {% endif %}
+
+  <!-- DETAIL or BODY COPY -->
   {% if page.detail %}
-  <h2>Detail</h2>
-  <div class="content">
-    {{ page.detail | markdownify }}
-  </div>
-{% endif %}
+    <div class="content" itemprop="text">
+      {{ page.detail | markdownify }}
+    </div>
+  {% else %}
+    <div class="content" itemprop="text">
+      {{ content }}
+    </div>
+  {% endif %}
 
-  <div class="content" itemprop="text">
-    {{ content }}
-  </div>
+  <!-- CTAS appear AFTER content -->
+  {% if page.square_url or page.makerworld_url %}
+    <div class="cta-row" style="margin-top:1rem;">
+      {% if page.square_url %}
+        <a class="btn primary" href="{{ page.square_url }}" target="_blank" rel="noopener">Buy on Square</a>
+      {% endif %}
+      {% if page.makerworld_url %}
+        <a class="btn" href="{{ page.makerworld_url }}" target="_blank" rel="noopener">Download on Makerworld</a>
+      {% endif %}
+    </div>
+  {% endif %}
 
+  <!-- ADDITIONAL PHOTOS GRID (lightbox-enabled) -->
   {% if page.photos and page.photos.size > 1 %}
-    <h2>Gallery</h2>
+    <h2 style="margin-top:1.25rem;">Gallery</h2>
     <div class="card-grid">
       {% for p in page.photos offset:1 %}
         <div class="card">
