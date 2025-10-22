@@ -13,10 +13,10 @@ class: home
 {% include announcement.html %}
 ## Featured Works
 <div class="card-grid">
-  {% assign featured = site.portfolio
+  {% assign items = site.portfolio
       | where_exp: "i", "i.date <= site.time"
-      | sort: "date" | reverse | slice: 0, 3 %}
-  {% for item in featured %}
+      | sort: "date" | reverse %}
+  {% for item in items limit: 3 %}
     <article class="card">
       {% if item.photos and item.photos[0] %}
         <img src="{{ item.photos[0] | relative_url }}" alt="{{ item.title }}">
@@ -28,6 +28,7 @@ class: home
     </article>
   {% endfor %}
 </div>
+
 <p style="margin-top:1rem;">
-  <a class="btn" href="/portfolio/">See all</a>
+  <a class="btn" href="{{ '/portfolio/' | relative_url }}">See all</a>
 </p>
