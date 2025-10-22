@@ -1,3 +1,9 @@
+---
+title: About
+layout: page
+permalink: /about/
+---
+
 <script>
 (function(){
   // Respect user motion preference
