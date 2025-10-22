@@ -13,10 +13,12 @@ class: home
 {% include announcement.html %}
 ## Featured Works
 <div class="card-grid">
-  {% assign items = site.portfolio | sort: 'date' | reverse %}
-  {% assign shown = 0 %}
-  {% for item in items %}
-    {% if item.date <= site.time and shown < 3 %}
+  {%- assign today = site.time | date: "%Y-%m-%d" -%}
+  {%- assign items = site.portfolio | sort: 'date' | reverse -%}
+  {%- assign shown = 0 -%}
+  {%- for item in items -%}
+    {%- assign pub = item.publish_on | default: item.date | date: "%Y-%m-%d" -%}
+    {%- if pub <= today and shown < 3 -%}
       <article class="card">
         {% if item.photos and item.photos[0] %}
           <a
