@@ -153,6 +153,8 @@ layout: default
 <!-- Lightbox modal (shared with gallery styles) -->
 <div class="lightbox" id="lightbox" aria-hidden="true">
   <button class="lightbox-close" aria-label="Close">×</button>
+  <button class="lightbox-prev" aria-label="Previous">‹</button>
+  <button class="lightbox-next" aria-label="Next">›</button>
   <div class="lightbox-inner">
     <img id="lightbox-img" alt="">
     <div class="lightbox-meta" id="lightbox-meta" hidden>
@@ -171,18 +173,38 @@ layout: default
   const altEl = document.getElementById('lightbox-alt');
   const capEl = document.getElementById('lightbox-caption');
   const closeBtn = lb.querySelector('.lightbox-close');
+  const prevBtn = lb.querySelector('.lightbox-prev');
+  const nextBtn = lb.querySelector('.lightbox-next');
 
-  function openLB(src, altText, caption){
+  // Collect all gallery anchors on the page, in order
+  const items = Array.from(document.querySelectorAll('.gallery-item'));
+  let currentIndex = -1;
+
+  function renderFromIndex(i){
+    if (i < 0 || i >= items.length) return;
+    currentIndex = i;
+    const a = items[i];
+    const src = a.getAttribute('data-full') || a.getAttribute('href');
+    const alt = a.getAttribute('data-alt') || '';
+    const cap = a.getAttribute('data-caption') || '';
     img.src = src;
-    img.alt = altText || '';
-    const hasAlt = !!(altText && altText.trim().length);
-    const hasCap = !!(caption && caption.trim().length);
-    altEl.textContent = hasAlt ? altText : '';
-    capEl.textContent = hasCap ? caption : '';
+    img.alt = alt;
+    const hasAlt = !!(alt && alt.trim().length);
+    const hasCap = !!(cap && cap.trim().length);
+    altEl.textContent = hasAlt ? alt : '';
+    capEl.textContent = hasCap ? cap : '';
     meta.hidden = !(hasAlt || hasCap);
     lb.classList.add('open');
     lb.setAttribute('aria-hidden','false');
+    prevBtn.disabled = (currentIndex <= 0);
+    nextBtn.disabled = (currentIndex >= items.length - 1);
   }
+
+  function openFromAnchor(a){
+    const i = items.indexOf(a);
+    if (i !== -1) renderFromIndex(i);
+  }
+
   function closeLB(){
     lb.classList.remove('open');
     lb.setAttribute('aria-hidden','true');
@@ -191,26 +213,35 @@ layout: default
     meta.hidden = true;
     altEl.textContent = '';
     capEl.textContent = '';
+    currentIndex = -1;
   }
 
+  function showPrev(){ if (currentIndex > 0) renderFromIndex(currentIndex - 1); }
+  function showNext(){ if (currentIndex < items.length - 1) renderFromIndex(currentIndex + 1); }
+
+  // Open on click
   document.addEventListener('click', function(e){
     const a = e.target.closest('.gallery-item');
     if (a){
       e.preventDefault();
-      openLB(
-        a.getAttribute('data-full'),
-        a.getAttribute('data-alt') || '',
-        a.getAttribute('data-caption') || ''
-      );
+      openFromAnchor(a);
     }
   });
 
+  // Overlay interactions
   lb.addEventListener('click', function(e){
     if (!e.target.closest('.lightbox-inner')) closeLB();
   });
   closeBtn.addEventListener('click', closeLB);
+  prevBtn.addEventListener('click', function(e){ e.stopPropagation(); showPrev(); });
+  nextBtn.addEventListener('click', function(e){ e.stopPropagation(); showNext(); });
+
+  // Keyboard
   document.addEventListener('keydown', function(e){
+    if (!lb.classList.contains('open')) return;
     if (e.key === 'Escape') closeLB();
+    else if (e.key === 'ArrowLeft') showPrev();
+    else if (e.key === 'ArrowRight') showNext();
   });
 })();
 </script>
