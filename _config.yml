@@ -1,13 +1,18 @@
-title: DCV Designs - Custom 3D Prints
-description: Custom 3D Prints
+title: "DCV Designs - Custom 3D Prints"
+description: "Modern 3D-printed decor and custom design — built with precision and intention."
 url: https://www.dcvdesigns.com
 baseurl: ""
 
+# Open Graph / social default image
+og_default: /assets/img/og-default.jpg
+
+# Plugins (GitHub Pages-safe)
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
 
+# Collections
 collections:
   portfolio:
     output: true
@@ -16,16 +21,50 @@ collections:
     output: true
     permalink: /gallery/:slug/
 
+# Defaults (make Jekyll Admin show common fields)
 defaults:
-  - scope: {path: "_portfolio", type: portfolio}
-    values: {layout: portfolio}
-  - scope: {path: "_gallery", type: gallery}
-    values: {layout: page}
-  - scope: {path: "", type: pages}
-    values: {layout: page}
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
 
-seo: { name: "DCV Designs", type: "Organization" }
+  - scope:
+      path: ""
+      type: portfolio
+    values:
+      layout: page
+      summary: ""
+      category: ""
+      tags: []
+      photos: []
+      detail: ""
+      publish_on: ""
+      square_url:
+      makerworld_url:
+
+  - scope:
+      path: ""
+      type: gallery
+    values:
+      layout: page
+      summary: ""
+      category: ""
+      photos: []
+
+# Markdown settings
 markdown: kramdown
-kramdown: { input: GFM }
-colors: { primary: "#00548C", accent: "#0092F2" }
-og_default: /assets/img/og-default.png
+kramdown:
+  input: GFM
+
+# Permalinks
+permalink: pretty
+
+# Exclude files/folders from the build
+exclude:
+  - vendor
+  - node_modules
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - _config.dev.yml
