@@ -1,3 +1,13 @@
+{% if page.collection == 'portfolio' and (page.square_url or page.makerworld_url) %}
+  <div class="cta-row" style="margin-top: .75rem;">
+    {% if page.square_url %}
+      <a class="btn primary" href="{{ page.square_url }}" target="_blank" rel="noopener">Buy on Square</a>
+    {% endif %}
+    {% if page.makerworld_url %}
+      <a class="btn" href="{{ page.makerworld_url }}" target="_blank" rel="noopener">Download on Makerworld</a>
+    {% endif %}
+  </div>
+{% endif %}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ page.title | default: site.title }}</title>
@@ -14,7 +24,6 @@
 
 <meta name="description" content="{{ og_desc | escape }}">
 
-<!-- Open Graph / Twitter cards -->
 <meta property="og:type" content="{{ og_type }}">
 <meta property="og:site_name" content="{{ site.title }}">
 <meta property="og:title" content="{{ og_title | escape }}">
@@ -39,10 +48,8 @@
   {%- endfor -%}
 {%- endif -%}
 
-<!-- Favicon / icons -->
 <link rel="icon" type="image/png" href="{{ '/assets/logo/DCVDesigns-Favicon.png' | relative_url }}">
 <link rel="shortcut icon" type="image/png" href="{{ '/assets/logo/DCVDesigns-Favicon.png' | relative_url }}">
 <link rel="apple-touch-icon" href="{{ '/assets/logo/DCVDesigns-Favicon.png' | relative_url }}">
 
-<!-- Styles -->
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
