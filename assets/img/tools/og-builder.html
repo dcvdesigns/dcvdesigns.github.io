@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>OG Builder – DCV Designs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;margin:0;background:#f6f8fb;color:#0f172a;}
+    .wrap{max-width:1100px;margin:24px auto;padding:16px}
+    h1{font-size:20px;margin:0 0 8px;}
+    .row{display:flex;gap:16px;align-items:center;margin:8px 0 16px;}
+    label{font-weight:600}
+    input[type=text]{width:420px;max-width:100%;padding:.5rem .6rem;border:1px solid #d1d5db;border-radius:8px;font:inherit}
+    button{padding:.6rem 1rem;border-radius:10px;border:1px solid #0092F2;background:#0092F2;color:#fff;font-weight:700;cursor:pointer}
+    button.secondary{background:#fff;color:#0092F2}
+    .card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px;box-shadow:0 8px 24px rgba(2,6,23,.06)}
+    canvas{display:block;width:100%;height:auto;max-width:1200px;border-radius:12px}
+    .hint{color:#475569;font-size:14px}
+    code{background:#f3f4f6;border:1px solid #e5e7eb;border-radius:6px;padding:2px 6px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Open Graph Image Builder — DCV Designs</h1>
+    <p class="hint">This will render a 1200×630 image with your logo, subtle glow, and a floating frosted bar that says
+      <strong>“DCVDesigns.com • Custom 3D Prints”</strong>. One click to download.</p>
+
+    <div class="card">
+      <div class="row">
+        <label for="logoUrl">Logo URL</label>
+        <input id="logoUrl" type="text" value="/assets/logo/DCVDesigns-Logo.png" spellcheck="false">
+        <button id="renderBtn" class="secondary">Render Preview</button>
+        <button id="downloadBtn">Download PNG (1200×630)</button>
+      </div>
+      <canvas id="ogCanvas" width="1200" height="630" aria-label="OG preview"></canvas>
+      <p class="hint">Tip: If the logo doesn’t appear locally, serve the repo with a local server
+        (e.g., <code>python3 -m http.server</code>) or push this file and open it on your domain so the canvas can load the image.</p>
+    </div>
+  </div>
+
+<script>
+(function(){
+  const W = 1200, H = 630;
+  const canvas = document.getElementById('ogCanvas');
+  const ctx = canvas.getContext('2d');
+  const logoInput = document.getElementById('logoUrl');
+  const renderBtn = document.getElementById('renderBtn');
+  const downloadBtn = document.getElementById('downloadBtn');
+
+  function roundRect(x,y,w,h,r){
+    ctx.beginPath();
+    ctx.moveTo(x+r,y);
+    ctx.arcTo(x+w,y,x+w,y+h,r);
+    ctx.arcTo(x+w,y+h,x,y+h,r);
+    ctx.arcTo(x,y+h,x,y,r);
+    ctx.arcTo(x,y,x+w,y,r);
+    ctx.closePath();
+  }
+
+  async function draw(){
+    // Background: soft light -> brand
+    const g = ctx.createLinearGradient(0,0,W,0);
+    g.addColorStop(0,'#F7FAFC');   // near-white
+    g.addColorStop(1,'#E8F4FF');   // airy brand-tinted
+    ctx.fillStyle = g;
+    ctx.fillRect(0,0,W,H);
+
+    // Subtle radial highlight
+    const rad = ctx.createRadialGradient(W/2, H*0.42, 40, W/2, H*0.42, 520);
+    rad.addColorStop(0,'rgba(255,255,255,0.95)');
+    rad.addColorStop(1,'rgba(255,255,255,0.0)');
+    ctx.fillStyle = rad;
+    ctx.fillRect(0,0,W,H);
+
+    // Load logo
+    const logoSrc = logoInput.value.trim();
+    const img = await new Promise((resolve,reject)=>{
+      const im = new Image();
+      im.crossOrigin = 'anonymous'; // safe if served from same domain
+      im.onload = ()=>resolve(im);
+      im.onerror = reject;
+      im.src = logoSrc;
+    });
+
+    // Fit logo centered with preserved aspect ratio
+    const maxLogoW = 860, maxLogoH = 320;
+    let lw = img.width, lh = img.height;
+    const scale = Math.min(maxLogoW/lw, maxLogoH/lh);
+    lw *= scale; lh *= scale;
+    const lx = (W - lw)/2;
+    const ly = 110 + (maxLogoH - lh)/2; // centered within a logo band
+
+    // Soft glow under logo
+    ctx.save();
+    ctx.shadowColor = 'rgba(0,146,242,0.22)'; // brand accent, gentle
+    ctx.shadowBlur = 28;
+    ctx.shadowOffsetX = 0;
+    ctx.shadowOffsetY = 2;
+    ctx.drawImage(img, lx, ly, lw, lh);
+    ctx.restore();
+
+    // Floating frosted bar
+    const bx = 120, by = 480, bw = 960, bh = 86, r = 16;
+    roundRect(bx,by,bw,bh,r);
+    ctx.fillStyle = 'rgba(255,255,255,0.88)';
+    ctx.fill();
+
+    // Gradient stroke on the bar
+    const sg = ctx.createLinearGradient(bx,by,bx+bw,by);
+    sg.addColorStop(0,'#00548C');
+    sg.addColorStop(1,'#0092F2');
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = sg;
+    roundRect(bx,by,bw,bh,r);
+    ctx.stroke();
+
+    // Tagline text
+    ctx.fillStyle = '#0f172a';
+    ctx.font = '700 30px system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('DCVDesigns.com • Custom 3D Prints', bx + bw/2, by + bh/2 + 2);
+  }
+
+  async function render(){
+    downloadBtn.disabled = true;
+    try { await draw(); downloadBtn.disabled = false; }
+    catch(e){ alert('Could not load logo image. Make sure the path is valid and served from your site.'); }
+  }
+
+  downloadBtn.addEventListener('click', ()=>{
+    const url = canvas.toDataURL('image/png');
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'og-default.png';
+    a.click();
+  });
+
+  renderBtn.addEventListener('click', render);
+
+  // Auto-render once on load
+  render();
+})();
+</script>
+</body>
+</html>
