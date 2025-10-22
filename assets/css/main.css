@@ -211,6 +211,7 @@ nav a:hover{
   border:1px solid transparent;
   background-clip:padding-box;
   border-image:linear-gradient(90deg, var(--color-primary), var(--color-accent)) 1;
+  border-image-slice: 1;
 }
 .project-image{ text-align:center; margin:2rem 0; }
 .project-image img{ max-width:100%; height:auto; border-radius:12px; }
@@ -346,6 +347,7 @@ nav a:hover{
   border:1px solid transparent;
   background-clip:padding-box;
   border-image:linear-gradient(90deg, var(--color-primary), var(--color-accent)) 1;
+  border-image-slice: 1;
 }
 
 /* Filter bar */
