@@ -106,6 +106,48 @@ layout: default
       </div>
     </nav>
   {% endif %}
+
+{%- comment -%} RELATED PROJECTS {%- endcomment -%}
+{% assign related = site.portfolio
+  | where_exp: "it", "it.url != page.url"
+  | where_exp: "it", "it.tags | size > 0" %}
+
+{%- assign overlap = "" | split: "" -%}
+{%- for it in related -%}
+  {%- assign inter = it.tags | concat: page.tags | group_by: "." | where: "size", 2 -%}
+  {%- if inter.size > 0 -%}
+    {%- assign overlap = overlap | push: it -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- assign pool = overlap -%}
+{%- if pool.size == 0 -%}
+  {%- assign pool = related -%} {# fallback to any others #}
+{%- endif -%}
+
+{%- assign shown = pool
+  | sort: "date" | reverse
+  | slice: 0, 3 -%}
+
+{% if shown.size > 0 %}
+  <h2 style="margin-top:1.25rem;">Related Projects</h2>
+  <div class="card-grid">
+    {% for item in shown %}
+      <article class="card">
+        {% if item.photos and item.photos[0] %}
+          <a class="gallery-item" href="{{ item.url | relative_url }}">
+            <img src="{{ item.photos[0] | relative_url }}" alt="{{ item.title | escape }}">
+          </a>
+        {% endif %}
+        <div class="pad">
+          <h3><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h3>
+          {% if item.summary %}<p>{{ item.summary }}</p>{% endif %}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+{% endif %}
+
 </article>
 
 <!-- Lightbox modal (shared with gallery styles) -->
