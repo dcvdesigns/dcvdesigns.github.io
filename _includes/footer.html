@@ -14,31 +14,55 @@
   </div>
 </footer>
 <script>
-(function(){
+document.addEventListener('DOMContentLoaded', function(){
   // Respect user motion preference
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReduced) return;
 
-  // Helper: mark nodes with initial hidden state
-  function prime(nodes){ nodes.forEach(el => el.classList.add('reveal-init')); }
+  // Guard: avoid double-mount if any page inlines a similar script
+  if (window.__dcvRevealMounted) return;
+  window.__dcvRevealMounted = true;
 
-  // Add stagger delays to grid children
+  // Helpers
+  function prime(nodes){ nodes.forEach(el => el.classList.add('reveal-init')); }
   function addStagger(containerSelector, itemSelector){
-    document.querySelectorAll(containerSelector).forEach(grid => {
-      const kids = grid.querySelectorAll(itemSelector);
+    document.querySelectorAll(containerSelector).forEach(container => {
+      const kids = container.querySelectorAll(itemSelector);
       kids.forEach((el, i) => el.style.setProperty('--delay', (i * 60) + 'ms'));
     });
   }
 
-  // Prime typical elements
+  // Prime typical elements (expanded/robust for About)
   prime(document.querySelectorAll('.hero > *'));
   prime(document.querySelectorAll('.page h1'));
+  prime(document.querySelectorAll('.page h2'));
+  prime(document.querySelectorAll('.page p'));
+  prime(document.querySelectorAll('.page ul li'));
+  // Prime all direct children inside the main content area on pages
+  prime(document.querySelectorAll('.page .content > *'));
+  // Fallback: if content isn't wrapped with .content, prime direct children of .page
+  prime(document.querySelectorAll('.page > *'));
+
   prime(document.querySelectorAll('.announce'));
   prime(document.querySelectorAll('.project-image'));
   prime(document.querySelectorAll('.card-grid .card'));
+  // About page CTA row buttons
+  prime(document.querySelectorAll('.cta-row a'));
 
-  // Stagger cards in grids
+  // Staggers
   addStagger('.card-grid', '.card');
+  addStagger('.cta-row', 'a');
+  // Stagger direct children of the page content (About)
+  document.querySelectorAll('.page .content').forEach(section => {
+    Array.from(section.children).forEach((el, i) => el.style.setProperty('--delay', (i * 60) + 'ms'));
+  });
+  // Fallback stagger for .page direct children (if no .content wrapper)
+  document.querySelectorAll('.page').forEach(section => {
+    // Only apply if it doesn't have a .content wrapper
+    if (!section.querySelector(':scope > .content')) {
+      Array.from(section.children).forEach((el, i) => el.style.setProperty('--delay', (i * 60) + 'ms'));
+    }
+  });
 
   // Observe and reveal once
   const io = new IntersectionObserver((entries, obs) => {
@@ -52,5 +76,5 @@
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
 
   document.querySelectorAll('.reveal-init').forEach(el => io.observe(el));
-})();
+});
 </script>
