@@ -3,17 +3,49 @@ layout: default
 ---
 <section class="page">
   <h1>{{ page.title }}</h1>
-  <div class="content">
-    {{ content }}
-  </div>
-  {% if page.collection == 'portfolio' and (page.square_url or page.makerworld_url) %}
-    <div class="cta-row" style="margin-top:.75rem;">
-      {% if page.square_url %}
-        <a class="btn primary" href="{{ page.square_url }}" target="_blank" rel="noopener">Buy on Square</a>
-      {% endif %}
-      {% if page.makerworld_url %}
-        <a class="btn" href="{{ page.makerworld_url }}" target="_blank" rel="noopener">Download on Makerworld</a>
-      {% endif %}
+
+  {% if page.collection == 'portfolio' %}
+    {% if page.photos and page.photos[0] %}
+      <figure class="project-image">
+        <img src="{{ page.photos[0] }}" alt="{{ page.title }}">
+      </figure>
+    {% endif %}
+
+    {% if page.summary %}
+      <p class="lead">{{ page.summary }}</p>
+    {% endif %}
+
+    {% if page.tags %}
+      <div class="tags">
+        {% for tag in page.tags %}
+          <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if page.detail %}
+      <div class="content">
+        {{ page.detail | markdownify }}
+      </div>
+    {% else %}
+      <div class="content">
+        {{ content }}
+      </div>
+    {% endif %}
+
+    {% if page.square_url or page.makerworld_url %}
+      <div class="cta-row" style="margin-top:.75rem;">
+        {% if page.square_url %}
+          <a class="btn primary" href="{{ page.square_url }}" target="_blank" rel="noopener">Buy on Square</a>
+        {% endif %}
+        {% if page.makerworld_url %}
+          <a class="btn" href="{{ page.makerworld_url }}" target="_blank" rel="noopener">Download on Makerworld</a>
+        {% endif %}
+      </div>
+    {% endif %}
+  {% else %}
+    <div class="content">
+      {{ content }}
     </div>
   {% endif %}
 </section>

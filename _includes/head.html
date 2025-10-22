@@ -1,13 +1,3 @@
-{% if page.collection == 'portfolio' and (page.square_url or page.makerworld_url) %}
-  <div class="cta-row" style="margin-top: .75rem;">
-    {% if page.square_url %}
-      <a class="btn primary" href="{{ page.square_url }}" target="_blank" rel="noopener">Buy on Square</a>
-    {% endif %}
-    {% if page.makerworld_url %}
-      <a class="btn" href="{{ page.makerworld_url }}" target="_blank" rel="noopener">Download on Makerworld</a>
-    {% endif %}
-  </div>
-{% endif %}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ page.title | default: site.title }}</title>
