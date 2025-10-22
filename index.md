@@ -13,19 +13,21 @@ class: home
 {% include announcement.html %}
 ## Featured Works
 <div class="card-grid">
-  {% assign items = site.portfolio
-      | where_exp: "i", "i.date <= site.time"
-      | sort: "date" | reverse %}
-  {% for item in items limit: 3 %}
-    <article class="card">
-      {% if item.photos and item.photos[0] %}
-        <img src="{{ item.photos[0] | relative_url }}" alt="{{ item.title }}">
-      {% endif %}
-      <div class="pad">
-        <h3><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h3>
-        <p>{{ item.summary }}</p>
-      </div>
-    </article>
+  {% assign items = site.portfolio | sort: 'date' | reverse %}
+  {% assign shown = 0 %}
+  {% for item in items %}
+    {% if item.date <= site.time and shown < 3 %}
+      <article class="card">
+        {% if item.photos and item.photos[0] %}
+          <img src="{{ item.photos[0] | relative_url }}" alt="{{ item.title }}">
+        {% endif %}
+        <div class="pad">
+          <h3><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h3>
+          <p>{{ item.summary }}</p>
+        </div>
+      </article>
+      {% assign shown = shown | plus: 1 %}
+    {% endif %}
   {% endfor %}
 </div>
 

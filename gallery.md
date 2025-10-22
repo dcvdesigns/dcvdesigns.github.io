@@ -5,23 +5,26 @@ permalink: /gallery/
 ---
 
 {%- assign today = site.time | date: "%Y-%m-%d" -%}
-{%- assign items = site.data.gallery | where_exp: "i", "i.publish_on == nil or i.publish_on <= today" -%}
 
 <div class="card-grid gallery-grid">
   {%- comment -%}
-  Show newest first by publish_on if present; otherwise keep order.
+  Loop through images defined in _data/gallery.yml
+  and only show ones where:
+  - publish_on is not set, OR
+  - publish_on <= today
   {%- endcomment -%}
-  {%- assign sorted = items | sort: "publish_on" | reverse -%}
-
-  {%- for item in sorted -%}
-    <a class="card gallery-item" href="{{ item.image | relative_url }}" data-full="{{ item.image | relative_url }}" aria-label="Open image">
-      <div class="gallery-thumb">
-        {% if item.category %}
-          <span class="badge-cat">{{ item.category }}</span>
-        {% endif %}
-        <img src="{{ item.image | relative_url }}" alt="{{ item.alt | default: '' }}">
-      </div>
-    </a>
+  {%- assign items = site.data.gallery | sort: "publish_on" | reverse -%}
+  {%- for item in items -%}
+    {%- if item.publish_on == nil or item.publish_on <= today -%}
+      <a class="card gallery-item" href="{{ item.image | relative_url }}" data-full="{{ item.image | relative_url }}" aria-label="Open image">
+        <div class="gallery-thumb">
+          {% if item.category %}
+            <span class="badge-cat">{{ item.category }}</span>
+          {% endif %}
+          <img src="{{ item.image | relative_url }}" alt="{{ item.alt | default: '' }}">
+        </div>
+      </a>
+    {%- endif -%}
   {%- endfor -%}
 </div>
 
@@ -48,6 +51,7 @@ permalink: /gallery/
     img.removeAttribute('src');
   }
 
+  // Click any thumbnail to open
   document.addEventListener('click', function(e){
     const a = e.target.closest('.gallery-item');
     if (a){
@@ -55,10 +59,15 @@ permalink: /gallery/
       open(a.getAttribute('data-full'));
     }
   });
+
+  // Close on backdrop click
   lb.addEventListener('click', function(e){
     if (e.target === lb) close();
   });
+
   closeBtn.addEventListener('click', close);
+
+  // Escape key closes
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape') close();
   });
