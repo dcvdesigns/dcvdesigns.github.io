@@ -1,23 +1,3 @@
-<!-- Reveal on scroll script -->
-<script>
-(function(){
-  // Prime typical elements (expanded for About page)
-  prime(document.querySelectorAll('.hero > *'));
-  prime(document.querySelectorAll('.page h1'));
-  prime(document.querySelectorAll('.page h2'));
-  prime(document.querySelectorAll('.page p'));
-  prime(document.querySelectorAll('.page ul li'));
-  prime(document.querySelectorAll('.announce'));
-  prime(document.querySelectorAll('.project-image'));
-  prime(document.querySelectorAll('.card-grid .card'));
-  // About page CTA row buttons
-  prime(document.querySelectorAll('.cta-row a'));
-
-  // Add stagger to grids and CTA row
-  addStagger('.card-grid', '.card');
-  addStagger('.cta-row', 'a');
-})();
-</script>
 ---
 title: About
 layout: page
