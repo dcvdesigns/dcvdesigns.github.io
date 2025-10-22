@@ -1,0 +1,10 @@
+# Ignore Jekyll build output
+_site/
+.jekyll-cache/
+.sass-cache/
+
+# Ignore dependencies
+node_modules/
+
+# macOS junk files
+.DS_Store

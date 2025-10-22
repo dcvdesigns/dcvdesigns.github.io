@@ -1,0 +1,12 @@
+
+
+# Development-only config
+# Enable Jekyll Admin locally without affecting GitHub Pages builds.
+
+plugins:
+  - jekyll-admin
+
+# Optional: limit admin to local host only (default is fine)
+# jekyll_admin:
+#   hidden_links:
+#     - posts
