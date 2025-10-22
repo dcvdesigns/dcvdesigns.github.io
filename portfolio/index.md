@@ -8,7 +8,7 @@ permalink: /portfolio/
 <div class="portfolio-filter">
   <label for="cat-filter" class="sr-only">Filter by category</label>
 
-  {%- comment -%} Build a unique category list from visible items {%- endcomment -%}
+  {%- comment -%} Build a unique category list from visible (non-future) items {%- endcomment -%}
   {%- assign cat_string = "|" -%}
   {%- assign items_all = site.portfolio | sort: 'date' | reverse -%}
   <select id="cat-filter">
@@ -60,6 +60,7 @@ permalink: /portfolio/
   const sel = document.getElementById('cat-filter');
   const grid = document.getElementById('portfolio-grid');
   if (!sel || !grid) return;
+
   const cards = Array.from(grid.querySelectorAll('.card'));
 
   function apply(val){
@@ -70,7 +71,7 @@ permalink: /portfolio/
     });
   }
 
-  // Restore selection from ?cat= query if present
+  // Restore selection from ?cat=
   const params = new URLSearchParams(location.search);
   const qcat = (params.get('cat') || '').toLowerCase();
   if (qcat) {
