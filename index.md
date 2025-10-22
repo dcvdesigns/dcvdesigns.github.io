@@ -42,6 +42,32 @@ class: home
   {% endfor %}
 </div>
 
+{%- comment -%} Latest 6 gallery images — horizontal strip {%- endcomment -%}
+<div class="scroll-strip" aria-label="Latest gallery images">
+  {% assign added = 0 %}
+  {% assign limit = 6 %}
+  {% assign gal = site.gallery | sort: 'date' | reverse %}
+  {% for g in gal %}
+    {% if g.photos and g.photos.size > 0 %}
+      {% for p in g.photos %}
+        {% if added < limit %}
+          <a
+            class="scroll-thumb gallery-item"
+            href="{{ p | relative_url }}"
+            data-full="{{ p | relative_url }}"
+            data-alt="{{ g.title | escape }}"
+            data-caption="{{ g.summary | escape }}"
+            aria-label="Open image"
+          >
+            <img src="{{ p | relative_url }}" alt="{{ g.title | escape }}">
+          </a>
+          {% assign added = added | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+</div>
+
 <p style="margin-top:1rem;">
   <a class="btn" href="{{ '/portfolio/' | relative_url }}">See all</a>
 </p>
