@@ -1,0 +1,32 @@
+# _data/gallery.yml
+# Tip: order here is the order you’ll see on the page (we’ll reverse by date below if you want newest first)
+
+- image: /assets/img/mizzou-lightbox-1.png
+  publish_on: 2025-11-15
+  category: Lightboxes
+  alt: Mizzou End Zone Lightbox
+  caption: A bold five-foot Mizzou end zone–inspired lightbox featuring backlit diamond panels and classic lettering — a statement display piece for any Tigers fan space or game day setup.
+
+- image: /assets/img/led-tree-1.png
+  publish_on: 2025-11-02
+  category: Holiday
+  alt: LED Christmas Tree Decorations
+  caption: A modern 3D-printed LED Christmas tree décor piece with twinkling multicolor or warm white lights, perfect for adding a festive glow to desks, mantles, or holiday displays.
+
+- image: /assets/img/ld-tree-coasters-1.png
+  publish_on: 2024-01-01
+  category: Holiday
+  alt: Little Debbie Christmas Tree Coasters
+  caption: Festive 3D-printed coasters inspired by the classic Little Debbie Christmas tree cakes, complete with playful icing and sprinkle details — a nostalgic holiday accent for mugs and cocoa cups.
+
+- image: /assets/img/christmas-greetings-1.png
+  publish_on: 2024-01-01
+  category: Holiday
+  alt: Christmas Greetings
+  caption: A retro-inspired Christmas greeting sign styled like a vintage holiday card, featuring a cozy mid-century winter scene and festive hand-lettered message for classic nostalgic charm.
+
+- image: /assets/img/table-lamp.png
+  publish_on: 2024-01-01
+  category: Decor
+  alt: Christmas Greetings
+  caption: A modern, 3D-printed ripple-vase table lamp with a textured shade that casts a warm, gentle ambient glow — perfect for cozy desks, nightstands, or reading nooks.

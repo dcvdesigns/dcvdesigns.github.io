@@ -4,21 +4,23 @@ layout: page
 permalink: /gallery/
 ---
 
+{%- assign today = site.time | date: "%Y-%m-%d" -%}
+{%- assign items = site.data.gallery | where_exp: "i", "i.publish_on == nil or i.publish_on <= today" -%}
+
 <div class="card-grid gallery-grid">
   {%- comment -%}
-  Gather all static files under /assets/img/ and filter to common image extensions.
+  Show newest first by publish_on if present; otherwise keep order.
   {%- endcomment -%}
-  {%- assign all_imgs = site.static_files | where_exp: "f", "f.path contains '/assets/img/'" -%}
-  {%- assign jpgs  = all_imgs | where: "extname", ".jpg"  | concat: (all_imgs | where: "extname", ".jpeg") -%}
-  {%- assign pngs  = all_imgs | where: "extname", ".png"  -%}
-  {%- assign gifs  = all_imgs | where: "extname", ".gif"  -%}
-  {%- assign webps = all_imgs | where: "extname", ".webp" -%}
-  {%- assign avifs = all_imgs | where: "extname", ".avif" -%}
-  {%- assign imgs  = jpgs | concat: pngs | concat: gifs | concat: webps | concat: avifs -%}
+  {%- assign sorted = items | sort: "publish_on" | reverse -%}
 
-  {%- for file in imgs -%}
-    <a class="card gallery-item" href="{{ file.path | relative_url }}" data-full="{{ file.path | relative_url }}" aria-label="Open image">
-      <img src="{{ file.path | relative_url }}" alt="">
+  {%- for item in sorted -%}
+    <a class="card gallery-item" href="{{ item.image | relative_url }}" data-full="{{ item.image | relative_url }}" aria-label="Open image">
+      <div class="gallery-thumb">
+        {% if item.category %}
+          <span class="badge-cat">{{ item.category }}</span>
+        {% endif %}
+        <img src="{{ item.image | relative_url }}" alt="{{ item.alt | default: '' }}">
+      </div>
     </a>
   {%- endfor -%}
 </div>
