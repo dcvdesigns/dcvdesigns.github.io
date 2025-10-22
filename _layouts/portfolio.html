@@ -122,7 +122,8 @@ layout: default
 
 {%- assign pool = overlap -%}
 {%- if pool.size == 0 -%}
-  {%- assign pool = related -%} {# fallback to any others #}
+{%- assign pool = related -%}
+{%- comment -%} fallback to any others {%- endcomment -%}
 {%- endif -%}
 
 {%- assign shown = pool
