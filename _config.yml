@@ -28,3 +28,4 @@ seo: { name: "DCV Designs", type: "Organization" }
 markdown: kramdown
 kramdown: { input: GFM }
 colors: { primary: "#00548C", accent: "#0092F2" }
+og_default: /assets/img/og-default.jpg
