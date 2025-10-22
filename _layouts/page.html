@@ -3,5 +3,16 @@ layout: default
 ---
 <section class="page">
   <h1>{{ page.title }}</h1>
+</h1>
   {{ content }}
+  {% if page.collection == 'portfolio' and (page.square_url or page.makerworld_url) %}
+    <div class="cta-row" style="margin-top:.75rem;">
+      {% if page.square_url %}
+        <a class="btn primary" href="{{ page.square_url }}" target="_blank" rel="noopener">Buy on Square</a>
+      {% endif %}
+      {% if page.makerworld_url %}
+        <a class="btn" href="{{ page.makerworld_url }}" target="_blank" rel="noopener">Download on Makerworld</a>
+      {% endif %}
+    </div>
+  {% endif %}
 </section>
