@@ -393,3 +393,36 @@ nav a:hover{
   overflow-wrap: anywhere;   /* prevent long strings from expanding width */
   margin-top: .5rem;
 }
+/* ==== Lightbox layout override (conflict-proof) ==== */
+/* Center the whole lightbox content */
+.lightbox {
+  display: flex;                 /* ensure centering works */
+  align-items: center;
+  justify-content: center;
+}
+
+/* Shrink-wrap container to the image width; keep text left-aligned */
+.lightbox .lightbox-inner{
+  display: inline-block;         /* shrink-wrap to widest child (the image) */
+  text-align: left;              /* left align text under image */
+  max-width: 90vw;               /* obey viewport cap */
+}
+
+/* Use ID selectors to beat earlier generic rules */
+#lightbox-img{
+  display: block;                /* define width baseline */
+  max-width: 90vw;               /* same cap as container */
+  max-height: 80vh;              /* leave room for text below */
+  margin: 0 auto;                /* image itself centered inside the inner box */
+}
+
+/* Text block wraps to exactly the image width */
+#lightbox-meta{
+  display: block;
+  width: 100%;                   /* equals the inner (image) width */
+  max-width: 100%;
+  margin: .5rem 0 0 0;           /* tight spacing under image */
+  text-align: left;              /* ensure left-aligned */
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
