@@ -22,6 +22,13 @@ layout: default
     </div>
   {% endif %}
 
+  {% if page.detail %}
+  <h2>Detail</h2>
+  <div class="content">
+    {{ page.detail | markdownify }}
+  </div>
+{% endif %}
+
   <div class="content" itemprop="text">
     {{ content }}
   </div>

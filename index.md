@@ -13,16 +13,21 @@ class: home
 {% include announcement.html %}
 ## Featured Works
 <div class="card-grid">
-  {% assign featured = site.portfolio | sort: 'date' | reverse | slice: 0, 6 %}
+  {% assign featured = site.portfolio
+      | where_exp: "i", "i.date <= site.time"
+      | sort: "date" | reverse | slice: 0, 3 %}
   {% for item in featured %}
-  <article class="card">
-    {% if item.photos and item.photos[0] %}
-      <img src="{{ item.photos[0] }}" alt="{{ item.title }}">
-    {% endif %}
-    <div class="pad">
-      <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
-      <p>{{ item.summary }}</p>
-    </div>
-  </article>
+    <article class="card">
+      {% if item.photos and item.photos[0] %}
+        <img src="{{ item.photos[0] | relative_url }}" alt="{{ item.title }}">
+      {% endif %}
+      <div class="pad">
+        <h3><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h3>
+        <p>{{ item.summary }}</p>
+      </div>
+    </article>
   {% endfor %}
 </div>
+<p style="margin-top:1rem;">
+  <a class="btn" href="/portfolio/">See all</a>
+</p>
