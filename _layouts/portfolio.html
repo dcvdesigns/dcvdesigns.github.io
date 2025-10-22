@@ -1,11 +1,28 @@
+# Open _config.yml and locate the defaults block for portfolio collection
+# Change layout: page to layout: portfolio in that block, keep other keys unchanged
+
+# Since the file content is not provided, here is the updated snippet of the defaults block:
+
+- scope:
+    type: portfolio
+  values:
+    layout: portfolio
+    summary: ""
+    category: ""
+    tags: []
+    photos: []
+    detail: ""
+    publish_on: ""
+    square_url: ""
+    makerworld_url: ""
 ---
 layout: default
 ---
 <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-  <!-- Hero title -->
+  <!-- Title -->
   <h1 itemprop="name">{{ page.title }}</h1>
 
-  <!-- HERO IMAGE (clickable -> lightbox) -->
+  <!-- HERO IMAGE (clickable for lightbox) -->
   {% if page.photos and page.photos[0] %}
     <figure class="project-image" style="margin-top:.5rem;">
       <a
@@ -21,7 +38,7 @@ layout: default
     </figure>
   {% endif %}
 
-  <!-- TAG PILLS under title/hero -->
+  <!-- TAG PILLS directly under hero -->
   {% if page.tags %}
     <div class="tags" aria-label="Tags">
       {% for t in page.tags %}
@@ -46,7 +63,7 @@ layout: default
     </div>
   {% endif %}
 
-  <!-- CTAS appear AFTER content -->
+  <!-- CTAs AFTER content -->
   {% if page.square_url or page.makerworld_url %}
     <div class="cta-row" style="margin-top:1rem;">
       {% if page.square_url %}
@@ -58,7 +75,7 @@ layout: default
     </div>
   {% endif %}
 
-  <!-- ADDITIONAL PHOTOS GRID (lightbox-enabled) -->
+  <!-- Additional photos grid (lightbox-enabled) -->
   {% if page.photos and page.photos.size > 1 %}
     <h2 style="margin-top:1.25rem;">Gallery</h2>
     <div class="card-grid">
@@ -108,7 +125,7 @@ layout: default
   {% endif %}
 </article>
 
-<!-- Lightbox modal -->
+<!-- Lightbox modal (shared with gallery styles) -->
 <div class="lightbox" id="lightbox" aria-hidden="true">
   <button class="lightbox-close" aria-label="Close">×</button>
   <div class="lightbox-inner">
@@ -123,6 +140,7 @@ layout: default
 <script>
 (function(){
   const lb = document.getElementById('lightbox');
+  if (!lb) return;
   const img = document.getElementById('lightbox-img');
   const meta = document.getElementById('lightbox-meta');
   const altEl = document.getElementById('lightbox-alt');
