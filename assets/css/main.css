@@ -204,11 +204,13 @@ nav a:hover{
 .tag{
   font-size:.8rem; line-height:1;
   padding:.3rem .6rem;
-  border:1px solid var(--color-border);
   border-radius:999px;
-  background:rgba(0,84,140,.06);
+  background:#ffffff; /* white for clarity */
   color:var(--color-primary);
   white-space:nowrap;
+  border:1px solid transparent;
+  background-clip:padding-box;
+  border-image:linear-gradient(90deg, var(--color-primary), var(--color-accent)) 1;
 }
 .project-image{ text-align:center; margin:2rem 0; }
 .project-image img{ max-width:100%; height:auto; border-radius:12px; }
@@ -338,10 +340,12 @@ nav a:hover{
   font-size: .75rem; line-height: 1;
   padding: .25rem .5rem;
   border-radius: 999px;
-  background: rgba(0,84,140,.10);
+  background:#ffffff; /* white */
   color: var(--color-primary);
-  border: 1px solid rgba(0,84,140,.25);
-  backdrop-filter: blur(2px);
+  white-space:nowrap;
+  border:1px solid transparent;
+  background-clip:padding-box;
+  border-image:linear-gradient(90deg, var(--color-primary), var(--color-accent)) 1;
 }
 
 /* Filter bar */
