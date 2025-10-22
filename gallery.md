@@ -6,16 +6,27 @@ permalink: /gallery/
 
 {%- assign today = site.time | date: "%Y-%m-%d" -%}
 
+{%- comment -%}
+Make a safe items array even if _data/gallery.yml is missing.
+{%- endcomment -%}
+{%- assign items = site.data.gallery -%}
+{%- if items == nil -%}
+  {%- assign items = "" | split: "|" -%}
+{%- endif -%}
+
+{%- comment -%}
+Sort newest first by publish_on (string or date); reverse for descending.
+{%- endcomment -%}
+{%- assign items = items | sort: "publish_on" | reverse -%}
+
 <div class="card-grid gallery-grid">
-  {%- comment -%}
-  Loop through images defined in _data/gallery.yml
-  and only show ones where:
-  - publish_on is not set, OR
-  - publish_on <= today
-  {%- endcomment -%}
-  {%- assign items = site.data.gallery | sort: "publish_on" | reverse -%}
   {%- for item in items -%}
-    {%- if item.publish_on == nil or item.publish_on <= today -%}
+    {%- comment -%}
+    Normalize publish_on to a string date for safe comparison.
+    If publish_on is blank/nil, show immediately.
+    {%- endcomment -%}
+    {%- assign pub = item.publish_on | date: "%Y-%m-%d" -%}
+    {%- if item.publish_on == nil or item.publish_on == "" or pub <= today -%}
       <a class="card gallery-item" href="{{ item.image | relative_url }}" data-full="{{ item.image | relative_url }}" aria-label="Open image">
         <div class="gallery-thumb">
           {% if item.category %}
@@ -51,7 +62,6 @@ permalink: /gallery/
     img.removeAttribute('src');
   }
 
-  // Click any thumbnail to open
   document.addEventListener('click', function(e){
     const a = e.target.closest('.gallery-item');
     if (a){
@@ -59,15 +69,10 @@ permalink: /gallery/
       open(a.getAttribute('data-full'));
     }
   });
-
-  // Close on backdrop click
   lb.addEventListener('click', function(e){
     if (e.target === lb) close();
   });
-
   closeBtn.addEventListener('click', close);
-
-  // Escape key closes
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape') close();
   });
