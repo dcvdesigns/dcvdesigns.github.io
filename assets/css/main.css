@@ -437,3 +437,52 @@ nav a:hover{
   from{ transform: translateX(0); }
   to{   transform: translateX(-50%); }
 }
+
+/* --- Lightbox navigation controls --- */
+.lightbox {
+  position: fixed; inset: 0; z-index: 60;
+  background: rgba(0,0,0,.88);
+  display: none; align-items: center; justify-content: center;
+  padding: 2rem;
+}
+.lightbox.open { display: flex; }
+
+.lightbox-inner { position: relative; max-width: 90vw; max-height: 90vh; }
+.lightbox img    { max-width: 90vw; max-height: 80vh; border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+
+.lightbox-close{
+  position:absolute; top: 14px; right: 16px;
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: rgba(255,255,255,.9); color: #111;
+  cursor: pointer; font-size: 24px; line-height: 1;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+
+/* Arrows */
+.lightbox-nav{
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 48px; height: 48px;           /* generous tap target */
+  background: none; border: none;       /* no pill, no border */
+  color: #fff; font-size: 2.2rem; line-height: 1;
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer; user-select: none;
+  text-shadow: 0 1px 2px rgba(0,0,0,.35); /* subtle readability */
+  opacity: .95; transition: opacity .15s ease, transform .15s ease;
+}
+.lightbox-prev { left: 8px; }
+.lightbox-next { right: 8px; }
+
+.lightbox-nav:hover { opacity: 1; transform: translateY(-50%) scale(1.04); }
+.lightbox-close:hover { border-color: var(--color-accent); }
+
+/* Meta text under image (already present, just tidy) */
+.lightbox-meta{ margin-top: .6rem; color: #e5e7eb; text-align: left; }
+.lightbox-alt{ font-weight: 600; margin-bottom: .15rem; }
+.lightbox-caption{ font-style: italic; opacity: .9; }
+
+@media (max-width: 640px){
+  .lightbox-nav{ width: 56px; height: 56px; font-size: 2.4rem; }
+  .lightbox-prev { left: 6px; }
+  .lightbox-next { right: 6px; }
+}
