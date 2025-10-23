@@ -1,33 +1,3 @@
-/* Existing variables and other CSS above remain unchanged */
-
-.scroll-strip{
-  display:block;
-  overflow:hidden;            /* hide scrollbar entirely */
-  padding:.25rem 0 .75rem;    /* subtle breathing room */
-  -ms-overflow-style: none;   /* IE/Edge legacy */
-  scrollbar-width: none;      /* Firefox */
-}
-.scroll-strip::-webkit-scrollbar{ display:none; }
-
-/* The moving track */
-.scroll-track{
-  display:flex;
-  align-items:center;
-  gap: .9rem;
-  will-change: transform;
-  animation: ticker var(--ticker-duration, 40s) linear infinite;
-}
-/* Pause when the container has .paused (hover/focus handled in JS) */
-.scroll-strip.paused .scroll-track{ animation-play-state: paused; }
-
-/* Slightly tighten thumb styling so long rows feel continuous */
-.scroll-thumb img{ border-radius: 14px; display:block; }
-
-@keyframes ticker{
-  from{ transform: translateX(0); }
-  to{   transform: translateX(-50%); }
-}
-
 ---
 layout: page
 class: home
@@ -51,7 +21,7 @@ class: home
 <div class="scroll-strip" aria-label="Latest gallery images" tabindex="0">
   <div class="scroll-track">
   {%- assign added = 0 -%}
-{%- assign limit = 12 -%}
+{%- assign limit = 24 -%}
   {%- for g in manifest -%}
     {%- if added < limit -%}
       {%- assign file = g.file | default: g.path | default: g.image -%}
