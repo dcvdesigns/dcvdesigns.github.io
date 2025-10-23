@@ -12,23 +12,18 @@ permalink: /portfolio/
     <article class="card">
       {%- assign full = item.photos | first -%}
       {%- if full -%}
-        {%- assign thumb = full | replace: '/assets/img/', '/assets/thumbs/' -%}
-        <a class="gallery-item"
-           href="{{ full | relative_url }}"
-           data-full="{{ full | relative_url }}"
-           data-alt="{{ item.title | escape }}"
-           data-caption="{{ item.summary | default: '' | escape }}"
-           aria-label="Open image">
-          <img
-            src="{{ thumb | relative_url }}"
-            alt="{{ item.title | escape }}"
-            loading="lazy"
-            decoding="async"
-            width="800"
-            height="800"
-            onerror="this.onerror=null;this.src='{{ full | relative_url }}'"
-          >
-        </a>
+        <img
+          src="{{ full | relative_url }}"
+          alt="{{ item.title | escape }}"
+          loading="lazy"
+          decoding="async"
+          width="800"
+          height="800"
+        >
+      {%- else -%}
+        <div style="aspect-ratio:1/1;display:grid;place-items:center;border:1px solid var(--color-border);background:#f8fafc;color:#64748b;">
+          No image
+        </div>
       {%- endif -%}
       <div class="pad">
         <h3><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h3>
