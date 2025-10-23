@@ -7,8 +7,28 @@ layout: default
   {% if page.collection == 'portfolio' %}
     {% if page.photos and page.photos[0] %}
       <figure class="project-image">
-        <img src="{{ page.photos[0] }}" alt="{{ page.title }}">
+        <a class="gallery-item"
+           href="{{ page.photos[0] | relative_url }}"
+           data-full="{{ page.photos[0] | relative_url }}"
+           data-alt="{{ page.title | escape }}"
+           data-caption="{{ page.summary | default: '' | escape }}">
+          <img src="{{ page.photos[0] | relative_url }}" alt="{{ page.title | escape }}">
+        </a>
       </figure>
+
+      {% if page.photos.size > 1 %}
+        <div class="card-grid" style="margin-top:.75rem;">
+          {% for p in page.photos offset:1 %}
+            <a class="card gallery-item"
+               href="{{ p | relative_url }}"
+               data-full="{{ p | relative_url }}"
+               data-alt="{{ page.title | escape }} — photo {{ forloop.index }}"
+               data-caption="{{ page.summary | default: '' | escape }}">
+              <img src="{{ p | relative_url }}" alt="{{ page.title | escape }} — photo {{ forloop.index }}">
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
     {% endif %}
 
     {% if page.summary %}
