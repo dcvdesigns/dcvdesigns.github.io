@@ -1,0 +1,117 @@
+<!-- Global Lightbox (modal + controls) -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" aria-label="Close">×</button>
+
+  <button class="lightbox-nav lightbox-prev" aria-label="Previous image">❮</button>
+  <button class="lightbox-nav lightbox-next" aria-label="Next image">❯</button>
+
+  <div class="lightbox-inner" role="dialog" aria-modal="true">
+    <img id="lightbox-img" alt="">
+    <div class="lightbox-meta" id="lightbox-meta" hidden>
+      <div class="lightbox-alt" id="lightbox-alt"></div>
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const lb = document.getElementById('lightbox');
+  if (!lb) return;
+
+  const img   = document.getElementById('lightbox-img');
+  const meta  = document.getElementById('lightbox-meta');
+  const altEl = document.getElementById('lightbox-alt');
+  const capEl = document.getElementById('lightbox-caption');
+
+  const btnClose = lb.querySelector('.lightbox-close');
+  const btnPrev  = lb.querySelector('.lightbox-prev');
+  const btnNext  = lb.querySelector('.lightbox-next');
+
+  // All clickable gallery anchors on the page
+  let items = [];
+  let i = 0;
+
+  function collectItems(){
+    items = Array.from(document.querySelectorAll('.gallery-item'));
+  }
+
+  function render(idx){
+    if (!items.length) return;
+    i = (idx + items.length) % items.length; // wrap
+    const a = items[i];
+    const src = a.getAttribute('data-full') || a.getAttribute('href');
+    const alt = a.getAttribute('data-alt') || '';
+    const cap = a.getAttribute('data-caption') || '';
+
+    img.src = src;
+    img.alt = alt;
+
+    const hasAlt = !!alt.trim();
+    const hasCap = !!cap.trim();
+    altEl.textContent = hasAlt ? alt : '';
+    capEl.textContent = hasCap ? cap : '';
+    meta.hidden = !(hasAlt || hasCap);
+  }
+
+  function openFrom(el){
+    collectItems();
+    const idx = Math.max(0, items.indexOf(el));
+    render(idx);
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden','false');
+  }
+  function close(){
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden','true');
+    img.removeAttribute('src');
+    img.removeAttribute('alt');
+    meta.hidden = true;
+    altEl.textContent = '';
+    capEl.textContent = '';
+  }
+  function prev(){ render(i - 1); }
+  function next(){ render(i + 1); }
+
+  // Click-to-open (any .gallery-item)
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('.gallery-item');
+    if (!a) return;
+    e.preventDefault();
+    openFrom(a);
+  });
+
+  // Close / backdrop click
+  lb.addEventListener('click', (e) => {
+    if (e.target.closest('.lightbox-inner')) return;
+    close();
+  });
+  btnClose.addEventListener('click', close);
+
+  // Arrows
+  btnPrev.addEventListener('click', (e) => { e.stopPropagation(); prev(); });
+  btnNext.addEventListener('click', (e) => { e.stopPropagation(); next(); });
+
+  // Keyboard
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft')  prev();
+    if (e.key === 'ArrowRight') next();
+  });
+
+  // Touch swipe (simple)
+  let sx = 0, sy = 0, dx = 0, dy = 0;
+  img.addEventListener('touchstart', (e) => {
+    const t = e.touches[0]; sx = t.clientX; sy = t.clientY; dx = dy = 0;
+  }, {passive:true});
+  img.addEventListener('touchmove', (e) => {
+    const t = e.touches[0]; dx = t.clientX - sx; dy = t.clientY - sy;
+  }, {passive:true});
+  img.addEventListener('touchend', () => {
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      if (dx < 0) next(); else prev();
+    }
+  });
+})();
+</script>

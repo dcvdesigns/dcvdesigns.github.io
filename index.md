@@ -104,69 +104,6 @@ class: home
   <a class="btn" href="{{ '/portfolio/' | relative_url }}">See all</a>
 </p>
 
-<!-- Lightbox modal (Home) -->
-<div class="lightbox" id="lightbox" aria-hidden="true">
-  <button class="lightbox-close" aria-label="Close">×</button>
-  <div class="lightbox-inner">
-    <img id="lightbox-img" alt="">
-    <div class="lightbox-meta" id="lightbox-meta" hidden>
-      <div class="lightbox-alt" id="lightbox-alt"></div>
-      <div class="lightbox-caption" id="lightbox-caption"></div>
-    </div>
-  </div>
-</div>
-
-<script>
-(function(){
-  const lb = document.getElementById('lightbox');
-  const img = document.getElementById('lightbox-img');
-  const meta = document.getElementById('lightbox-meta');
-  const altEl = document.getElementById('lightbox-alt');
-  const capEl = document.getElementById('lightbox-caption');
-  const closeBtn = lb.querySelector('.lightbox-close');
-
-  function openLB(src, altText, caption){
-    img.src = src;
-    img.alt = altText || '';
-    const hasAlt = !!(altText && altText.trim().length);
-    const hasCap = !!(caption && caption.trim().length);
-    altEl.textContent = hasAlt ? altText : '';
-    capEl.textContent = hasCap ? caption : '';
-    meta.hidden = !(hasAlt || hasCap);
-    lb.classList.add('open');
-    lb.setAttribute('aria-hidden','false');
-  }
-  function closeLB(){
-    lb.classList.remove('open');
-    lb.setAttribute('aria-hidden','true');
-    img.removeAttribute('src');
-    img.removeAttribute('alt');
-    meta.hidden = true;
-    altEl.textContent = '';
-    capEl.textContent = '';
-  }
-
-  document.addEventListener('click', function(e){
-    const a = e.target.closest('.gallery-item');
-    if (a){
-      e.preventDefault();
-      openLB(
-        a.getAttribute('data-full'),
-        a.getAttribute('data-alt') || '',
-        a.getAttribute('data-caption') || ''
-      );
-    }
-  });
-
-  lb.addEventListener('click', function(e){
-    if (!e.target.closest('.lightbox-inner')) closeLB();
-  });
-  closeBtn.addEventListener('click', closeLB);
-  document.addEventListener('keydown', function(e){
-    if (e.key === 'Escape') closeLB();
-  });
-})();
-</script>
 <script>
 // Continuous ticker-style carousel using CSS animation
 (function(){
