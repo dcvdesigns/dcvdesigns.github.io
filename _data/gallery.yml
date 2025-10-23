@@ -1,14 +1,11 @@
-# _data/gallery.yml
-# Tip: order here is the order you’ll see on the page (we’ll reverse by date below if you want newest first)
-
 - image: /assets/img/mizzou-lightbox-1.png
-  publish_on: "2025-11-15"
+  publish_on: "2024-01-01"
   category: Lightboxes
   alt: Mizzou End Zone Lightbox
   caption: A bold five-foot Mizzou end zone–inspired lightbox featuring backlit diamond panels and classic lettering — a statement display piece for any Tigers fan space or game day setup.
 
 - image: /assets/img/led-tree-1.png
-  publish_on: "2025-11-02"
+  publish_on: "2024-01-01"
   category: Holiday
   alt: LED Christmas Tree Decorations
   caption: A modern 3D-printed LED Christmas tree décor piece with twinkling multicolor or warm white lights, perfect for adding a festive glow to desks, mantles, or holiday displays.
@@ -30,3 +27,147 @@
   category: Decor
   alt: Christmas Greetings
   caption: A modern, 3D-printed ripple-vase table lamp with a textured shade that casts a warm, gentle ambient glow — perfect for cozy desks, nightstands, or reading nooks.
+
+- image: /assets/img/tiki1.png
+  publish_on: "2024-08-01"
+  category: Décor
+  alt: Tiki Wall Décor
+  caption: A 3D-printed tiki wall piece with carved-style depth and a warm wood-tone finish — bringing playful Polynesian flair to a bar, patio, or tropical-themed space.
+
+- image: /assets/img/1.png
+  publish_on: "2024-08-02"
+  category: Coasters
+  alt: Walt Disney World Icons Coasters
+  caption: A full set of 3D-printed coasters featuring the iconic park symbols of Walt Disney World — Magic Kingdom, EPCOT, Hollywood Studios, and Animal Kingdom — each with its own signature color and style, stored together in a matching case.
+
+- image: /assets/img/mu-columns-lightbox1.png
+  publish_on: "2024-08-03"
+  category: Lightboxes
+  alt: Mizzou Columns Lightbox
+  caption: A glowing 3D-printed lightbox featuring the iconic Mizzou Columns — illuminated in bold gold with clean lettering, designed as a striking centerpiece for any University of Missouri fan space or office.
+
+- image: /assets/img/halloween1.png
+  publish_on: "2024-08-04"
+  category: Holiday
+  alt: Happy Halloween Sign
+  caption: A 3D-printed Halloween décor sign featuring a friendly ghost and geometric orange background — a festive and modern accent perfect for mantels, entry tables, or seasonal shelf displays.
+
+- image: /assets/img/wavy1.png
+  publish_on: "2024-08-05"
+  category: Home
+  alt: Wavy Key Hanger
+  caption: A modern 3D-printed wall-mounted key hanger featuring a flowing, wavy texture — blending functional organization with sculptural design. A stylish upgrade from standard key racks.
+
+- image: /assets/img/lake1.png
+  publish_on: "2024-08-06"
+  category: Lightboxes
+  alt: Custom Lake of the Ozarks Lightbox
+  caption: A custom 3D-printed lightbox styled with a retro lake-house vibe — softly illuminated in aqua blue and personalized for your family or getaway spot. A perfect accent piece for anyone who calls the Lake of the Ozarks home.
+
+- image: /assets/img/valsign1.png
+  publish_on: "2024-08-07"
+  category: Holiday
+  alt: Happy Valentine's Day Sign
+  caption: A multi-color 3D-printed “Happy Valentine’s Day” décor piece with vibrant layered lettering and floating hearts — perfect for mantels, entry tables, or gifting as a festive seasonal accent.
+
+- image: /assets/img/kstate1.png
+  publish_on: "2024-08-08"
+  category: Lightboxes
+  alt: Kansas State Powercat Lightbox
+  caption: A 3D-printed lightbox featuring the Kansas State Powercat — edge-lit in white with bold purple fill for a clean, modern tribute to K-State pride. Perfect for desks, shelves, or game day display.
+
+- image: /assets/img/voronoi-sd1.png
+  publish_on: "2024-08-09"
+  category: Home
+  alt: Geometric Soap Dish
+  caption: A modern 3D-printed soap dish featuring a geometric Voronoi-style insert — designed for clean drainage, easy cleaning, and a stylish minimalist accent for sink or shower spaces.
+
+- image: /assets/img/mele1.png
+  publish_on: "2024-08-10"
+  category: Holiday
+  alt: Mele Kalikimaka Sign
+  caption: A festive “Mele Kalikimaka” holiday sign with tropical flair — featuring a Santa tiki and hibiscus flowers, 3D-printed in vibrant colors for a warm Hawaiian Christmas touch.
+
+- image: /assets/img/mu-lightbox1.png
+  publish_on: "2024-08-11"
+  category: Lightboxes
+  alt: Stacked MU Logo Lightbox
+  caption: A 3D-printed lightbox recreating the iconic stacked MU emblem from campus — featuring a backlit gold glow that creates a striking, architectural display piece for any Mizzou space.
+
+- image: /assets/img/degeer-health-coaster1.png
+  publish_on: "2024-08-12"
+  category: Coasters
+  alt: Custom De Geer Health & Wellness Coasters
+  caption: A custom set of multi-color 3D-printed coasters created for De Geer Health & Wellness — branded and batch-produced with precision for use in their chiropractic office.
+
+- image: /assets/img/santa-sil1.png
+  publish_on: "2024-08-13"
+  category: Holiday
+  alt: Santa’s Sleigh & Reindeer Silhouette Art
+  caption: A minimalist 3D-printed holiday display featuring Santa’s sleigh and reindeer in elegant silhouette form — framed in festive color and perfect for mantels, shelves, or entryway décor.
+
+- image: /assets/img/mickey-sd1.png
+  publish_on: "2024-08-14"
+  category: Home
+  alt: Mickey Mouse Soap Dish
+  caption: A minimalist two-tone soap dish featuring an interlocking Mickey icon pattern — 3D-printed with a removable insert for easy cleaning and designed for subtle, modern Disney flair in any bathroom or kitchen.
+
+- image: /assets/img/tiger-puma1.png
+  publish_on: "2024-08-15"
+  category: Lightboxes
+  alt: Mizzou Puma Lightbox
+  caption: A sleek, minimalist lightbox with a leaping tiger motif — a modern Mizzou twist on the classic Puma silhouette, glowing in signature gold to add a clean athletic edge to any Tiger fan display.
+
+- image: /assets/img/sm-xmas1.png
+  publish_on: "2024-08-16"
+  category: Holiday
+  alt: Holiday Mantel Accent Signs
+  caption: 3D-printed holiday accent signs designed for mantels, shelves, or entry tables — each featuring a unique Christmas design with layered color detailing for a festive seasonal display without taking up much space.
+
+- image: /assets/img/figment1.png
+  publish_on: "2024-08-17"
+  category: Signs
+  alt: Figment Sign
+  caption: A vibrant multi-color Figment display inspired by EPCOT’s Journey Into Imagination — featuring the classic “One little spark…” quote brought to life as a cheerful 3D décor piece for Disney fans and creative spaces.
+
+- image: /assets/img/UCM1.png
+  publish_on: "2024-08-18"
+  category: Lightboxes
+  alt: Central Missouri Lightbox
+  caption: A fully backlit 3D-printed tribute to UCM — featuring the iconic mule head and bold UCM lettering, illuminated from within for a striking display piece perfect for alumni, students, or fan caves.
+
+- image: /assets/img/snow-puzzle1.png
+  publish_on: "2024-08-19"
+  category: Holiday
+  alt: Snowflake Tile Puzzle
+  caption: 3D-printed snowflake-themed tile puzzle — each tile uniquely patterned for a relaxing winter challenge — complete with a matching storage box and printed instructions, perfect as a cozy holiday gift or coffee-table game.
+
+- image: /assets/img/kcwa1.png
+  publish_on: "2024-08-20"
+  category: Signs
+  alt: Western Auto Inspired Kansas City Wall Décor
+  caption: A 3D-printed wall display inspired by the iconic Western Auto sign — featuring bold Kansas City lettering and the signature arrow motif, designed as a nostalgic tribute to the city’s skyline and history.
+
+- image: /assets/img/chunky-tree1.png
+  publish_on: "2024-08-21"
+  category: Holiday
+  alt: Retro Chunky Light-Up Christmas Tree
+  caption: A playful retro-style 3D-printed Christmas tree lamp with chunky layered ornaments and warm internal lighting — a cheerful throwback accent perfect for mantels, kids’ rooms, or festive nighttime glow.
+
+- image: /assets/img/paw1.png
+  publish_on: "2024-08-22"
+  category: Lightboxes
+  alt: Mizzou Pawprint Lightbox
+  caption: A bold 3D-printed pawprint lightbox with a glowing block-M centerpiece — designed to bring unmistakable Mizzou energy to a shelf, bar, or game room with its warm gold backlighting and clean silhouette.
+
+- image: /assets/img/tree21-1.png
+  publish_on: "2024-08-23"
+  category: Holiday
+  alt: Faceted Modern Christmas Tree Lamp
+  caption: A faceted, modern 3D-printed Christmas tree lamp with a geometric sculptural design — LED-lit from within to softly shift through colors, making it a perfect contemporary accent for holiday décor or ambient winter lighting.
+
+- image: /assets/img/lightbox-geeredup1.png
+  publish_on: "2024-08-24"
+  category: Lightboxes
+  alt: Custom GeereD Up Films Lightbox
+  caption: A custom-designed 3D-printed lightbox created for GeereD Up Films — featuring backlit cinematic gears and clean studio branding, crafted as a one-of-a-kind display piece for their production space.
