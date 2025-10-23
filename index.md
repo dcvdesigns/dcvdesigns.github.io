@@ -62,7 +62,7 @@ class: home
   {%- assign limit = 6 -%}
   {%- for g in manifest -%}
     {%- if added < limit -%}
-      {%- assign file = g.file | default: g.path -%}
+      {%- assign file = g.file | default: g.path | default: g.image -%}
       {%- if file -%}
         {%- assign ext = file | split: '.' | last | downcase -%}
         {%- if file contains '/assets/img/' and (ext == 'jpg' or ext == 'jpeg' or ext == 'png' or ext == 'webp' or ext == 'gif') -%}
