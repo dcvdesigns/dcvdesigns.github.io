@@ -1,6 +1,6 @@
 ---
 title: LED Christmas Tree Decorations
-date: 2025-10-09
+date: 2025-10-20
 publish_on: "2025-10-09"
 summary: A modern 3D-printed LED Christmas tree décor piece with twinkling multicolor or warm white lights, perfect for adding a festive glow to desks, mantles, or holiday displays.
 tags: [Holiday, LED, PLA]
@@ -18,6 +18,6 @@ announce_text:  |
   <p>Liberty High School - 2275 Sommers Rd, Lake St. Louis, MO 63367</p>
 announce_link_url: "https://www.wsdlibertyband.com/holiday-bazaar"
 announce_link_label: "Event details"
-announce_start: "2025-10-25"   # optional; show on/after this date
+announce_start: "2025-10-01"   # optional; show on/after this date
 announce_end:   "2025-11-09"   # optional; hide after this date
 ---
