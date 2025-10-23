@@ -30,6 +30,14 @@ permalink: /portfolio/
   </select>
 </div>
 
+<div id="active-filter" style="display:none;margin:-2px 0 10px 0;font:600 14px/1.3 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;color:#0f172a;">
+  <span style="display:inline-flex;align-items:center;gap:.5rem;padding:.25rem .6rem;border:1px solid #e5e7eb;border-radius:999px;background:#fff;">
+    <span>Filtered to:</span>
+    <span id="active-filter-name" style="color:#00548C"></span>
+    <a href="#" id="clear-filter" style="text-decoration:none;color:#0092F2;">Clear</a>
+  </span>
+</div>
+
 <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;padding:4px 0;" id="portfolio-grid-test">
   {%- for item in items -%}
     <article data-category="{{ item.category | default: 'Uncategorized' | downcase }}" style="border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.04)">
@@ -76,13 +84,38 @@ permalink: /portfolio/
   if(!select || !grid) return;
   var cards = Array.prototype.slice.call(grid.querySelectorAll('article'));
 
-  function applyFilter(val){
+  var badge = document.getElementById('active-filter');
+  var badgeName = document.getElementById('active-filter-name');
+  var clearBtn = document.getElementById('clear-filter');
+
+  function applyFilter(val, updateURL){
     var v = (val||'all').toLowerCase();
     cards.forEach(function(card){
       var c = (card.getAttribute('data-category')||'uncategorized').toLowerCase();
       var show = (v === 'all') || (c === v);
       card.style.display = show ? '' : 'none';
     });
+
+    // Badge visibility + text
+    if (badge){
+      if (v === 'all'){
+        badge.style.display = 'none';
+      } else {
+        badge.style.display = 'block';
+        // Use the human-readable text from the select option
+        try { badgeName.textContent = select.options[select.selectedIndex].text; } catch(e) {}
+      }
+    }
+
+    // Update URL query without reload
+    if (updateURL){
+      try {
+        var url = new URL(window.location);
+        if (v === 'all') url.searchParams.delete('category');
+        else url.searchParams.set('category', v);
+        window.history.replaceState({}, '', url);
+      } catch(e){}
+    }
   }
 
   // Read from query (?category=Holiday)
@@ -95,7 +128,15 @@ permalink: /portfolio/
     }
   } catch(e){}
 
-  applyFilter(select.value);
-  select.addEventListener('change', function(){ applyFilter(this.value); });
+  applyFilter(select.value, false);
+  select.addEventListener('change', function(){ applyFilter(this.value, true); });
+
+  if (clearBtn){
+    clearBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      select.value = 'all';
+      applyFilter('all', true);
+    });
+  }
 })();
 </script>
