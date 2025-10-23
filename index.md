@@ -62,7 +62,8 @@ class: home
 <!-- found {{ entries | size }} manifest entries, showed {{ added }} -->
 
 <div class="hero">
-  <p>I design and print lightboxes, signage, coasters, and custom display pieces using clean multicolor workflows, polished finishes, and an eye for both aesthetic and function. Have an idea? I can bring it to life - click "Start a project" to reach out!</p>
+  <p>I design and print lightboxes, signage, coasters, and custom display pieces using clean multicolor workflows, polished finishes, and an eye for both aesthetic and function.</p>
+  <p>Have an idea? I can bring it to life - click "Start a project" to reach out!</p>
   <div class="cta-row">
     <a class="btn primary" href="/contact/">Start a project</a>
     <a class="btn ghost" href="/portfolio/">See recent work</a>
@@ -127,10 +128,10 @@ class: home
 
   function setDuration(){
     // pixels per second — tune for feel
-    const SPEED = 60; // slower = more calm, higher = faster
+    const SPEED = window.matchMedia('(max-width: 640px)').matches ? 120 : 80; // faster on mobile
     // After duplication, half of track width corresponds to one full cycle
     const half = computeHalfWidth();
-    const seconds = Math.max(10, Math.round(half / SPEED));
+    const seconds = Math.max(6, Math.round(half / SPEED));
     track.style.setProperty('--ticker-duration', seconds + 's');
   }
 

@@ -461,17 +461,20 @@ nav a:hover{
 
 /* Arrows */
 .lightbox-nav{
-  position: absolute; top: 50%; transform: translateY(-50%);
-  width: 48px; height: 48px;           /* generous tap target */
-  background: none; border: none;       /* no pill, no border */
+  position: fixed;                 /* lock to viewport, not image box */
+  top: 50%;                        /* vertically centered */
+  transform: translateY(-50%);
+  width: 48px; height: 48px;       /* generous tap target */
+  background: none; border: none;  /* no pill, no border */
   color: #fff; font-size: 2.2rem; line-height: 1;
   display: inline-flex; align-items: center; justify-content: center;
   cursor: pointer; user-select: none;
   text-shadow: 0 1px 2px rgba(0,0,0,.35); /* subtle readability */
   opacity: .95; transition: opacity .15s ease, transform .15s ease;
+  z-index: 70;                     /* above image and captions */
 }
-.lightbox-prev { left: 8px; }
-.lightbox-next { right: 8px; }
+.lightbox-prev { left: 1.25rem; }
+.lightbox-next { right: 1.25rem; }
 
 .lightbox-nav:hover { opacity: 1; transform: translateY(-50%) scale(1.04); }
 .lightbox-close:hover { border-color: var(--color-accent); }
@@ -483,6 +486,6 @@ nav a:hover{
 
 @media (max-width: 640px){
   .lightbox-nav{ width: 56px; height: 56px; font-size: 2.4rem; }
-  .lightbox-prev { left: 6px; }
-  .lightbox-next { right: 6px; }
+  .lightbox-prev { left: 0.75rem; }
+  .lightbox-next { right: 0.75rem; }
 }
