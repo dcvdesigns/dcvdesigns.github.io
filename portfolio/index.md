@@ -4,7 +4,9 @@ layout: page
 permalink: /portfolio/
 ---
 
+{%- assign today_epoch = site.time | date: '%s' | plus: 0 -%}
 {%- assign items = site.portfolio | default: site.collections['portfolio'].docs -%}
+{%- assign items = items | where_exp: 'i', "i.publish_on == nil or i.publish_on == '' or (i.publish_on | date: '%s' | plus: 0) <= today_epoch" -%}
 {%- assign items = items | sort: 'date' | reverse -%}
 
 <!-- Category filter -->
