@@ -42,6 +42,19 @@ permalink: /portfolio/
   </select>
 </div>
 
+{%- comment -%} Temporary debug: show how many items pass the date filter {%- endcomment -%}
+{%- assign items_all = site.portfolio | sort: 'date' | reverse -%}
+{%- assign visible = 0 -%}
+{%- for item in items_all -%}
+  {%- assign pub = item.publish_on | default: item.date -%}
+  {%- assign pub_epoch = pub | date: "%s" | plus: 0 -%}
+  {%- if pub_epoch == 0 -%}{%- assign pub_epoch = now_epoch -%}{%- endif -%}
+  {%- if pub_epoch <= now_epoch -%}
+    {%- assign visible = visible | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
+<p class="debug-note" style="font:12px/1.4 monospace;color:#64748b;margin:.25rem 0 1rem;">Debug: {{ visible }} visible portfolio items after date filter.</p>
+
 <!-- Grid -->
 <div class="card-grid" id="portfolio-grid">
   {%- assign items_all = site.portfolio | sort: 'date' | reverse -%}
