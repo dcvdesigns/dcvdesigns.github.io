@@ -20,7 +20,7 @@ class: home
 {%- assign manifest = entries | sort: 'publish_on' | reverse -%}
 <div class="scroll-strip" aria-label="Latest gallery images" tabindex="0">
   {%- assign added = 0 -%}
-  {%- assign limit = 6 -%}
+{%- assign limit = 12 -%}
   {%- for g in manifest -%}
     {%- if added < limit -%}
       {%- assign file = g.file | default: g.path | default: g.image -%}
