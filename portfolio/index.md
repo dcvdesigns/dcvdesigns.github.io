@@ -4,7 +4,7 @@ layout: page
 permalink: /portfolio/
 ---
 
-{%- assign today = site.time | date: "%Y-%m-%d" -%}
+{%- assign now_epoch = site.time | date: "%s" -%}
 
 <!-- Filter -->
 <div class="portfolio-filter">
@@ -16,8 +16,9 @@ permalink: /portfolio/
   <select id="cat-filter">
     <option value="all">All categories</option>
     {%- for i in items_all -%}
-      {%- assign pub = i.publish_on | default: i.date | date: "%Y-%m-%d" -%}
-      {%- if pub <= today and i.category and i.category != "" -%}
+      {%- assign pub = i.publish_on | default: i.date -%}
+      {%- assign pub_epoch = pub | date: "%s" -%}
+      {%- if pub_epoch <= now_epoch and i.category and i.category != "" -%}
         {%- assign needle = "|" | append: i.category | append: "|" -%}
         {%- unless cat_string contains needle -%}
           {%- assign cat_string = cat_string | append: i.category | append: "|" -%}
@@ -27,8 +28,9 @@ permalink: /portfolio/
     {%- endfor -%}
     {%- assign has_uncat = false -%}
     {%- for i in items_all -%}
-      {%- assign pub = i.publish_on | default: i.date | date: "%Y-%m-%d" -%}
-      {%- if pub <= today and (i.category == nil or i.category == "") -%}
+      {%- assign pub = i.publish_on | default: i.date -%}
+      {%- assign pub_epoch = pub | date: "%s" -%}
+      {%- if pub_epoch <= now_epoch and (i.category == nil or i.category == "") -%}
         {%- assign has_uncat = true -%}
       {%- endif -%}
     {%- endfor -%}
@@ -42,8 +44,9 @@ permalink: /portfolio/
 <div class="card-grid" id="portfolio-grid">
   {%- assign items_all = site.portfolio | sort: 'date' | reverse -%}
   {%- for item in items_all -%}
-    {%- assign pub = item.publish_on | default: item.date | date: "%Y-%m-%d" -%}
-    {%- if pub <= today -%}
+    {%- assign pub = item.publish_on | default: item.date -%}
+    {%- assign pub_epoch = pub | date: "%s" -%}
+    {%- if pub_epoch <= now_epoch -%}
       {%- assign catval = item.category | default: 'Uncategorized' -%}
       <article class="card" data-category="{{ catval | downcase }}">
         {%- assign thumb = item.photos | first -%}
