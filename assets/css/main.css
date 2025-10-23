@@ -489,3 +489,16 @@ nav a:hover{
   .lightbox-prev { left: 0.75rem; }
   .lightbox-next { right: 0.75rem; }
 }
+
+/* --- Safety overrides for Portfolio grid visibility --- */
+.page #portfolio-grid { display: grid !important; }
+.page #portfolio-grid .card {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.page #portfolio-grid img {
+  display: block !important;
+  max-width: 100% !important;
+  height: auto;
+}

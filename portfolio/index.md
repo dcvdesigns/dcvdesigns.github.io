@@ -7,6 +7,15 @@ permalink: /portfolio/
 {%- assign items = site.portfolio | default: site.collections['portfolio'].docs -%}
 {%- assign items = items | sort: 'date' | reverse -%}
 
+<p class="debug-note" style="font:12px/1.4 monospace;color:#64748b;margin:.25rem 0 1rem;">
+  (Temporary) Portfolio titles fallback below — grid rendered underneath.
+</p>
+<ul>
+  {%- for item in items -%}
+    <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+  {%- endfor -%}
+</ul>
+
 <div class="card-grid" id="portfolio-grid">
   {%- for item in items -%}
     <article class="card">
