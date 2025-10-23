@@ -166,7 +166,7 @@ class: home
 })();
 </script>
 <script>
-// Auto-advance the home carousel (snap-by-card)
+// Auto-advance the home carousel (snap-by-card, robust start)
 (function(){
   const strip = document.querySelector('.scroll-strip');
   if (!strip) return;
@@ -175,23 +175,34 @@ class: home
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReduced) return;
 
-  const INTERVAL = 2800; // ms between moves
-  const RESUME_AFTER = 6500; // idle time before auto resumes
+  const INTERVAL = 2800;      // ms between moves
+  const RESUME_AFTER = 6500;  // idle time before auto resumes
+  const STEP_FALLBACK = 160;  // px if width can't be measured yet
   let timer = null;
   let resumeTimer = null;
 
-  function getStep(){
-    const first = strip.querySelector('.scroll-thumb');
+  function tile(){ return strip.querySelector('.scroll-thumb'); }
+
+  function measuredStep(){
+    const first = tile();
     if (!first) return 0;
+    // prefer offsetWidth (includes padding/border); add gap if any
+    const w = first.offsetWidth;
     const cs = getComputedStyle(strip);
     const gap = parseFloat(cs.columnGap || cs.gap || 0) || 0;
-    const w = first.getBoundingClientRect().width;
-    return Math.max(0, Math.round(w + gap));
+    return Math.round((w || 0) + gap);
   }
 
+  function getStep(){
+    const s = measuredStep();
+    return s > 0 ? s : STEP_FALLBACK; // fallback to keep motion alive even before images load
+  }
+
+  function canScroll(){ return strip.scrollWidth > strip.clientWidth + 2; }
+
   function advance(){
+    if (!canScroll()) return; // nothing to do on ultra-wide screens
     const step = getStep();
-    if (!step) return;
     const max = strip.scrollWidth - strip.clientWidth;
     const next = Math.round(strip.scrollLeft + step);
     if (next >= max - 2){
@@ -214,10 +225,22 @@ class: home
   ['mouseenter','focusin','pointerdown','wheel','touchstart','keydown'].forEach(evt => {
     strip.addEventListener(evt, pauseAndResume, { passive: true });
   });
-  // When leaving the area, set up resume timer
   strip.addEventListener('mouseleave', pauseAndResume, { passive: true });
 
-  // Kick it off
-  start();
+  // Defer start until we can measure a non-zero step OR after a short timeout
+  function readyCheck(attempts){
+    const step = measuredStep();
+    if (step > 0 || attempts <= 0){ start(); return; }
+    requestAnimationFrame(() => readyCheck(attempts - 1));
+  }
+
+  // Also listen for first image load to guarantee measurement
+  const firstImg = strip.querySelector('.scroll-thumb img');
+  if (firstImg && !firstImg.complete){
+    firstImg.addEventListener('load', () => readyCheck(4), { once: true });
+  }
+
+  // Kick it off (max ~4 RAFs before fallback starts)
+  readyCheck(4);
 })();
 </script>
