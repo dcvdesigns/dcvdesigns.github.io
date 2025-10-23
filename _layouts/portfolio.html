@@ -143,7 +143,14 @@ layout: default
     {% for item in shown %}
       <article class="card">
         {% if item.photos and item.photos[0] %}
-          <a class="gallery-item" href="{{ item.url | relative_url }}">
+          <a
+            class="gallery-item"
+            href="{{ item.photos[0] | relative_url }}"
+            data-full="{{ item.photos[0] | relative_url }}"
+            data-alt="{{ item.title | escape }}"
+            data-caption="{{ item.summary | default: '' | escape }}"
+            aria-label="Open image"
+          >
             <img src="{{ item.photos[0] | relative_url }}" alt="{{ item.title | escape }}">
           </a>
         {% endif %}
@@ -157,99 +164,3 @@ layout: default
 {% endif %}
 
 </article>
-
-<!-- Lightbox modal (shared with gallery styles) -->
-<div class="lightbox" id="lightbox" aria-hidden="true">
-  <button class="lightbox-close" aria-label="Close">×</button>
-  <button class="lightbox-prev" aria-label="Previous">‹</button>
-  <button class="lightbox-next" aria-label="Next">›</button>
-  <div class="lightbox-inner">
-    <img id="lightbox-img" alt="">
-    <div class="lightbox-meta" id="lightbox-meta" hidden>
-      <div class="lightbox-alt" id="lightbox-alt"></div>
-      <div class="lightbox-caption" id="lightbox-caption"></div>
-    </div>
-  </div>
-</div>
-
-<script>
-(function(){
-  const lb = document.getElementById('lightbox');
-  if (!lb) return;
-  const img = document.getElementById('lightbox-img');
-  const meta = document.getElementById('lightbox-meta');
-  const altEl = document.getElementById('lightbox-alt');
-  const capEl = document.getElementById('lightbox-caption');
-  const closeBtn = lb.querySelector('.lightbox-close');
-  const prevBtn = lb.querySelector('.lightbox-prev');
-  const nextBtn = lb.querySelector('.lightbox-next');
-
-  // Collect all gallery anchors on the page, in order
-  const items = Array.from(document.querySelectorAll('.gallery-item'));
-  let currentIndex = -1;
-
-  function renderFromIndex(i){
-    if (i < 0 || i >= items.length) return;
-    currentIndex = i;
-    const a = items[i];
-    const src = a.getAttribute('data-full') || a.getAttribute('href');
-    const alt = a.getAttribute('data-alt') || '';
-    const cap = a.getAttribute('data-caption') || '';
-    img.src = src;
-    img.alt = alt;
-    const hasAlt = !!(alt && alt.trim().length);
-    const hasCap = !!(cap && cap.trim().length);
-    altEl.textContent = hasAlt ? alt : '';
-    capEl.textContent = hasCap ? cap : '';
-    meta.hidden = !(hasAlt || hasCap);
-    lb.classList.add('open');
-    lb.setAttribute('aria-hidden','false');
-    prevBtn.disabled = (currentIndex <= 0);
-    nextBtn.disabled = (currentIndex >= items.length - 1);
-  }
-
-  function openFromAnchor(a){
-    const i = items.indexOf(a);
-    if (i !== -1) renderFromIndex(i);
-  }
-
-  function closeLB(){
-    lb.classList.remove('open');
-    lb.setAttribute('aria-hidden','true');
-    img.removeAttribute('src');
-    img.removeAttribute('alt');
-    meta.hidden = true;
-    altEl.textContent = '';
-    capEl.textContent = '';
-    currentIndex = -1;
-  }
-
-  function showPrev(){ if (currentIndex > 0) renderFromIndex(currentIndex - 1); }
-  function showNext(){ if (currentIndex < items.length - 1) renderFromIndex(currentIndex + 1); }
-
-  // Open on click
-  document.addEventListener('click', function(e){
-    const a = e.target.closest('.gallery-item');
-    if (a){
-      e.preventDefault();
-      openFromAnchor(a);
-    }
-  });
-
-  // Overlay interactions
-  lb.addEventListener('click', function(e){
-    if (!e.target.closest('.lightbox-inner')) closeLB();
-  });
-  closeBtn.addEventListener('click', closeLB);
-  prevBtn.addEventListener('click', function(e){ e.stopPropagation(); showPrev(); });
-  nextBtn.addEventListener('click', function(e){ e.stopPropagation(); showNext(); });
-
-  // Keyboard
-  document.addEventListener('keydown', function(e){
-    if (!lb.classList.contains('open')) return;
-    if (e.key === 'Escape') closeLB();
-    else if (e.key === 'ArrowLeft') showPrev();
-    else if (e.key === 'ArrowRight') showNext();
-  });
-})();
-</script>
