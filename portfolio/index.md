@@ -34,10 +34,17 @@ permalink: /portfolio/
   {%- for item in items -%}
     <article data-category="{{ item.category | default: 'Uncategorized' | downcase }}" style="border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.04)">
       {%- assign full = item.photos | first -%}
-      {%- if full -%}
+      {%- assign display_src = '' -%}
+      {%- if item.thumb and item.thumb != '' -%}
+        {%- assign display_src = item.thumb -%}
+      {%- elsif full -%}
+        {%- assign display_src = full -%}
+      {%- endif -%}
+
+      {%- if display_src != '' -%}
         <a href="{{ item.url | relative_url }}" style="display:block;">
           <img
-            src="{{ full | relative_url }}"
+            src="{{ display_src | relative_url }}"
             alt="{{ item.title | escape }}"
             loading="lazy"
             decoding="async"
