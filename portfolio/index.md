@@ -8,7 +8,7 @@ permalink: /portfolio/
 {%- assign items_all = site.portfolio | default: site.collections['portfolio'].docs -%}
 {%- assign items_all = items_all | sort: 'date' | reverse -%}
 
-<!-- Filter -->
+{%- comment -%} Filter {%- endcomment -%}
 <div class="portfolio-filter">
   <label for="cat-filter" class="sr-only">Filter by category</label>
 
@@ -55,7 +55,18 @@ permalink: /portfolio/
 {%- endfor -%}
 <p class="debug-note" style="font:12px/1.4 monospace;color:#64748b;margin:.25rem 0 1rem;">Debug: {{ visible }} visible of {{ items_all | size }} total portfolio items.</p>
 
-<!-- Grid -->
+<ul class="debug-list" style="font:14px/1.5 system-ui;margin:.25rem 0 1rem;color:#334155;list-style:disc;padding-left:1.25rem;">
+  {%- for i in items_all -%}
+    {%- assign pub = i.publish_on | default: i.date -%}
+    {%- assign pub_epoch = pub | date: "%s" | plus: 0 -%}
+    {%- if pub_epoch == 0 -%}{% assign pub_epoch = now_epoch %}{% endif %}
+    {%- if pub_epoch <= now_epoch -%}
+      <li>{{ i.title }}</li>
+    {%- endif -%}
+  {%- endfor -%}
+</ul>
+
+{%- comment -%} Grid {%- endcomment -%}
 <div class="card-grid" id="portfolio-grid">
   {%- for item in items_all -%}
     {%- assign pub = item.publish_on | default: item.date -%}
