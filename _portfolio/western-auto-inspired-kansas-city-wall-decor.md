@@ -1,5 +1,5 @@
 ---
-title: "Western Auto Inspired Kansas City Wall Décor"
+title: "Western Auto Inspired Kansas City Wall Decor"
 date: 2025-08-20
 publish_on: "2025-08-20"
 summary: "A 3D-printed wall display inspired by the iconic Western Auto sign — featuring bold Kansas City lettering and the signature arrow motif, designed as a nostalgic tribute to the city’s skyline and history."

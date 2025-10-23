@@ -1,5 +1,5 @@
 ---
-title: "Tiki Wall Décor"
+title: "Tiki Wall Decor"
 date: 2025-08-01
 publish_on: "2025-08-01"
 summary: "A 3D-printed tiki wall piece with carved-style depth and a warm wood-tone finish — bringing playful Polynesian flair to a bar, patio, or tropical-themed space."

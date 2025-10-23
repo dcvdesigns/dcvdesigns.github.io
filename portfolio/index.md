@@ -5,8 +5,17 @@ permalink: /portfolio/
 ---
 
 {%- assign today_epoch = site.time | date: '%s' | plus: 0 -%}
-{%- assign items = site.portfolio | default: site.collections['portfolio'].docs -%}
-{%- assign items = items | where_exp: 'i', "i.publish_on == nil or i.publish_on == '' or (i.publish_on | date: '%s' | plus: 0) <= today_epoch" -%}
+{%- assign items_all = site.portfolio | default: site.collections['portfolio'].docs -%}
+{%- assign items = '' | split: '' -%}
+{%- for i in items_all -%}
+  {%- assign po = i.publish_on | to_s | strip -%}
+  {%- if po != '' -%}
+    {%- assign po_epoch = po | date: '%s' | plus: 0 -%}
+    {%- if po_epoch <= today_epoch -%}
+      {%- assign items = items | push: i -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
 {%- assign items = items | sort: 'date' | reverse -%}
 
 <!-- Category filter -->

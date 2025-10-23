@@ -1,5 +1,5 @@
 ---
-title: "Custom De Geer Health & Wellness Coasters"
+title: "Custom De Geer Health and Wellness Coasters"
 date: 2025-08-12
 publish_on: "2025-08-12"
 summary: "A custom set of multi-color 3D-printed coasters created for De Geer Health & Wellness — branded and batch-produced with precision for use in their chiropractic office."
