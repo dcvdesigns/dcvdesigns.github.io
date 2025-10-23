@@ -5,6 +5,8 @@ permalink: /portfolio/
 ---
 
 {%- assign now_epoch = site.time | date: "%s" | plus: 0 -%}
+{%- assign items_all = site.portfolio | default: site.collections['portfolio'].docs -%}
+{%- assign items_all = items_all | sort: 'date' | reverse -%}
 
 <!-- Filter -->
 <div class="portfolio-filter">
@@ -12,7 +14,6 @@ permalink: /portfolio/
 
   {%- comment -%} Build a unique category list from visible (non-future) items {%- endcomment -%}
   {%- assign cat_string = "|" -%}
-  {%- assign items_all = site.portfolio | sort: 'date' | reverse -%}
   <select id="cat-filter">
     <option value="all">All categories</option>
     {%- for i in items_all -%}
@@ -43,7 +44,6 @@ permalink: /portfolio/
 </div>
 
 {%- comment -%} Temporary debug: show how many items pass the date filter {%- endcomment -%}
-{%- assign items_all = site.portfolio | sort: 'date' | reverse -%}
 {%- assign visible = 0 -%}
 {%- for item in items_all -%}
   {%- assign pub = item.publish_on | default: item.date -%}
@@ -53,11 +53,10 @@ permalink: /portfolio/
     {%- assign visible = visible | plus: 1 -%}
   {%- endif -%}
 {%- endfor -%}
-<p class="debug-note" style="font:12px/1.4 monospace;color:#64748b;margin:.25rem 0 1rem;">Debug: {{ visible }} visible portfolio items after date filter.</p>
+<p class="debug-note" style="font:12px/1.4 monospace;color:#64748b;margin:.25rem 0 1rem;">Debug: {{ visible }} visible of {{ items_all | size }} total portfolio items.</p>
 
 <!-- Grid -->
 <div class="card-grid" id="portfolio-grid">
-  {%- assign items_all = site.portfolio | sort: 'date' | reverse -%}
   {%- for item in items_all -%}
     {%- assign pub = item.publish_on | default: item.date -%}
     {%- assign pub_epoch = pub | date: "%s" | plus: 0 -%}
@@ -75,7 +74,14 @@ permalink: /portfolio/
             data-caption="{{ item.summary | escape }}"
             aria-label="Open image"
           >
-            <img src="{{ thumb | relative_url }}" alt="{{ item.title }}">
+            <img
+              src="{{ thumb | relative_url }}"
+              alt="{{ item.title | escape }}"
+              loading="lazy"
+              decoding="async"
+              width="800"
+              height="800"
+            >
           </a>
         {%- endif -%}
         <div class="pad">
