@@ -64,12 +64,13 @@ permalink: /portfolio/
     {%- if pub_epoch <= now_epoch -%}
       {%- assign catval = item.category | default: 'Uncategorized' -%}
       <article class="card" data-category="{{ catval | downcase }}">
-        {%- assign thumb = item.photos | first -%}
-        {%- if thumb -%}
+        {%- assign full = item.photos | first -%}
+        {%- assign thumb = full | replace: '/assets/img/', '/assets/thumbs/' -%}
+        {%- if full -%}
           <a
             class="gallery-item"
-            href="{{ thumb | relative_url }}"
-            data-full="{{ thumb | relative_url }}"
+            href="{{ full | relative_url }}"
+            data-full="{{ full | relative_url }}"
             data-alt="{{ item.title | escape }}"
             data-caption="{{ item.summary | escape }}"
             aria-label="Open image"
