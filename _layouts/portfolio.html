@@ -107,28 +107,35 @@ layout: default
     </nav>
   {% endif %}
 
-{%- comment -%} RELATED PROJECTS {%- endcomment -%}
-{% assign related = site.portfolio
-  | where_exp: "it", "it.url != page.url"
-  | where_exp: "it", "it.tags | size > 0" %}
-
-{%- assign overlap = "" | split: "" -%}
-{%- for it in related -%}
-  {%- assign inter = it.tags | concat: page.tags | group_by: "." | where: "size", 2 -%}
-  {%- if inter.size > 0 -%}
-    {%- assign overlap = overlap | push: it -%}
+{%- comment -%} RELATED PROJECTS (GitHub Pages–compatible) {%- endcomment -%}
+{%- assign related = "" | split: "" -%}
+{%- for it in site.portfolio -%}
+  {%- if it.url != page.url -%}
+    {%- assign has_overlap = false -%}
+    {%- if it.tags and page.tags -%}
+      {%- for t in it.tags -%}
+        {%- if page.tags contains t -%}
+          {%- assign has_overlap = true -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+    {%- if has_overlap -%}
+      {%- assign related = related | push: it -%}
+    {%- endif -%}
   {%- endif -%}
 {%- endfor -%}
 
-{%- assign pool = overlap -%}
-{%- if pool.size == 0 -%}
 {%- assign pool = related -%}
-{%- comment -%} fallback to any others {%- endcomment -%}
+{%- if pool.size == 0 -%}
+  {%- assign pool = "" | split: "" -%}
+  {%- for it in site.portfolio -%}
+    {%- if it.url != page.url -%}
+      {%- assign pool = pool | push: it -%}
+    {%- endif -%}
+  {%- endfor -%}
 {%- endif -%}
 
-{%- assign shown = pool
-  | sort: "date" | reverse
-  | slice: 0, 3 -%}
+{%- assign shown = pool | sort: "date" | reverse | slice: 0, 3 -%}
 
 {% if shown.size > 0 %}
   <h2 style="margin-top:1.25rem;">Related Projects</h2>
