@@ -4,6 +4,58 @@ layout: default
 <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
   <!-- Title -->
   <h1 itemprop="name">{{ page.title }}</h1>
+  {%- comment -%} Per-item announcement banner (shows only within active date window) {%- endcomment -%}
+  {%- assign now_epoch = site.time | date: '%s' | plus: 0 -%}
+  {%- assign show_announce = true -%}
+
+  {%- if page.announce_start and page.announce_start != '' -%}
+    {%- assign announce_start_epoch = page.announce_start | date: '%s' | plus: 0 -%}
+    {%- if announce_start_epoch > now_epoch -%}
+      {%- assign show_announce = false -%}
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- if page.announce_end and page.announce_end != '' -%}
+    {%- assign announce_end_epoch = page.announce_end | date: '%s' | plus: 0 -%}
+    {%- if now_epoch > announce_end_epoch -%}
+      {%- assign show_announce = false -%}
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- if show_announce and (page.announce_title or page.announce_text) -%}
+    <section class="announce">
+      <span class="announce-badge">Update</span>
+      <div class="announce-body">
+        {%- if page.announce_title -%}
+          <div class="announce-title">{{ page.announce_title }}</div>
+        {%- endif -%}
+
+        {%- if page.announce_start or page.announce_end -%}
+          <div class="announce-date">
+            {%- if page.announce_start -%}
+              {{ page.announce_start | date: "%b %-d, %Y" }}
+            {%- endif -%}
+            {%- if page.announce_start and page.announce_end -%} &mdash; {%- endif -%}
+            {%- if page.announce_end -%}
+              {{ page.announce_end | date: "%b %-d, %Y" }}
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if page.announce_text -%}
+          <div class="announce-text">
+            {{ page.announce_text | markdownify }}
+          </div>
+        {%- endif -%}
+
+        {%- if page.announce_link_url and page.announce_link_label -%}
+          <div class="cta-row" style="margin-top:.4rem;">
+            <a class="btn primary" href="{{ page.announce_link_url }}" target="_blank" rel="noopener">{{ page.announce_link_label }}</a>
+          </div>
+        {%- endif -%}
+      </div>
+    </section>
+  {%- endif -%}
 
   <!-- HERO IMAGE (clickable for lightbox) -->
   {% if page.photos and page.photos[0] %}
