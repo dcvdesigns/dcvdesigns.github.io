@@ -42,21 +42,32 @@ class: home
   {% endfor %}
 </div>
 
-{%- comment -%} Latest 6 images from data manifest (_data/gallery.yml) {%- endcomment -%}
+{%- comment -%} Latest 6 images from _data/gallery.yml (robust) {%- endcomment -%}
 {%- assign today = site.time | date: "%Y-%m-%d" -%}
-{%- assign manifest = site.data.gallery | sort: 'publish_on' | reverse -%}
+{%- assign raw = site.data.gallery -%}
+{%- assign entries = nil -%}
+{%- if raw.images -%}
+  {%- assign entries = raw.images -%}
+{%- elsif raw.items -%}
+  {%- assign entries = raw.items -%}
+{%- else -%}
+  {%- assign entries = raw -%}
+{%- endif -%}
+{%- if entries == nil -%}
+  {%- assign entries = "" | split: "" -%}
+{%- endif -%}
+{%- assign manifest = entries | sort: 'publish_on' | reverse -%}
 <div class="scroll-strip" aria-label="Latest gallery images" tabindex="0">
   {%- assign added = 0 -%}
   {%- assign limit = 6 -%}
   {%- for g in manifest -%}
     {%- if added < limit -%}
       {%- assign file = g.file | default: g.path -%}
-      {%- assign start = g.start | default: g.publish_on | default: g.date -%}
-      {%- assign end   = g.end -%}
-      {%- if file and file contains '/assets/img/' -%}
-        {%- comment -%} basic extension filter {%- endcomment -%}
+      {%- if file -%}
         {%- assign ext = file | split: '.' | last | downcase -%}
-        {%- if ext == 'jpg' or ext == 'jpeg' or ext == 'png' or ext == 'webp' or ext == 'gif' -%}
+        {%- if file contains '/assets/img/' and (ext == 'jpg' or ext == 'jpeg' or ext == 'png' or ext == 'webp' or ext == 'gif') -%}
+          {%- assign start = g.start | default: g.publish_on | default: g.date -%}
+          {%- assign end   = g.end -%}
           {%- assign start_ok = true -%}
           {%- assign end_ok = true -%}
           {%- if start and start != '' -%}
@@ -85,6 +96,7 @@ class: home
     {%- endif -%}
   {%- endfor -%}
 </div>
+<!-- found {{ entries | size }} manifest entries, showed {{ added }} -->
 
 <p style="margin-top:1rem;">
   <a class="btn" href="{{ '/portfolio/' | relative_url }}">See all</a>
