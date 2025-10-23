@@ -62,8 +62,8 @@ class: home
 <!-- found {{ entries | size }} manifest entries, showed {{ added }} -->
 
 <div class="hero">
-  <p>I design and print lightboxes, signage, coasters, and custom display pieces using clean multicolor workflows, polished finishes, and an eye for both aesthetic and function.</p>
-  <p>Have an idea? I can bring it to life - click "Start a project" to reach out!</p>
+  <p>We design and print lightboxes, signage, coasters, and custom display pieces using clean multicolor workflows, polished finishes, and an eye for both aesthetic and function.</p>
+  <p>Have an idea? We can bring it to life - click "Start a project" to reach out!</p>
   <div class="cta-row">
     <a class="btn primary" href="/contact/">Start a project</a>
     <a class="btn ghost" href="/portfolio/">See recent work</a>
