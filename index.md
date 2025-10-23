@@ -165,3 +165,59 @@ class: home
   });
 })();
 </script>
+<script>
+// Auto-advance the home carousel (snap-by-card)
+(function(){
+  const strip = document.querySelector('.scroll-strip');
+  if (!strip) return;
+
+  // Respect user preference
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
+
+  const INTERVAL = 2800; // ms between moves
+  const RESUME_AFTER = 6500; // idle time before auto resumes
+  let timer = null;
+  let resumeTimer = null;
+
+  function getStep(){
+    const first = strip.querySelector('.scroll-thumb');
+    if (!first) return 0;
+    const cs = getComputedStyle(strip);
+    const gap = parseFloat(cs.columnGap || cs.gap || 0) || 0;
+    const w = first.getBoundingClientRect().width;
+    return Math.max(0, Math.round(w + gap));
+  }
+
+  function advance(){
+    const step = getStep();
+    if (!step) return;
+    const max = strip.scrollWidth - strip.clientWidth;
+    const next = Math.round(strip.scrollLeft + step);
+    if (next >= max - 2){
+      // jump back to start without animation to avoid long glide
+      strip.scrollTo({ left: 0, behavior: 'auto' });
+    } else {
+      strip.scrollTo({ left: next, behavior: 'smooth' });
+    }
+  }
+
+  function start(){ if (!timer) timer = setInterval(advance, INTERVAL); }
+  function stop(){ if (timer) { clearInterval(timer); timer = null; } }
+  function pauseAndResume(){
+    stop();
+    if (resumeTimer) clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(start, RESUME_AFTER);
+  }
+
+  // Pause on interaction; resume after idle
+  ['mouseenter','focusin','pointerdown','wheel','touchstart','keydown'].forEach(evt => {
+    strip.addEventListener(evt, pauseAndResume, { passive: true });
+  });
+  // When leaving the area, set up resume timer
+  strip.addEventListener('mouseleave', pauseAndResume, { passive: true });
+
+  // Kick it off
+  start();
+})();
+</script>
