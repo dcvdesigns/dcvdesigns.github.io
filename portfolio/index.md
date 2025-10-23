@@ -4,7 +4,7 @@ layout: page
 permalink: /portfolio/
 ---
 
-{%- assign now_epoch = site.time | date: "%s" -%}
+{%- assign now_epoch = site.time | date: "%s" | plus: 0 -%}
 
 <!-- Filter -->
 <div class="portfolio-filter">
@@ -17,7 +17,8 @@ permalink: /portfolio/
     <option value="all">All categories</option>
     {%- for i in items_all -%}
       {%- assign pub = i.publish_on | default: i.date -%}
-      {%- assign pub_epoch = pub | date: "%s" -%}
+      {%- assign pub_epoch = pub | date: "%s" | plus: 0 -%}
+      {%- if pub_epoch == 0 -%}{% assign pub_epoch = now_epoch %}{% endif %}
       {%- if pub_epoch <= now_epoch and i.category and i.category != "" -%}
         {%- assign needle = "|" | append: i.category | append: "|" -%}
         {%- unless cat_string contains needle -%}
@@ -29,7 +30,8 @@ permalink: /portfolio/
     {%- assign has_uncat = false -%}
     {%- for i in items_all -%}
       {%- assign pub = i.publish_on | default: i.date -%}
-      {%- assign pub_epoch = pub | date: "%s" -%}
+      {%- assign pub_epoch = pub | date: "%s" | plus: 0 -%}
+      {%- if pub_epoch == 0 -%}{% assign pub_epoch = now_epoch %}{% endif %}
       {%- if pub_epoch <= now_epoch and (i.category == nil or i.category == "") -%}
         {%- assign has_uncat = true -%}
       {%- endif -%}
@@ -45,7 +47,8 @@ permalink: /portfolio/
   {%- assign items_all = site.portfolio | sort: 'date' | reverse -%}
   {%- for item in items_all -%}
     {%- assign pub = item.publish_on | default: item.date -%}
-    {%- assign pub_epoch = pub | date: "%s" -%}
+    {%- assign pub_epoch = pub | date: "%s" | plus: 0 -%}
+    {%- if pub_epoch == 0 -%}{% assign pub_epoch = now_epoch %}{% endif %}
     {%- if pub_epoch <= now_epoch -%}
       {%- assign catval = item.category | default: 'Uncategorized' -%}
       <article class="card" data-category="{{ catval | downcase }}">
