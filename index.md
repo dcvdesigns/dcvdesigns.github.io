@@ -1,3 +1,33 @@
+/* Existing variables and other CSS above remain unchanged */
+
+.scroll-strip{
+  display:block;
+  overflow:hidden;            /* hide scrollbar entirely */
+  padding:.25rem 0 .75rem;    /* subtle breathing room */
+  -ms-overflow-style: none;   /* IE/Edge legacy */
+  scrollbar-width: none;      /* Firefox */
+}
+.scroll-strip::-webkit-scrollbar{ display:none; }
+
+/* The moving track */
+.scroll-track{
+  display:flex;
+  align-items:center;
+  gap: .9rem;
+  will-change: transform;
+  animation: ticker var(--ticker-duration, 40s) linear infinite;
+}
+/* Pause when the container has .paused (hover/focus handled in JS) */
+.scroll-strip.paused .scroll-track{ animation-play-state: paused; }
+
+/* Slightly tighten thumb styling so long rows feel continuous */
+.scroll-thumb img{ border-radius: 14px; display:block; }
+
+@keyframes ticker{
+  from{ transform: translateX(0); }
+  to{   transform: translateX(-50%); }
+}
+
 ---
 layout: page
 class: home
@@ -19,6 +49,7 @@ class: home
 {%- endif -%}
 {%- assign manifest = entries | sort: 'publish_on' | reverse -%}
 <div class="scroll-strip" aria-label="Latest gallery images" tabindex="0">
+  <div class="scroll-track">
   {%- assign added = 0 -%}
 {%- assign limit = 12 -%}
   {%- for g in manifest -%}
@@ -56,6 +87,7 @@ class: home
       {%- endif -%}
     {%- endif -%}
   {%- endfor -%}
+  </div>
 </div>
 <!-- found {{ entries | size }} manifest entries, showed {{ added }} -->
 
@@ -166,81 +198,48 @@ class: home
 })();
 </script>
 <script>
-// Auto-advance the home carousel (snap-by-card, robust start)
+// Continuous ticker-style carousel using CSS animation
 (function(){
   const strip = document.querySelector('.scroll-strip');
   if (!strip) return;
-
-  // Respect user preference
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReduced) return;
+  if (prefersReduced) return; // respect user preference
 
-  const INTERVAL = 2800;      // ms between moves
-  const RESUME_AFTER = 6500;  // idle time before auto resumes
-  const STEP_FALLBACK = 160;  // px if width can't be measured yet
-  let timer = null;
-  let resumeTimer = null;
+  const track = strip.querySelector('.scroll-track');
+  if (!track) return;
 
-  function tile(){ return strip.querySelector('.scroll-thumb'); }
-
-  function measuredStep(){
-    const first = tile();
-    if (!first) return 0;
-    // prefer offsetWidth (includes padding/border); add gap if any
-    const w = first.offsetWidth;
-    const cs = getComputedStyle(strip);
-    const gap = parseFloat(cs.columnGap || cs.gap || 0) || 0;
-    return Math.round((w || 0) + gap);
+  // Helper: compute half of the combined width after duplication
+  function computeHalfWidth(){
+    // total width after we duplicate will be 2x the original
+    return track.scrollWidth / 2;
   }
 
-  function getStep(){
-    const s = measuredStep();
-    return s > 0 ? s : STEP_FALLBACK; // fallback to keep motion alive even before images load
+  // Duplicate the children once so we have seamless loop
+  const originalHTML = track.innerHTML;
+  track.insertAdjacentHTML('beforeend', originalHTML);
+
+  function setDuration(){
+    // pixels per second — tune for feel
+    const SPEED = 60; // slower = more calm, higher = faster
+    // After duplication, half of track width corresponds to one full cycle
+    const half = computeHalfWidth();
+    const seconds = Math.max(10, Math.round(half / SPEED));
+    track.style.setProperty('--ticker-duration', seconds + 's');
   }
 
-  function canScroll(){ return strip.scrollWidth > strip.clientWidth + 2; }
-
-  function advance(){
-    if (!canScroll()) return; // nothing to do on ultra-wide screens
-    const step = getStep();
-    const max = strip.scrollWidth - strip.clientWidth;
-    const next = Math.round(strip.scrollLeft + step);
-    if (next >= max - 2){
-      // jump back to start without animation to avoid long glide
-      strip.scrollTo({ left: 0, behavior: 'auto' });
-    } else {
-      strip.scrollTo({ left: next, behavior: 'smooth' });
-    }
-  }
-
-  function start(){ if (!timer) timer = setInterval(advance, INTERVAL); }
-  function stop(){ if (timer) { clearInterval(timer); timer = null; } }
-  function pauseAndResume(){
-    stop();
-    if (resumeTimer) clearTimeout(resumeTimer);
-    resumeTimer = setTimeout(start, RESUME_AFTER);
-  }
-
-  // Pause on interaction; resume after idle
-  ['mouseenter','focusin','pointerdown','wheel','touchstart','keydown'].forEach(evt => {
-    strip.addEventListener(evt, pauseAndResume, { passive: true });
-  });
-  strip.addEventListener('mouseleave', pauseAndResume, { passive: true });
-
-  // Defer start until we can measure a non-zero step OR after a short timeout
-  function readyCheck(attempts){
-    const step = measuredStep();
-    if (step > 0 || attempts <= 0){ start(); return; }
-    requestAnimationFrame(() => readyCheck(attempts - 1));
-  }
-
-  // Also listen for first image load to guarantee measurement
-  const firstImg = strip.querySelector('.scroll-thumb img');
+  // Re-measure once first image loads (in case sizes were 0 at first paint)
+  const firstImg = track.querySelector('img');
   if (firstImg && !firstImg.complete){
-    firstImg.addEventListener('load', () => readyCheck(4), { once: true });
+    firstImg.addEventListener('load', setDuration, { once: true });
   }
+  // Also set after layout
+  requestAnimationFrame(setDuration);
+  window.addEventListener('resize', setDuration);
 
-  // Kick it off (max ~4 RAFs before fallback starts)
-  readyCheck(4);
+  // Pause on interaction, resume on leave/blur
+  function pause(){ strip.classList.add('paused'); }
+  function resume(){ strip.classList.remove('paused'); }
+  ['mouseenter','focusin','pointerdown','touchstart'].forEach(evt => strip.addEventListener(evt, pause, { passive:true }));
+  ['mouseleave','focusout','touchend','blur'].forEach(evt => strip.addEventListener(evt, resume, { passive:true }));
 })();
 </script>
