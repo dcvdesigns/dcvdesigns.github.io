@@ -42,30 +42,48 @@ class: home
   {% endfor %}
 </div>
 
-{%- comment -%} Latest 6 gallery images — horizontal strip {%- endcomment -%}
-<div class="scroll-strip" aria-label="Latest gallery images">
-  {% assign added = 0 %}
-  {% assign limit = 6 %}
-  {% assign gal = site.gallery | sort: 'date' | reverse %}
-  {% for g in gal %}
-    {% if g.photos and g.photos.size > 0 %}
-      {% for p in g.photos %}
-        {% if added < limit %}
-          <a
-            class="scroll-thumb gallery-item"
-            href="{{ p | relative_url }}"
-            data-full="{{ p | relative_url }}"
-            data-alt="{{ g.title | escape }}"
-            data-caption="{{ g.summary | escape }}"
-            aria-label="Open image"
-          >
-            <img src="{{ p | relative_url }}" alt="{{ g.title | escape }}">
-          </a>
-          {% assign added = added | plus: 1 %}
-        {% endif %}
-      {% endfor %}
-    {% endif %}
-  {% endfor %}
+{%- comment -%} Latest 6 images from data manifest (_data/gallery.yml) {%- endcomment -%}
+{%- assign today = site.time | date: "%Y-%m-%d" -%}
+{%- assign manifest = site.data.gallery | sort: 'publish_on' | reverse -%}
+<div class="scroll-strip" aria-label="Latest gallery images" tabindex="0">
+  {%- assign added = 0 -%}
+  {%- assign limit = 6 -%}
+  {%- for g in manifest -%}
+    {%- if added < limit -%}
+      {%- assign file = g.file | default: g.path -%}
+      {%- assign start = g.start | default: g.publish_on | default: g.date -%}
+      {%- assign end   = g.end -%}
+      {%- if file and file contains '/assets/img/' -%}
+        {%- comment -%} basic extension filter {%- endcomment -%}
+        {%- assign ext = file | split: '.' | last | downcase -%}
+        {%- if ext == 'jpg' or ext == 'jpeg' or ext == 'png' or ext == 'webp' or ext == 'gif' -%}
+          {%- assign start_ok = true -%}
+          {%- assign end_ok = true -%}
+          {%- if start and start != '' -%}
+            {%- assign sdate = start | date: "%Y-%m-%d" -%}
+            {%- if sdate > today -%}{%- assign start_ok = false -%}{%- endif -%}
+          {%- endif -%}
+          {%- if end and end != '' -%}
+            {%- assign edate = end | date: "%Y-%m-%d" -%}
+            {%- if edate < today -%}{%- assign end_ok = false -%}{%- endif -%}
+          {%- endif -%}
+          {%- if start_ok and end_ok -%}
+            <a
+              class="scroll-thumb gallery-item"
+              href="{{ file | relative_url }}"
+              data-full="{{ file | relative_url }}"
+              data-alt="{{ g.alt | default: '' | escape }}"
+              data-caption="{{ g.caption | default: '' | escape }}"
+              aria-label="Open image"
+            >
+              <img src="{{ file | relative_url }}" alt="{{ g.alt | default: '' | escape }}" loading="lazy" decoding="async" width="132" height="132">
+            </a>
+            {%- assign added = added | plus: 1 -%}
+          {%- endif -%}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
 </div>
 
 <p style="margin-top:1rem;">
