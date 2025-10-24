@@ -502,3 +502,38 @@ nav a:hover{
   max-width: 100% !important;
   height: auto;
 }
+/* Carousel underglow — brand-blue cinematic, permanent */
+.carousel-wrap{ position: relative; z-index: 1; }
+.carousel-wrap .scroll-strip{ position: relative; z-index: 2; }
+
+/* the glow sits behind the carousel, full-bleed across the screen */
+.carousel-wrap::before{
+  content:"";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  width: 100vw;
+  height: 160px;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse at 50% 0,
+      rgba(255,255,255,0.70) 0%,
+      rgba(255,255,255,0.45) 22%,
+      rgba(255,255,255,0.00) 60%
+    ),
+    linear-gradient(90deg,
+      rgba(0,84,140,0.22) 0%,
+      rgba(0,146,242,0.22) 100%
+    );
+  filter: blur(18px);
+  opacity: 0.95;
+}
+
+@media (max-width: 640px){
+  .carousel-wrap::before{
+    height: 130px;
+    filter: blur(16px);
+    opacity: 0.9;
+  }
+}
