@@ -44,3 +44,8 @@
 <link rel="apple-touch-icon" href="{{ '/assets/logo/DCVDesigns-Favicon.png' | relative_url }}">
 
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+{% if site.cloudflare_beacon_token %}
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token":"{{ site.cloudflare_beacon_token }}","spa":true,"auto":true,"ignoreBot":true}'></script>
+{% endif %}
