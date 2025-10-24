@@ -503,37 +503,75 @@ nav a:hover{
   height: auto;
 }
 /* Carousel underglow — brand-blue cinematic, permanent */
-.carousel-wrap{ position: relative; z-index: 1; }
+.carousel-wrap{
+  position: relative;
+  z-index: 1;
+  isolation: isolate;             /* keep the glow behind local content */
+}
 .carousel-wrap .scroll-strip{ position: relative; z-index: 2; }
 
-/* the glow sits behind the carousel, full-bleed across the screen */
+/* Big under/over glow behind the strip */
 .carousel-wrap::before{
   content:"";
   position: absolute;
   left: 50%;
-  transform: translateX(-50%) translateY(-8px);
-  width: 100vw;
-  height: 160px;
+  transform: translateX(-50%);
+  width: 140vw;                   /* extend beyond container to avoid cutoffs */
+  height: 240px;                  /* tall enough to bleed above & below */
+  top: -80px;                     /* lift so it straddles the carousel */
   pointer-events: none;
   z-index: 1;
   background:
-    radial-gradient(ellipse at 50% 0,
-      rgba(255,255,255,0.70) 0%,
-      rgba(255,255,255,0.45) 22%,
+    /* soft white core under the thumbs */
+    radial-gradient(ellipse 70% 140% at 50% 50%,
+      rgba(255,255,255,0.60) 0%,
+      rgba(255,255,255,0.35) 28%,
       rgba(255,255,255,0.00) 60%
     ),
+    /* brand gradient wash left→right */
     linear-gradient(90deg,
-      rgba(0,84,140,0.22) 0%,
-      rgba(0,146,242,0.22) 100%
+      rgba(0,84,140,0.26) 0%,
+      rgba(0,146,242,0.26) 100%
+    ),
+    /* subtle outer vignette to feather edges */
+    radial-gradient(ellipse 90% 170% at 50% 50%,
+      rgba(0,84,140,0.18) 0%,
+      rgba(0,84,140,0.10) 45%,
+      rgba(0,84,140,0.00) 85%
     );
-  filter: blur(18px);
+  filter: blur(28px) saturate(1.05);
   opacity: 0.95;
 }
 
-@media (max-width: 640px){
+/* small top halo so the glow reads above the strip as well */
+.carousel-wrap::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  transform: translateX(-50%);
+  width: 120vw;
+  height: 120px;
+  top: -56px;                     /* sits just above */
+  pointer-events:none;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse 60% 100% at 50% 0%,
+      rgba(0,146,242,0.38) 0%,
+      rgba(0,146,242,0.00) 70%
+    );
+  filter: blur(22px);
+  opacity: .9;
+}
+
+@media (max-width: 900px){
   .carousel-wrap::before{
-    height: 130px;
-    filter: blur(16px);
-    opacity: 0.9;
+    height: 200px;
+    top: -68px;
+    filter: blur(24px);
+  }
+  .carousel-wrap::after{
+    height: 100px;
+    top: -48px;
+    filter: blur(20px);
   }
 }
