@@ -574,7 +574,24 @@ nav a:hover{
     top: -48px;
     filter: blur(20px);
   }
-}/* --- Portfolio: ensure above-the-fold tiles are visible without scroll --- */
+}
+/* --- Portfolio: ensure above-the-fold tiles are visible without scroll --- */
+
+/* Completely disable animation for Portfolio */
+.page #portfolio-grid .reveal-init,
+.page #portfolio-grid .reveal-in {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Force *all* child elements to show instantly too */
+.page #portfolio-grid .card *,
+.page #portfolio-grid .card {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
 .page #portfolio-grid .reveal-init {
   opacity: 1 !important;
   transform: none !important;
