@@ -574,4 +574,27 @@ nav a:hover{
     top: -48px;
     filter: blur(20px);
   }
+}/* --- Portfolio: ensure above-the-fold tiles are visible without scroll --- */
+.page #portfolio-grid .reveal-init {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Extra safety: always show the first 12 tiles immediately */
+.page #portfolio-grid .card:nth-child(-n+12) {
+  opacity: 1 !important;
+  transform: none !important;
+}
+/* --- Gallery: ensure above-the-fold tiles are visible without scroll --- */
+.page #gallery-grid .reveal-init,
+.page .gallery-grid .reveal-init {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Extra safety: always show the first 12 gallery tiles immediately */
+.page #gallery-grid .card:nth-child(-n+12),
+.page .gallery-grid .card:nth-child(-n+12) {
+  opacity: 1 !important;
+  transform: none !important;
 }
