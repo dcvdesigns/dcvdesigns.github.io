@@ -130,8 +130,17 @@ nav a:hover{
 .btn.primary:hover{ filter:brightness(1.05); }
 
 /* Match Home hero to Portfolio spacing */
-.home .hero{ padding-top: 1.25rem !important; }
-.home .hero h1{ margin-top: 0.5rem; color: var(--color-primary) !important; }
+.home .hero {
+  padding-top: 1.25rem !important;
+  position: relative;  /* new */
+  z-index: 1;          /* establishes stacking context above carousel */
+}
+.home .hero h1 {
+  margin-top: 0.5rem;
+  color: var(--color-primary) !important;
+  position: relative;  /* ensures z-index applies */
+  z-index: 3;          /* sits above glow and images */
+}
 
 /* ---------- Page headings & copy ---------- */
 .page h1{
@@ -521,7 +530,7 @@ nav a:hover{
 /* Carousel underglow — brand-blue cinematic, permanent */
 .carousel-wrap{
   position: relative;
-  z-index: 1;
+  z-index: 0;
   isolation: isolate;             /* keep the glow behind local content */
 }
 .carousel-wrap .scroll-strip{ position: relative; z-index: 2; }
