@@ -8,6 +8,9 @@ vendor/
 # Ignore dependencies
 node_modules/
 
+# Ignore Python related
+.venv/
+
 # macOS junk files
 .DS_Store
 assets/.DS_Store
