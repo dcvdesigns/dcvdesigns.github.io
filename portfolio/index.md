@@ -4,6 +4,26 @@ layout: page
 permalink: /portfolio/
 ---
 
+<style>
+/* Hard overrides to prevent theme/animation CSS from hiding portfolio items */
+#portfolio-grid-test,
+#portfolio-grid-test * {
+  animation: none !important;
+  transition: none !important;
+}
+#portfolio-grid-test article {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  filter: none !important;
+}
+#portfolio-grid-test img {
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+}
+</style>
+
 {%- assign today_epoch = site.time | date: '%s' | plus: 0 -%}
 {%- assign items_all = site.portfolio | default: site.collections['portfolio'].docs -%}
 {%- assign items = '' | split: '' -%}
