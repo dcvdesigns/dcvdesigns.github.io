@@ -5,22 +5,22 @@ permalink: /portfolio/
 ---
 
 <style>
-/* Hard overrides to prevent theme/animation CSS from hiding portfolio items */
+/* Strong, page-scoped overrides to stop external animation/visibility CSS
+   from hiding the portfolio grid after load. */
 #portfolio-grid-test,
-#portfolio-grid-test * {
+#portfolio-grid-test * ,
+#portfolio-grid-test *::before,
+#portfolio-grid-test *::after {
   animation: none !important;
   transition: none !important;
-}
-#portfolio-grid-test article {
   opacity: 1 !important;
   visibility: visible !important;
   transform: none !important;
   filter: none !important;
 }
-#portfolio-grid-test img {
-  opacity: 1 !important;
-  visibility: visible !important;
-  filter: none !important;
+/* Ensure grid itself remains rendered */
+#portfolio-grid-test {
+  display: grid !important;
 }
 </style>
 

@@ -378,13 +378,17 @@ nav a:hover{
   padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
 }
 
-/* ---- Reveal-on-scroll (subtle, accessible) ---- */
+/* ---- Reveal-on-scroll (opt-in, accessible) ----
+   Safe default: content is visible. Add .anim on a parent (e.g., <body class="anim">)
+   to enable the reveal effect only where intended.
+*/
+.reveal-init{ opacity: 1; transform: none; } /* safe default when JS/animations fail */
 @media (prefers-reduced-motion: no-preference){
-  .reveal-init{
+  .anim .reveal-init{
     opacity: 0;
     transform: translateY(14px) scale(.995);
   }
-  .reveal-in{
+  .anim .reveal-in{
     opacity: 1;
     transform: none;
     transition: opacity .6s ease, transform .6s cubic-bezier(.2,.65,.3,1);
@@ -502,6 +506,18 @@ nav a:hover{
   max-width: 100% !important;
   height: auto;
 }
+/* Mirror overrides for #portfolio-grid-test */
+.page #portfolio-grid-test { display: grid !important; }
+.page #portfolio-grid-test .card {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.page #portfolio-grid-test img {
+  display: block !important;
+  max-width: 100% !important;
+  height: auto;
+}
 /* Carousel underglow — brand-blue cinematic, permanent */
 .carousel-wrap{
   position: relative;
@@ -520,7 +536,7 @@ nav a:hover{
   height: 240px;                  /* tall enough to bleed above & below */
   top: -80px;                     /* lift so it straddles the carousel */
   pointer-events: none;
-  z-index: 1;
+  z-index: -1;
   background:
     /* soft white core under the thumbs */
     radial-gradient(ellipse 70% 140% at 50% 50%,
@@ -553,7 +569,7 @@ nav a:hover{
   height: 120px;
   top: -56px;                     /* sits just above */
   pointer-events:none;
-  z-index: 1;
+  z-index: -1;
   background:
     radial-gradient(ellipse 60% 100% at 50% 0%,
       rgba(0,146,242,0.38) 0%,
@@ -599,6 +615,27 @@ nav a:hover{
 
 /* Extra safety: always show the first 12 tiles immediately */
 .page #portfolio-grid .card:nth-child(-n+12) {
+  opacity: 1 !important;
+  transform: none !important;
+}
+/* Disable animation for #portfolio-grid-test as well */
+.page #portfolio-grid-test .reveal-init,
+.page #portfolio-grid-test .reveal-in {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+.page #portfolio-grid-test .card *,
+.page #portfolio-grid-test .card {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+.page #portfolio-grid-test .reveal-init {
+  opacity: 1 !important;
+  transform: none !important;
+}
+.page #portfolio-grid-test .card:nth-child(-n+12) {
   opacity: 1 !important;
   transform: none !important;
 }
