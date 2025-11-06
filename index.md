@@ -63,6 +63,7 @@ class: home
   </div>
 
 </div>
+</div>
 
 <!-- found {{ entries | size }} manifest entries, showed {{ added }} -->
 
