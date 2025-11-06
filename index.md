@@ -2,7 +2,30 @@
 layout: page
 class: home
 ---
+<style>
+  /* Elevate the top-of-page H1 above the carousel glow */
+  .home > h1 {
+    position: relative; /* enable z-index */
+    z-index: 20;        /* above carousel glow */
+    display: inline-block;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.45);
+  }
+
+  /* Mobile ink plate behind the headline for contrast */
+  @media (max-width: 700px){
+    .home > h1::before{
+      content: "";
+      position: absolute;
+      inset: 0 -0.5rem;
+      background: linear-gradient(90deg, rgba(0,84,140,0.85), rgba(0,146,242,0.85));
+      border-radius: 8px;
+      z-index: -1; /* behind text but within H1 */
+      opacity: 0.75;
+    }
+  }
+</style>
 <h1>DCV Designs - Modern 3D-printed decor and custom design</h1>
+<br/>
 {%- comment -%} Latest 6 images from _data/gallery.yml (robust) {%- endcomment -%}
 {%- assign today = site.time | date: "%Y-%m-%d" -%}
 {%- assign raw = site.data.gallery -%}
@@ -71,7 +94,7 @@ class: home
   </div>
 </div>
 {% include announcement.html %}
-## Featured Works
+## Featured Works ##
 <div class="card-grid">
   {%- assign today = site.time | date: "%Y-%m-%d" -%}
   {%- assign items = site.portfolio | sort: 'date' | reverse -%}
