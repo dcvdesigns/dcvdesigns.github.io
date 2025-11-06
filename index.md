@@ -19,10 +19,11 @@ class: home
   {%- assign entries = "" | split: "" -%}
 {%- endif -%}
 {%- assign manifest = entries | sort: 'publish_on' | reverse -%}
+<!-- force html-block start -->
 
-<div class="carousel-wrap mock-glow">
-<div class="scroll-strip" aria-label="Latest gallery images" tabindex="0">
-  <div class="scroll-track">
+<div class="carousel-wrap mock-glow" markdown="0">
+<div class="scroll-strip" aria-label="Latest gallery images" tabindex="0" markdown="0">
+  <div class="scroll-track" markdown="0">
   {%- assign added = 0 -%}
 {%- assign limit = 24 -%}
   {%- for g in manifest -%}
@@ -61,9 +62,10 @@ class: home
     {%- endif -%}
   {%- endfor -%}
   </div>
+</div>
+</div>
 
-</div>
-</div>
+<!-- force html-block end -->
 
 <!-- found {{ entries | size }} manifest entries, showed {{ added }} -->
 
