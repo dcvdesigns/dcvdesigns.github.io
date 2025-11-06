@@ -61,6 +61,7 @@ class: home
   {%- endfor -%}
   </div>
 </div>
+</div>
 <!-- found {{ entries | size }} manifest entries, showed {{ added }} -->
 
 <div class="hero">
