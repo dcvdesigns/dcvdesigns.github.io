@@ -19,7 +19,6 @@ class: home
   {%- assign entries = "" | split: "" -%}
 {%- endif -%}
 {%- assign manifest = entries | sort: 'publish_on' | reverse -%}
-<div class="carousel-wrap mock-glow">
 <div class="scroll-strip" aria-label="Latest gallery images" tabindex="0">
   <div class="scroll-track">
   {%- assign added = 0 -%}
@@ -60,7 +59,6 @@ class: home
     {%- endif -%}
   {%- endfor -%}
   </div>
-</div>
 </div>
 <!-- found {{ entries | size }} manifest entries, showed {{ added }} -->
 
