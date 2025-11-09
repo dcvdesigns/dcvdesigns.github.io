@@ -735,5 +735,5 @@ nav a:hover{
 .page h2,
 .page .content h2,
 .page .wrap h2{
-  color: var(--color-primary);
+  color: var(--color-primary) !important;
 }
