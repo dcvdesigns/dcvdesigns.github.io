@@ -719,3 +719,16 @@ nav a:hover{
   opacity: 1 !important;
   transform: none !important;
 }
+/* Force filled buttons in CTA areas (portfolio + announcements) */
+.cta-row .btn.primary,
+.cta-row .btn.btn-primary,
+.cta-row .btn.secondary,
+.cta-row .btn.btn-secondary,
+.site-announcements .btn.primary,
+.site-announcements .btn.btn-primary,
+.site-announcements .btn.secondary,
+.site-announcements .btn.btn-secondary{
+  background: var(--color-accent) !important;
+  color: #fff !important;
+  border-color: var(--color-accent) !important;
+}
