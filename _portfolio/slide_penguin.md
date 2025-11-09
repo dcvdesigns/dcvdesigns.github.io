@@ -15,3 +15,4 @@ detail: >
 square_url:
 makerworld_url:
 button_type: order
+---
