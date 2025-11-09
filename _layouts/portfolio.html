@@ -98,6 +98,13 @@ layout: default
     </div>
   {% endif %}
 
+  <!-- CONTACT CTA (appears after content; disable per page with contact_button: false) -->
+  {% if page.contact_button != false %}
+    <div class="cta-row" style="margin-top:1rem;">
+      {% include button.html title=page.title %}
+    </div>
+  {% endif %}
+
   <!-- CTAs AFTER content -->
   {% if page.square_url or page.makerworld_url %}
     <div class="cta-row" style="margin-top:1rem;">
