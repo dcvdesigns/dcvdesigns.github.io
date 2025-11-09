@@ -5,8 +5,6 @@ permalink: /custom-orders/
 description: "How to request custom 3D‑printed designs from DCV Designs — from idea to finished product."
 ---
 
-# Custom Orders
-
 Some of our favorite projects begin with an idea from you. Whether it’s a personalized gift, a custom lightbox, a themed coaster set, or something entirely new, we’ll collaborate to bring it to life with clean design and high‑quality 3D printing.
 
 ## How It Works
