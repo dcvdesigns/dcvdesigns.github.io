@@ -747,3 +747,5 @@ main.page h2.reveal-in,
 .container.page h2.reveal-in{
   color: var(--color-primary) !important;
 }
+/* Absolute catch-all for page content headings */
+.content h2 { color: var(--color-primary) !important; }
