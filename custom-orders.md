@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 title: Custom Orders
 permalink: /custom-orders/
 description: "How to request custom 3D‑printed designs from DCV Designs — from idea to finished product."
