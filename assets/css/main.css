@@ -227,7 +227,7 @@ nav a:hover{
   margin-bottom:.5rem;
   font-size: clamp(1.25rem, 1.6vw, 1.5rem);
   letter-spacing:.15px;
-  color:var(--color-fg);
+  color:var(--color-primary);
 }
 .page p{ line-height:1.65; }
 
