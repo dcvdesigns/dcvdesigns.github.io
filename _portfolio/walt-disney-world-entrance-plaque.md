@@ -8,6 +8,9 @@ photos: ["/assets/img/wdw-plaque1.png"]
 category: Home
 detail: >
   This 3D-printed display piece recreates the legendary entrance plaque seen at the beginning of Main Street USA — the moment guests “leave today and enter the world of yesterday, tomorrow, and fantasy.”  Designed with layered dimensional lettering and elegant vintage styling, it captures the timeless magic of Walt Disney’s original vision. Printed in durable PLA with a metallic-finish frame, this piece is perfect for Disney home theaters, office displays, entryways, or shelf vignettes. A refined, nostalgic centerpiece for fans who love the storytelling side of the parks.
-square_url:
-makerworld_url: "https://makerworld.com/en/models/230346-walt-disney-world-magic-kingdom-entrance-plaque#profileId-247678"
+
+  We can make custom items like this to make your Disney trip or home magical. Contact us using the button below to start the conversation about a custom order!
+square_url: 
+makerworld_url: 
+button_type: custom
 ---

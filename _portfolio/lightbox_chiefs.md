@@ -8,12 +8,9 @@ photos: ["/assets/img/chiefs-light1.png"]
 category: Lightboxes
 detail: >
   A bold, illuminated tribute to Kansas City’s iconic team colors and emblem. The layered design highlights the classic arrowhead and “KC” logo, glowing warmly through the red and gold palette for a striking display that stands out on any shelf or game room wall.
+
+  We can make custom items like this to match your interests. Contact us using the button below to start the conversation about a custom order!
 square_url: 
 makerworld_url: 
-announce_title: 
-announce_text: 
-announce_link_url: 
-announce_link_label: 
-announce_start: 
-announce_end: 
+button_type: custom
 ---

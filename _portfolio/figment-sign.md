@@ -8,6 +8,9 @@ photos: ["/assets/img/figment1.png", "/assets/img/figment2.png"]
 category: Signs
 detail: >
   A vibrant and playful tribute to EPCOT’s Journey Into Imagination, this 3D-printed Figment display brings the beloved purple dragon to life through layered color and dimensional typography. Featuring the iconic “One little spark…” lyric, it’s designed to brighten creative spaces, kids’ rooms, home offices, or Disney-themed collections with joyful retro energy. A piece for dreamers, makers, and lifelong EPCOT fans.
-square_url:
-makerworld_url:
+
+  We can make custom items like this to make your Disney trip or home magical. Contact us using the button below to start the conversation about a custom order!
+square_url: 
+makerworld_url: 
+button_type: custom
 ---

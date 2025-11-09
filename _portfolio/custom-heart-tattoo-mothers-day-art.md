@@ -8,6 +8,9 @@ photos: ["/assets/img/tattoo1.png", "/assets/img/tattoo2.pmg"]
 category: Home
 detail: >
   Inspired by traditional American tattoo flash, this customizable 3D-printed plaque features a bold layered heart design with a banner that can read MOM, GMA, NANA, or any name or title you’d like. Printed in rich dimensional color and finished with a complementary frame and background (both fully customizable), it balances fun retro attitude with real sentimental warmth. A memorable gift for Mother’s Day, birthdays, or just a bold “love you” display piece for desks, shelves, or home décor — personalized to match any personality or color palette.
+  
+  This item is available for purchase. Contact us using the button below to inquire about an order.
 square_url:
 makerworld_url:
+button_type: order
 ---

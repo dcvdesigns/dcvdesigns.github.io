@@ -8,6 +8,9 @@ photos: ["/assets/img/sm-xmas1.png", "/assets/img/sm-xmas2.png", "/assets/img/sm
 category: Holiday
 detail: >
   A collection of compact 3D-printed holiday accent signs designed for mantels, shelves, or tiered tray displays — available in a variety of individual designs to mix, match, or style on their own. Each piece features layered seasonal artwork with rich dimensional detail, offering festive charm without overwhelming visual space. Perfect for subtle holiday styling in entryways, kitchen nooks, or curated décor vignettes.
+  
+  This item is available for purchase. Contact us using the button below to inquire about an order.
 square_url:
 makerworld_url:
+button_type: order
 ---

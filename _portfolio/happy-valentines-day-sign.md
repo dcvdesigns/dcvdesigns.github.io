@@ -8,6 +8,9 @@ photos: ["/assets/img/valsign1.png", "/assets/img/valsign2.png"]
 category: Holiday
 detail: >
   A vibrant 3D-printed Valentine’s Day décor piece featuring layered lettering and floating heart accents, designed to feel joyful and eye-catching without being overly formal. The dimensional construction and saturated colors give it a premium, giftable presence — perfect for mantels, entry tables, tiered trays, office décor, or seasonal displays that need a pop of romance and personality.
+  
+  This item is available for purchase. Contact us using the button below to inquire about an order.
 square_url:
-makerworld_url: https://makerworld.com/en/models/1003981-happy-valentine-s-day-sign#profileId-982038
+makerworld_url:
+button_type: order
 ---

@@ -10,13 +10,9 @@ detail: >
   Show off your school spirit with this striking Mizzou paw print sliding puzzle. Crafted in the signature black and gold, it’s both a fun brain teaser and a display-worthy piece for any Tiger fan.
 
   Perfect for alumni, students, or anyone who loves Mizzou, this small but bold puzzle makes a thoughtful gift or a standout accent for your desk, shelf, or dorm.
-  {% include button.html title=page.title %}
+
+  We can make custom items like this to match your interests. Contact us using the button below to start the conversation about a custom order!
 square_url: 
-makerworld_url: https://makerworld.com/en/models/1971305-mizzou-paw-print-sliding-tile-puzzle#profileId-2119464
-announce_title: 
-announce_text: 
-announce_link_url: 
-announce_link_label: 
-announce_start: 
-announce_end: 
+makerworld_url: 
+button_type: custom
 ---

@@ -8,6 +8,9 @@ photos: ["/assets/img/mu-columns-lightbox1.png"]
 category: Lightboxes
 detail: >
   This lightbox captures the timeless elegance of the Mizzou Columns — the historic heart of the University of Missouri — illuminated in signature gold to evoke campus at sunset. Carefully 3D printed in PLA and internally lit with a seamless LED installation and discreet power connection, it offers a polished architectural glow ideal for alumni offices, commemorative displays, or academically inspired interior décor.
-square_url:
-makerworld_url:
+
+  We can make custom items like this to show your Mizzou love. Contact us using the button below to start the conversation about a custom order!
+square_url: 
+makerworld_url: 
+button_type: custom
 ---

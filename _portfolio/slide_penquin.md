@@ -11,14 +11,7 @@ detail: >
 
   A great gift for kids, animal lovers, or anyone who appreciates modern design with a winter twist.
   
-square_url: 
-makerworld_url: https://makerworld.com/en/models/1971294-penguin-duo-sliding-tile-puzzle#profileId-2119451
-announce_title: 
-announce_text: 
-announce_link_url: 
-announce_link_label: 
-announce_start: 
-announce_end: 
----
-{% include button.html title=page.title %}
-Test Text
+  This item is available for purchase. Contact us using the button below to inquire about an order.
+square_url:
+makerworld_url:
+button_type: order

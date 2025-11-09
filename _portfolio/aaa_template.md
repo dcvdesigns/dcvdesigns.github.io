@@ -22,4 +22,5 @@ announce_link_url: "https://www.wsdlibertyband.com/holiday-bazaar"
 announce_link_label: "Event details"
 announce_start: "2055-10-01"   # optional; show on/after this date
 announce_end:   "2055-11-09"   # optional; hide after this date
+button_type: #custom or order
 ---

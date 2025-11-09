@@ -8,6 +8,9 @@ photos: ["/assets/img/kstate1.png"]
 category: Lightboxes
 detail: >
   A clean, modern tribute to Kansas State University, this lightbox showcases the iconic Powercat logo illuminated in purple and white for a crisp, high-contrast glow. Printed in PLA and engineered with an integrated LED light system and concealed power connector, it delivers a professional, high-finish presentation suited for dorms, alumni offices, or game watch party setups. Bold, refined, and unmistakably K-State.
-square_url:
-makerworld_url:
+
+  We can make custom items like this to show your school spirit. Contact us using the button below to start the conversation about a custom order!
+square_url: 
+makerworld_url: 
+button_type: custom
 ---

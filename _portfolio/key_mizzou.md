@@ -8,12 +8,9 @@ photos: ["/assets/img/mu-key1.png", "/assets/img/mu-key2.png", "/assets/img/mu-k
 category: Home
 detail: >
   A bold black-and-gold statement piece that keeps essentials close at hand. The “MIZZOU” diamond-letter design doubles as wall art, merging everyday function with Tiger pride.
+
+  We can make custom items like this to show your Tiger spirit! Contact us using the button below to start the conversation about a custom order!
 square_url: 
 makerworld_url: 
-announce_title: 
-announce_text: 
-announce_link_url: 
-announce_link_label: 
-announce_start: 
-announce_end: 
+button_type: custom
 ---
