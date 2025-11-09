@@ -734,6 +734,8 @@ nav a:hover{
 /* ---- Headings: enforce brand H2 color on page content ---- */
 .page h2,
 .page .content h2,
-.page .wrap h2{
+.page .wrap h2,
+.page .container h2,
+.container .page h2{
   color: var(--color-primary) !important;
 }
