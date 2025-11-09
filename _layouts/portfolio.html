@@ -101,7 +101,15 @@ layout: default
   <!-- CONTACT CTA (appears after content; disable per page with contact_button: false) -->
   {% if page.contact_button != false %}
     <div class="cta-row" style="margin-top:1rem;">
-      {% include button.html title=page.title %}
+      {% if page.button_type == "custom" %}
+        {% include custom_button.html title=page.title %}
+      {% elsif page.button_type == "order" %}
+        {% include button.html title=page.title %}
+      {% elsif page.square_url or page.makerworld_url %}
+        {% include button.html title=page.title %}
+      {% else %}
+        {% include custom_button.html title=page.title %}
+      {% endif %}
     </div>
   {% endif %}
 
