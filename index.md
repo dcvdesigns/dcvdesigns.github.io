@@ -77,13 +77,23 @@ class: home
     <a class="btn ghost" href="/portfolio/">See recent work</a>
   </div>
 </div>
-{%- comment -%} Stacked announcements {%- endcomment -%}
+{%- comment -%} Stacked announcements (compat version) {%- endcomment -%}
 {%- assign today = site.time | date: "%Y-%m-%d" -%}
 {%- assign anns = site.data.announcements | default: site.data.announcement -%}
+{%- assign enabled = "" | split: "" -%}
+
 {%- if anns -%}
-  {%- assign enabled = anns | where: "enabled", true -%}
-  {%- assign date_ok = enabled | where_exp: "a", "a.starts == nil or a.starts == '' or a.starts <= today" | where_exp: "a", "a.expires == nil or a.expires == '' or a.expires >= today" -%}
-  {%- assign sorted = date_ok | sort: "starts" | reverse | sort: "priority" | reverse -%}
+  {%- for a in anns -%}
+    {%- assign ok = true -%}
+    {%- if a.enabled != true -%}{% assign ok = false %}{% endif -%}
+    {%- if ok and a.starts and a.starts != "" and a.starts > today -%}{% assign ok = false %}{% endif -%}
+    {%- if ok and a.expires and a.expires != "" and a.expires < today -%}{% assign ok = false %}{% endif -%}
+    {%- if ok -%}{% assign enabled = enabled | push: a %}{% endif -%}
+  {%- endfor -%}
+
+  {%- assign by_start = enabled | sort: "starts" | reverse -%}
+  {%- assign sorted = by_start | sort: "priority" | reverse -%}
+
   {%- if sorted and sorted.size > 0 -%}
     <section class="site-announcements" aria-label="Site announcements">
       {%- for ann in sorted -%}
