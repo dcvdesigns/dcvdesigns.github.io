@@ -21,3 +21,4 @@ announce_start:
 announce_end: 
 ---
 {% include button.html title=page.title %}
+Test Text
