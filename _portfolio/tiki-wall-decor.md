@@ -9,6 +9,7 @@ category: Décor
 detail: >
   A character-rich 3D-printed wall piece inspired by vintage Polynesian tiki carvings, featuring layered depth and a faux-wood effect for warm tropical energy. Perfect for themed bars, patios, game rooms, or anyone looking to bring playful vacation vibes to their space — bold, fun, and conversation-starting décor.
 
+
   This item is available for purchase. Contact us using the button below to inquire about an order.
 square_url:
 makerworld_url:

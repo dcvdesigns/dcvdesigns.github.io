@@ -9,6 +9,7 @@ category: Custom
 detail: >
   Designed for the National Youth Leadership Training program, these premium recognition plaques were produced at scale — 25 individual pieces, each approximately 11 by 8 inches and fully customized with staff role and course details. Printed in rich multi-color PLA with layered depth and crisp line accuracy, these plaques deliver a professional award-style finish suitable for formal presentation. Whether for Scouting ceremonies, corporate recognition, school programs, or team achievements, we specialize in large batch personalized production with consistency, precision, and branding-level quality.
 
+
   We can make custom items like this to match your interests. Contact us using the button below to start the conversation about a custom order!
 square_url: 
 makerworld_url: 

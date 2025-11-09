@@ -9,6 +9,7 @@ category: Lightboxes
 detail: >
   This 3D-printed lightbox showcases the iconic stacked MU emblem in a bold architectural style, inspired by illuminated signage found across the University of Missouri campus. Printed in durable PLA and engineered with a cleanly integrated power connector and LED light strip, it allows the included external power pack to plug in discreetly with no exposed wiring. The warm gold backlighting casts a premium glow, making it a standout display piece for offices, fan caves, dorm rooms, or graduation gift tables.
 
+
   We can make custom items like this to match your interests. Contact us using the button below to start the conversation about a custom order!
 square_url: 
 makerworld_url: 

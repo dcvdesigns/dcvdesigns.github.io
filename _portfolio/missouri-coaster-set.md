@@ -9,6 +9,7 @@ category: Coasters
 detail: >
   Each coaster combines layered geometry with patriotic color blocking to create a modern visual rhythm centered on the Missouri state outline. The alternating striped and concentric ring motifs highlight the precision and depth achievable through multi-material 3D printing. Completed with a matching embossed caddy, the set strikes a balance between design-forward experimentation and local identity — a creative tribute to the Show-Me State rendered in clean, thoughtful design.
 
+
   We can make custom items like this to show your home state love. Contact us using the button below to start the conversation about a custom order!
 square_url: 
 makerworld_url: 

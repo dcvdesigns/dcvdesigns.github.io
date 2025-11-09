@@ -9,6 +9,7 @@ category: Lightboxes
 detail: >
   A glowing tribute to one of the city’s most recognizable icons — the Amoco sign that lights the night sky above Highway 40 near Forest Park. This 3D-printed reinterpretation swaps “Amoco” for “St. Louis,” honoring the landmark’s role as a beacon of hometown pride and midwestern heritage. A nostalgic nod to a true Gateway City classic.
   
+  
   This item is available for purchase. Contact us using the button below to inquire about an order.
 square_url:
 makerworld_url:

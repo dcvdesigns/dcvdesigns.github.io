@@ -9,6 +9,7 @@ category: Lightboxes
 detail: >
   A warm, glowing take on the classic Cardinals emblem. The familiar red bird perched on the yellow bat comes to life in this lightbox design, capturing the timeless spirit of St. Louis baseball with bold color and clean lines.
 
+
   We can make custom items like this to match your interests. Contact us using the button below to start the conversation about a custom order!
 square_url: 
 makerworld_url: 

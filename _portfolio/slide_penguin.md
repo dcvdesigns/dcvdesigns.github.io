@@ -8,9 +8,11 @@ photos: ["/assets/img/penguin-slide1.png", "/assets/img/penguin-slide2.png"]
 category: Puzzles
 detail: >
   Bring a touch of arctic whimsy to your collection with this sleek, minimalist sliding puzzle featuring a penguin pair atop an icy blue base. It’s a delightful blend of clean design and tactile fun — equally suited for play or display.
-  <br/>
+  
+
   A great gift for kids, animal lovers, or anyone who appreciates modern design with a winter twist.
-  <br/>
+  
+  
   This item is available for purchase. Contact us using the button below to inquire about an order.
 square_url:
 makerworld_url:

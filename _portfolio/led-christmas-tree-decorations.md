@@ -9,6 +9,7 @@ category: Holiday
 detail: >
   These minimalist 3D-printed LED Christmas tree decorations blend modern design with cozy holiday ambiance — featuring clean geometric silhouettes illuminated by an internal LED strip. Available in twinkling multicolor or soft warm-white lighting, each tree casts a gentle festive glow without feeling flashy or overwhelming. Printed in durable PLA with a weighted base for stability, it’s an effortless accent for mantles, desks, nightstands, shelves, or windowsills. A contemporary upgrade from traditional décor — simple, elegant, and perfect for creating holiday atmosphere in both modern and classic spaces.
   
+  
   This item is available for purchase. Contact us using the button below to inquire about an order.
 square_url:
 makerworld_url:

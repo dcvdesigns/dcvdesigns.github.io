@@ -9,6 +9,7 @@ category: Lightboxes
 detail: >
   A fully custom-branded lightbox created for GeereD Up Films, this piece features a client-provided logo rendered with precision in layered 3D depth and cinematic backlighting. Powered via an integrated LED strip and streamlined power connector, it’s designed for clean presentation in studio environments, trade show setups, streaming backgrounds, or office displays. Available as a custom service for other businesses, creators, or personal brands.
 
+
   We can make custom items like this to match your business needs. Contact us using the button below to start the conversation about a custom order!
 square_url: 
 makerworld_url: 

@@ -9,6 +9,7 @@ category: Holiday
 detail: >
   A geometric, sculptural take on the classic Christmas tree — this 3D-printed lighted décor piece features faceted angles and soft internal LED illumination that cycles gently through color. Designed to feel more modern art than novelty décor, it adds ambient winter atmosphere to mantels, side tables, or bedroom spaces with refined, contemporary warmth.
   
+  
   This item is available for purchase. Contact us using the button below to inquire about an order.
 square_url:
 makerworld_url:

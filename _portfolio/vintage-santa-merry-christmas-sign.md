@@ -9,6 +9,7 @@ category: Holiday
 detail: >
   A nostalgic, retro-style Christmas sign inspired by midcentury holiday artwork, featuring a classic smiling Santa illustration and warm vintage lettering. 3D-printed in layered dimensional detail, it delivers the charm of an old-fashioned holiday card — perfect for fireplace mantels, shelf displays, or Christmas décor collections with a sentimental or traditional aesthetic.
   
+  
   This item is available for purchase. Contact us using the button below to inquire about an order.
 square_url:
 makerworld_url:

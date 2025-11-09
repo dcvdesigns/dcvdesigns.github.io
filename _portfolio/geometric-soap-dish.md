@@ -9,6 +9,7 @@ category: Home
 detail: >
   A sleek, modern soap dish featuring a geometric Voronoi-patterned insert designed for optimal drainage and easy cleaning. The base is printed in marble PLA for a stone-inspired depth and premium visual texture, while the insert can be customized in any color to complement your décor palette. A functional utility piece with the refined aesthetic of modern designer homeware.
   
+  
   This item is available for purchase. Contact us using the button below to inquire about an order.
 square_url:
 makerworld_url:

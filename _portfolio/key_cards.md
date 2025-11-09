@@ -9,6 +9,7 @@ category: Home
 detail: >
   Featuring the classic Cardinals script and bat logo, this 3D-printed key hanger blends function with hometown tradition. Six durable hooks provide everyday practicality, while the timeless red and white design adds a subtle pop of team color.
 
+
   We can make custom items like this to match your interests. Contact us using the button below to start the conversation about a custom order!
 square_url: 
 makerworld_url: 

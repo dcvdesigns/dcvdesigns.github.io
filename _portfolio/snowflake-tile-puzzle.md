@@ -9,6 +9,7 @@ category: Holiday
 detail: >
   A uniquely interactive holiday themed piece — this 3D-printed puzzle features individually patterned snowflake tiles that fit together in a calming, tactile arrange-and-discover experience. Packaged with a matching storage box and printed instructions, it makes for a delightful coffee-table activity or winter gift — equal parts display piece and hands-on seasonal keepsake.  
   
+  
   This item is available for purchase. Contact us using the button below to inquire about an order.
 square_url:
 makerworld_url:

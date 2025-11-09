@@ -9,6 +9,7 @@ category: Home
 detail: >
   A minimalist two-tone soap dish featuring an interlocking Mickey icon pattern — blending subtle Disney charm with modern everyday design. The base is 3D-printed in marble-textured PLA, giving it a natural stone-like depth and elevated finish, while the removable insert supports proper drainage and can be printed in any color to match bathroom theming. A practical accent for Disney fans that feels clean, intentional, and design-forward.
   
+  
   This item is available for purchase. Contact us using the button below to inquire about an order.
 square_url:
 makerworld_url:

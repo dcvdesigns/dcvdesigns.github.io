@@ -9,6 +9,7 @@ category: Holiday
 detail: >
   This Valentine’s Tile Puzzle combines the joy of candy-heart messages with the satisfying challenge of a tile arrangement puzzle. Each version — classic pastel or bold pink and blue — includes a full set of printed tiles, a matching storage box, and printed instructions. Designed as both a tactile fidget piece and a decorative holiday accent, it’s perfect for coffee tables, gifts, or seasonal décor. The layered color printing creates crisp heart shapes and text for a finish that feels both polished and heartfelt.
   
+  
   This item is available for purchase. Contact us using the button below to inquire about an order.
 square_url:
 makerworld_url:

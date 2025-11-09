@@ -9,6 +9,7 @@ category: Lightboxes
 detail: >
   Inspired by the iconic U.S. National Forest signage style, this custom lightbox evokes the nostalgia of nature destination markers — personalized with your choice of lake name, family name, or vacation home identity. Printed in PLA and softly illuminated with an integrated LED system and low-profile power connector, it casts a calming glow in blue or earth tones. Designed to bring a warm, personalized lodge atmosphere to any lake house, Airbnb, or home bar.
 
+
   We can make custom items like this for your lake house! Contact us using the button below to start the conversation about a custom order!
 square_url: 
 makerworld_url: 

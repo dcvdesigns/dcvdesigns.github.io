@@ -9,6 +9,7 @@ category: Lightboxes
 detail: >
   Printed in vivid gold, black, and cream tones, this piece uses backlighting to give Truman a radiant, animated presence — perfect for a shelf, desk, or dorm display. The layered construction allows light to diffuse through the lighter sections, accentuating the playful personality and confident stance of Mizzou’s iconic figure. Both a statement piece and a celebration of Tiger pride, it’s a fun fusion of school tradition and modern 3D design.
 
+
   We can make custom items like this to match your interests. Contact us using the button below to start the conversation about a custom order!
 square_url: 
 makerworld_url: 
