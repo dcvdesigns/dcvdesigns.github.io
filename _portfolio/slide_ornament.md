@@ -10,6 +10,7 @@ detail: >
   This colorful sliding puzzle captures the spirit of the holidays with a trio of red, gold, and blue ornaments on a deep green background. Whether placed on a coffee table or gifted to a puzzle lover, it’s sure to bring a smile.
 
   Handcrafted with a smooth finish and vibrant color contrast, it’s equal parts playful and decorative — a unique little keepsake that celebrates the season in style.
+  {% include button.html title=page.title %}
 square_url: 
 makerworld_url: https://makerworld.com/en/models/1971301-ornament-trio-sliding-tile-puzzle#profileId-2119460
 announce_title: 

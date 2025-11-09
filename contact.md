@@ -20,6 +20,7 @@ permalink: /contact/
   <select id="request_type" name="request_type" required>
     <option value="" selected disabled>Select one</option>
     <option>Custom Design Request</option>
+    <option>Order Items</option>
     <option>General Question</option>
     <option>Wholesale / Bulk Order</option>
     <option>Collaboration / Partnership</option>
@@ -40,3 +41,42 @@ permalink: /contact/
 
   <button type="submit" class="btn primary">Send</button>
 </form>
+<script>
+(function () {
+  const params = new URLSearchParams(window.location.search);
+
+  // Prefill Request Type (matches by value or visible text)
+  const typeParam = params.get('request_type');
+  const selectEl = document.getElementById('request_type');
+  if (typeParam && selectEl) {
+    const typeLower = typeParam.toLowerCase();
+    const match = Array.from(selectEl.options).find(opt =>
+      (opt.value && opt.value.toLowerCase() === typeLower) ||
+      (opt.text && opt.text.toLowerCase() === typeLower)
+    );
+    if (match) {
+      selectEl.value = match.value || match.text;
+    }
+  }
+
+  // Prefill Message
+  const msgParam = params.get('message');
+  const msgEl = document.getElementById('message');
+  if (msgParam && msgEl) {
+    msgEl.value = msgParam;
+  }
+
+  // Optional: Prefill Name and Email if provided
+  const nameParam = params.get('name');
+  const nameEl = document.getElementById('name');
+  if (nameParam && nameEl) {
+    nameEl.value = nameParam;
+  }
+
+  const emailParam = params.get('email');
+  const emailEl = document.getElementById('email');
+  if (emailParam && emailEl) {
+    emailEl.value = emailParam;
+  }
+})();
+</script>
