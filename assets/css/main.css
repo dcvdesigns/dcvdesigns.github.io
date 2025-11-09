@@ -731,17 +731,12 @@ nav a:hover{
   color: #fff !important;
   border-color: var(--color-accent) !important;
 }
-/* ---- Headings: enforce brand H2 color on page content ---- */
 
-.page h2,
-.page .content h2,
-.page .wrap h2,
-.page .container h2,
-.container .page h2{
-  color: var(--color-primary) !important;
-}
-
-/* Page layout (Primer markdown wrapper) */
-.markdown-body h2{
+/* ---- Final override: brand H2 color in page content (covers page + markdown wrappers) ---- */
+html body section.page h2,
+html body section.page .content h2,
+html body section.page .content .markdown-body h2,
+html body .page .content h2,
+html body .markdown-body h2{
   color: var(--color-primary) !important;
 }
