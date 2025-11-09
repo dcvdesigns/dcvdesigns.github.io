@@ -2,15 +2,14 @@ enabled: true
 
 # Show only between these dates (inclusive).
 # Omit either field to make it open-ended.
-starts: "2025-10-20"     # first day to show (optional)
-expires: "2025-11-09"    # last day to show (optional)
+starts: "2025-11-09"     # first day to show (optional)
+expires: "2025-11-25"    # last day to show (optional)
 
-title: "Upcoming Craft Fair — Wentzville Liberty Holiday Bazaar"
+title: "Thanks for visiting us at the Wentzville Libery Holiday Bazaar"
 date: "November 8, 2025"
 text: |
-  We’ll be at the **Wentzville Liberty Holiday Bazaar** from 9am–3pm on November 8, 2025.
-  Swing by for new lightboxes, holiday decor and more!
+  Thank you so much to everyone who stopped by our booth at the Wentzville Liberty Holiday Bazaar! 
 
-  Liberty High School - 2275 Sommers Rd, O'Fallon, MO 63367
-cta_label: "Event details"
-cta_url: 
+  Please feel free to check out our portfolio for some of the items we produce. For any after craft fair purchases or custom design requests, please reach out at the link below!
+cta_label: "Contact Us"
+cta_url: https://www.dcvdesigns.com/contact/
