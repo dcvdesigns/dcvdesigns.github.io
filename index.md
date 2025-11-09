@@ -77,7 +77,30 @@ class: home
     <a class="btn ghost" href="/portfolio/">See recent work</a>
   </div>
 </div>
-{% include announcement.html %}
+{%- comment -%} Stacked announcements {%- endcomment -%}
+{%- assign today = site.time | date: "%Y-%m-%d" -%}
+{%- assign anns = site.data.announcements | default: site.data.announcement -%}
+{%- if anns -%}
+  {%- assign enabled = anns | where: "enabled", true -%}
+  {%- assign date_ok = enabled | where_exp: "a", "a.starts == nil or a.starts == '' or a.starts <= today" | where_exp: "a", "a.expires == nil or a.expires == '' or a.expires >= today" -%}
+  {%- assign sorted = date_ok | sort: "starts" | reverse | sort: "priority" | reverse -%}
+  {%- if sorted and sorted.size > 0 -%}
+    <section class="site-announcements" aria-label="Site announcements">
+      {%- for ann in sorted -%}
+        <div class="site-announcement">
+          <div class="wrap">
+            {%- if ann.title %}<h3>{{ ann.title }}</h3>{% endif -%}
+            {%- if ann.date %}<p class="meta">{{ ann.date }}</p>{% endif -%}
+            {%- if ann.text %}<div class="text">{{ ann.text | markdownify }}</div>{% endif -%}
+            {%- if ann.cta_url and ann.cta_label -%}
+              <p><a class="btn primary" href="{{ ann.cta_url }}">{{ ann.cta_label }}</a></p>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </section>
+  {%- endif -%}
+{%- endif -%}
 ## Featured Works ##
 <div class="card-grid">
   {%- assign today = site.time | date: "%Y-%m-%d" -%}

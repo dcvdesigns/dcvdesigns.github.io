@@ -1,15 +1,23 @@
-enabled: true
+- enabled: true
+  starts: "2025-11-09"
+  expires: "2025-11-25"
+  title: "Thanks for visiting us at the Wentzville Libery Holiday Bazaar"
+  date: "November 8, 2025"
+  text: |
+    Thank you so much to everyone who stopped by our booth at the Wentzville Liberty Holiday Bazaar! 
 
-# Show only between these dates (inclusive).
-# Omit either field to make it open-ended.
-starts: "2025-11-09"     # first day to show (optional)
-expires: "2025-11-25"    # last day to show (optional)
+    Please feel free to check out our portfolio for some of the items we produce. For any after craft fair purchases or custom design requests, please reach out at the link below!
+  cta_label: "Contact Us"
+  cta_url: https://www.dcvdesigns.com/contact/
+  priority: 10
 
-title: "Thanks for visiting us at the Wentzville Libery Holiday Bazaar"
-date: "November 8, 2025"
-text: |
-  Thank you so much to everyone who stopped by our booth at the Wentzville Liberty Holiday Bazaar! 
-
-  Please feel free to check out our portfolio for some of the items we produce. For any after craft fair purchases or custom design requests, please reach out at the link below!
-cta_label: "Contact Us"
-cta_url: https://www.dcvdesigns.com/contact/
+- enabled: true
+  starts: "2025-11-10"
+  expires: "2025-12-10"
+  title: "Now taking holiday orders!"
+  date: "2025 Holidays"
+  text: |
+    Looking for a unique gift? We’re accepting custom design requests through December 10.
+  cta_label: "Inquire Now"
+  cta_url: https://www.dcvdesigns.com/contact/?request_type=Custom%20Design%20Request
+  priority: 20
